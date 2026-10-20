@@ -1018,5 +1018,22 @@ $("#homeBtn").onclick=renderHome;
 $("#logoutBtn").onclick=()=>{if(confirm("Deseja sair da conta do professor?"))renderGate("Você saiu da conta. Entre novamente para acessar seus alunos.")};
 if(activeTeacherId&&teachers.some(t=>t.id===activeTeacherId)){profiles=allProfiles.filter(p=>p.teacherId===activeTeacherId);ensureTeacherClasses(activeTeacherId);syncTeacherHeader();renderHome()}else renderGate();
 </script>
+ // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCTOgbbNJQ_L5Y0UcMqJWFT0_BO1fFqPjY",
+  authDomain: "lele-leiturinha.firebaseapp.com",
+  projectId: "lele-leiturinha",
+  storageBucket: "lele-leiturinha.firebasestorage.app",
+  messagingSenderId: "218915797154",
+  appId: "1:218915797154:web:f6d66c4f1997e581ce3ffb"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 </body>
 </html>
