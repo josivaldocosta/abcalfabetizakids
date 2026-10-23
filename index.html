@@ -1374,9 +1374,11 @@ function abWords(){return AB_POOL}
 function abUnion(o,valid){const s=new Set();Object.values(o||{}).forEach(arr=>(arr||[]).forEach(x=>{if(!valid||valid.has(x))s.add(x)}));return s.size}
 function abInicialDone(a){return abUnion(a.inicial,new Set(AB_POOL.map(x=>x.w)))}
 let abSound=true;try{if(localStorage.getItem("jl_absound")==="0")abSound=false}catch(e){}
-const AB_NAME={A:"á",B:"bê",C:"cê",D:"dê",E:"é",F:"éfe",G:"gê",H:"agá",I:"i",J:"jóta",K:"cá",L:"éle",M:"ême",N:"êne",O:"ó",P:"pê",Q:"quê",R:"érre",S:"ésse",T:"tê",U:"u",V:"vê",W:"dáblio",X:"xis",Y:"ípsilon",Z:"zê"};
+const AB_NAME={A:"á",B:"bê",C:"cê",D:"dê",E:"ê",F:"F",G:"gê",H:"agá",I:"i",J:"jóta",K:"cá",L:"L",M:"M",N:"N",O:"ó",P:"pê",Q:"quê",R:"R",S:"S",T:"tê",U:"u",V:"vê",W:"dáblio",X:"xis",Y:"ípsilon",Z:"zê"};
+const AB_SAY={KIWI:"quíui",WAFFLE:"uáfli",YOGA:"ioga",KARATÊ:"caratê",PIZZA:"pítsa",HAMBÚRGUER:"hambúrguer",DINOSSAURO:"dinossauro"};
+function abWordSay(w){return AB_SAY[w]||String(w).toLowerCase()}
 let abVoice=null;
-function abPickVoice(){try{const vs=speechSynthesis.getVoices()||[];const br=vs.filter(v=>/^pt[-_]/i.test(v.lang));if(!br.length)return null;const score=v=>{const n=(v.name||"").toLowerCase();let sc=0;if(/^pt[-_]BR/i.test(v.lang))sc+=10;if(/natural|neural|online/.test(n))sc+=50;if(/google/.test(n))sc+=30;if(/premium|enhanced|aprimorada/.test(n))sc+=25;if(/francisca|antonio|thalita|camila|vitoria|luciana|fernanda|felipe|joana/.test(n))sc+=15;if(/compact/.test(n))sc-=10;return sc};br.sort((a,b)=>score(b)-score(a));return br[0]}catch(e){return null}}
+function abPickVoice(){try{const vs=speechSynthesis.getVoices()||[];const br=vs.filter(v=>/^pt[-_]BR/i.test(v.lang));if(!br.length)return null;const score=v=>{const n=(v.name||"").toLowerCase();let sc=0;if(/^pt[-_]BR/i.test(v.lang))sc+=10;if(/natural|neural|online/.test(n))sc+=50;if(/google/.test(n))sc+=30;if(/premium|enhanced|aprimorada/.test(n))sc+=25;if(/francisca|antonio|thalita|camila|vitoria|luciana|fernanda|felipe|joana/.test(n))sc+=15;if(/compact/.test(n))sc-=10;return sc};br.sort((a,b)=>score(b)-score(a));return br[0]}catch(e){return null}}
 try{if(window.speechSynthesis){abVoice=abPickVoice();if(speechSynthesis.addEventListener)speechSynthesis.addEventListener("voiceschanged",()=>{abVoice=abPickVoice()})}}catch(e){}
 function abSpeak(t){if(!abSound||!t)return;try{if(!window.speechSynthesis)return;if(!abVoice)abVoice=abPickVoice();const u=new SpeechSynthesisUtterance(t);u.lang="pt-BR";if(abVoice)u.voice=abVoice;u.rate=.85;u.pitch=1.05;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
 function abSayLater(tok,t,ms){setTimeout(()=>{if(abAlive(tok))abSpeak(t)},ms)}
@@ -1416,6 +1418,7 @@ function abStars(){const b=$("#abStars");if(b&&AB)b.textContent=AB.hit}
 function abEnableNext(label,fn){const n=$("#abNext");if(!n)return;n.disabled=false;n.textContent=label;n.onclick=fn}
 function abFigFor(c){const l=AB_FIG[c]||[];return l.length?l[abRnd(l.length)]:["",""]}
 function abLevels(game){
+ if(game==="teste"){abVoiceTest();return}
  const p=active();if(!p){renderClassDashboard();return}
  const a=abAlpha(p),caca=game==="caca";
  const total=caca?26:AB_POOL.length;
@@ -1423,6 +1426,11 @@ function abLevels(game){
  const cards=lv.map((x,i)=>{const L=i+1;const n=caca?(a.caca[L]||[]).length:(a.inicial[L]||[]).filter(w=>AB_POOL.some(q=>q.w===w)).length;return `<button class="ab-lvl" data-lv="${L}" type="button"><strong>${["🌱","🌿","🌳"][i]} Nível ${L}</strong><span class="ab-lvl-d">${x[0]}</span><span class="ab-lvl-s">${x[1]}</span><div class="progress"><span style="width:${Math.min(100,Math.round(n/Math.max(1,total)*100))}%"></span></div><span class="small">${n} de ${total} ${caca?"letras":"palavras"}</span></button>`}).join("");
  abShell({sub:caca?"Caça-Letras":"Qual letra começa?",stars:caca?abUnion(a.caca):abInicialDone(a),single:`<div class="ab-board ab-levels">${cards}</div>`,msg:caca?"🔍 Escolha um nível para caçar letras":"🅰️ Escolha um nível para descobrir a letra",onBack:renderStudentMenu});
  document.querySelectorAll(".ab-lvl").forEach(b=>b.onclick=()=>abStart(game,+b.dataset.lv));
+}
+function abVoiceTest(){
+ const items=AB_LET.map(l=>({l,say:abLetterName(l)+" de "+abWordSay(AB_FIG[l][0][0])}));
+ abShell({sub:"Teste da voz das letras",stars:0,single:`<div class="ab-board"><div class="ab-grid" style="--cols:7;--rows:4">${items.map(x=>`<button class="ab-tile" type="button" data-say="${esc(x.say)}" aria-label="Ouvir a letra ${x.l}">${x.l}</button>`).join("")}</div></div>`,msg:"Toque numa letra para ouvir como ela é falada",onBack:renderStudentMenu});
+ document.querySelectorAll(".ab-tile[data-say]").forEach(b=>b.onclick=()=>{abSpeak(b.dataset.say);abMsg("“"+b.dataset.say+"”")});
 }
 function abStart(game,L){
  const p=active();if(!p)return;const a=abAlpha(p);const done=a[game][L]||[];let queue;
@@ -1448,7 +1456,7 @@ function abCacaRound(){
  const fig=abFigFor(t),target=L===1?t:t+" "+t.toLowerCase();
  const isLast=S.i+1>=S.queue.length;
  const tok=abTok+1;
- const say=abLetterName(t);
+ const say=abLetterName(t)+" de "+abWordSay(fig[0]);
  abShell({say,sub:`Caça-Letras • ${S.i+1} de ${S.queue.length}`,stars:S.hit,
   left:`<div class="ab-left ab-tap" id="abLeft" role="button" tabindex="0" aria-label="Ouvir a letra de novo"><span class="ab-hear-ic" aria-hidden="true">🔊</span><div class="ab-letter">${target}</div><div class="ab-figwrap"><div class="ab-fig">${fig[1]}</div><div class="ab-cap"><b>${esc(fig[0].charAt(0))}</b>${esc(fig[0].slice(1))}</div></div></div>`,
   right:`<div class="ab-board"><div class="ab-grid" style="--cols:${cfg.cols};--rows:${rows}">${tiles.map((x,i)=>`<button class="ab-tile" type="button" data-i="${i}" aria-label="Letra ${x.c}">${x.c}</button>`).join("")}</div></div>`,
@@ -1475,19 +1483,22 @@ function abInicialRound(){
  const opts=shuffle(letters.map(ch=>({ch,show:abLetterCase(ch,mode)})));
  const isLast=S.i+1>=S.queue.length;
  const tok=abTok+1;
- abShell({sub:`Letra inicial • ${S.i+1} de ${S.queue.length}`,stars:S.hit,
-  left:`<div class="ab-left"><div class="ab-figwrap"><div class="ab-fig">${w.e}</div><div class="ab-cap" id="abCap"><span class="ab-q">?</span></div></div></div>`,
+ const say=abWordSay(w.w);
+ abShell({say,sub:`Letra inicial • ${S.i+1} de ${S.queue.length}`,stars:S.hit,
+  left:`<div class="ab-left ab-tap" id="abLeft" role="button" tabindex="0" aria-label="Ouvir o nome da figura de novo"><span class="ab-hear-ic" aria-hidden="true">🔊</span><div class="ab-figwrap"><div class="ab-fig">${w.e}</div><div class="ab-cap" id="abCap"><span class="ab-q">?</span></div></div></div>`,
   right:`<div class="ab-board"><div class="ab-opts" style="--n:${n}">${opts.map(o=>`<button class="ab-opt" type="button" data-ch="${o.ch}" aria-label="Letra ${o.show}">${o.show}</button>`).join("")}</div></div>`,
   msg:"Com qual letra começa o nome da figura?",
   next:{label:isLast?"Concluir ▶":"Próxima ▶",disabled:true},
   onBack:()=>abLevels("inicial"),onRestart:()=>abInicialRound()});
+ $("#abLeft").onclick=()=>abSpeak(say);$("#abLeft").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abSpeak(say)}};
+ abSayLater(tok,say,450);
  let solved=false;
  document.querySelectorAll(".ab-opt").forEach(b=>b.onclick=()=>{
   if(!abAlive(tok)||solved||b.disabled)return;
   if(b.dataset.ch===c){solved=true;S.hit++;abStars();b.classList.add("right");document.querySelectorAll(".ab-opt").forEach(x=>{if(x!==b&&!x.classList.contains("wrong"))x.classList.add("dim");x.disabled=x!==b?true:x.disabled});
    $("#abCap").innerHTML=`<b>${esc(w.w.charAt(0))}</b>${esc(w.w.slice(1))}`;
    abMsg(["Muito bem! 🎉","Isso mesmo! ⭐","Acertou! 🌟"][abRnd(3)]+" "+w.w.charAt(0)+" de "+w.w.charAt(0)+w.w.slice(1).toLowerCase());celebrateStars();abChime();
-   abEnableNext(isLast?"Concluir ▶":"Próxima ▶",()=>{if(!abAlive(tok))return;S.i++;S.i>=S.queue.length?abFinish():abRound()})}
+   abSpeak(abLetterName(c)+" de "+say);abEnableNext(isLast?"Concluir ▶":"Próxima ▶",()=>{if(!abAlive(tok))return;S.i++;S.i>=S.queue.length?abFinish():abRound()})}
   else{S.err++;S.roundErr++;b.disabled=true;b.classList.add("wrong");abTick(false);abMsg("Tente de novo! Observe a figura e pense no primeiro som. 👀")}
  });
 }
@@ -1510,7 +1521,7 @@ function abFinish(){
 function abMenuMarkup(p){
  const a=abAlpha(p);
  const card=(g,t,sub,n,tot)=>`<button class="category" data-ab="${g}" type="button"><strong>${t}</strong><span class="muted">${sub}</span><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.min(100,Math.round(n/Math.max(1,tot)*100))}%"></span></div><span class="small">${n} de ${tot} ${g==="caca"?"letras":"palavras"} jogadas</span></button>`;
- return `<h2 style="margin-top:8px">🔤 Alfabeto</h2><div class="category-grid">${card("caca","🔍 Caça-Letras","Encontre as letras escondidas • 3 níveis",abUnion(a.caca),26)}${card("inicial","🅰️ Qual letra começa?","Descubra a letra inicial da figura • 3 níveis",abInicialDone(a),AB_POOL.length)}</div>`;
+ return `<h2 style="margin-top:8px">🔤 Alfabeto</h2><div class="category-grid">${card("caca","🔍 Caça-Letras","Encontre as letras escondidas • 3 níveis",abUnion(a.caca),26)}${card("inicial","🅰️ Qual letra começa?","Descubra a letra inicial da figura • 3 níveis",abInicialDone(a),AB_POOL.length)}</div><div class="row" style="margin-top:8px"><button class="ghost" data-ab="teste" type="button">🔊 Testar a voz das letras</button></div>`;
 }
 
 (function(){const t=document.getElementById("hdrMenuBtn"),m=document.getElementById("hdrActions");if(!t||!m)return;
