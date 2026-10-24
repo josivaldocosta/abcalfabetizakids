@@ -604,6 +604,7 @@ body.game-mode .app-footer p{margin:0}
 .fl-block-t{font-weight:900;color:var(--ink2);font-size:clamp(.95rem,3vh,1.3rem)}
 .fl-block-s{font-weight:800;color:#5b6280;font-size:clamp(.7rem,2vh,.9rem);margin-top:-4px}
 .fl-texts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(6px,1.4vw,12px);flex:1;min-height:0}
+.bottom.bare{border:0;background:transparent;box-shadow:none}.bottom.bare .bottom-text,.bottom.bare #abRestart,.bottom.bare #abNext{display:none}.fl-one .fl-texts{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:700px){.fl-one .fl-texts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .fl-card{padding:clamp(4px,1.1vh,10px);gap:2px}.fl-card strong{font-size:clamp(.85rem,2.6vh,1.2rem)}
 .fl-card.lido{border-color:#22b573;background:#f1fbf5}
 .fl-board{display:flex;align-items:center;justify-content:center}
@@ -624,6 +625,52 @@ body.game-mode .app-footer p{margin:0}
 .ab-hint-in{display:flex;flex-direction:column;align-items:center;gap:1cqh;text-align:center;padding:0 6cqw;font-size:min(8cqh,6cqw)}
 .ab-hint-ic{font-size:min(20cqh,16cqw)}
 @media(orientation:portrait){.ab-hint-in{flex-direction:row}.ab-hint-ic{display:none}}
+.cfg-ov{position:fixed;inset:0;z-index:10000;background:rgba(26,31,74,.55);display:flex;align-items:center;justify-content:center;padding:14px}
+.cfg-box{background:#fff;border:3px solid var(--ink2,#1c2150);border-radius:24px;max-width:520px;width:100%;max-height:92vh;overflow:auto;padding:clamp(14px,3vw,24px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.cfg-box h2{margin:0 0 4px;color:var(--ink2,#1c2150)}
+.cfg-opt{display:flex;gap:12px;align-items:flex-start;padding:12px 4px;border-top:2px solid #eef0f8;cursor:pointer}
+.cfg-opt input{width:28px;height:28px;min-width:28px;margin-top:2px;accent-color:#3b4fd0}
+.cfg-opt b{display:block;color:var(--ink2,#1c2150);font-size:1.05rem}
+.cfg-opt span{display:block;color:#5b6280;font-size:.9rem;font-weight:700;margin-top:2px}
+.cfg-delay{display:flex;gap:8px;flex-wrap:wrap;padding:6px 4px 12px 44px}
+.cfg-delay label{display:flex;align-items:center;gap:6px;font-weight:800;color:var(--ink2,#1c2150);cursor:pointer}
+.cfg-delay input{width:20px;height:20px;accent-color:#3b4fd0}
+.cfg-delay.off{opacity:.45;pointer-events:none}
+.cfg-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+.bottom .hud-right{margin-left:auto;flex:0 0 auto}
+.bottom .hud-btn,.bottom .hud-pill{box-shadow:0 4px 0 #e3d3a8}
+@media(max-width:560px){.bottom{flex-wrap:wrap;justify-content:center}.bottom .bottom-text{flex:1 1 40%}.bottom .hud-right{order:9;flex:1 0 100%;justify-content:center;margin-left:0}}
+.stu-top{align-items:center;gap:12px}
+.stu-hello{flex:1;min-width:0}
+.stu-hello h1{margin:0;font-size:clamp(1.15rem,2.6vw,1.6rem);font-weight:800;line-height:1.25}
+.stu-stars{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:6px 16px 6px 12px;border-radius:999px;background:linear-gradient(90deg,#fff8d9,#fffdf2);border:2px solid #f4df91;box-shadow:0 3px 0 #e6c47a;color:#765516;font-weight:800;font-size:clamp(1rem,2.2vw,1.2rem);line-height:1.2}
+.stu-stars .stu-star{font-size:1.45em;line-height:1;filter:drop-shadow(0 2px 0 #efd36c);animation:stuStarPulse 2.4s ease-in-out infinite}
+.stu-stars b{font-variant-numeric:tabular-nums;font-size:1.15em;color:#a8650a}
+@keyframes stuStarPulse{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.18) rotate(-8deg)}}
+@media(prefers-reduced-motion:reduce){.stu-stars .stu-star{animation:none}}
+.stu-btns{display:flex;gap:8px;flex:none}
+@media(max-width:640px){.stu-top{flex-direction:column;align-items:stretch}.stu-btns{order:-1;justify-content:center}.stu-btns button{flex:1;white-space:nowrap;font-size:.8rem;padding:0 8px;min-height:48px}}
+
+/* ===== Alfabeto: tipo de letra (Misto / ABC / abc / cursiva) ===== */
+.ab-casebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 12px}
+.ab-casebar>span{font-weight:800;color:#4658bd}
+.ab-casebar button{border:2px solid #dfe5f5;background:#fff;color:#1b2250;border-radius:12px;min-width:56px;height:40px;padding:0 12px;font-size:1.05rem;font-weight:900;cursor:pointer;box-shadow:0 3px 0 #dfe5f5}
+.ab-casebar button.sel{background:#4f46e5;border-color:#4f46e5;color:#fff;box-shadow:0 3px 0 #3730a3}
+.ab-casebar button.cs{font-family:"Playwrite BR","Segoe Script","Lucida Handwriting","Snell Roundhand","Brush Script MT","Bradley Hand",cursive;font-weight:600;line-height:1.5}
+#abCase{width:auto;min-width:clamp(34px,5.5vh,44px);padding:0 9px;white-space:nowrap}
+#abCase.cs{min-width:clamp(54px,9vh,68px);padding:0 12px;font-size:1.05rem;line-height:1.5;overflow:visible;font-family:"Playwrite BR","Segoe Script","Lucida Handwriting","Snell Roundhand","Brush Script MT","Bradley Hand",cursive;font-weight:600}
+.game.ab-cu .ab-tile,.game.ab-cu .ab-opt,.game.ab-cu .ab-cap{text-transform:uppercase}
+.game.ab-cl .ab-tile,.game.ab-cl .ab-opt,.game.ab-cl .ab-cap{text-transform:lowercase}
+.game.ab-cc .ab-tile,.game.ab-cc .ab-opt,.game.ab-cc .ab-letter,.game.ab-cc .ab-cap{font-family:"Playwrite BR","Segoe Script","Lucida Handwriting","Snell Roundhand","Brush Script MT","Bradley Hand",cursive;font-weight:600;letter-spacing:0}
+.game.ab-cc .ab-tile,.game.ab-cc .ab-opt,.game.ab-cc .ab-letter{line-height:1.45}
+.game.ab-cc .ab-cap{text-transform:lowercase;line-height:1.3}
+.game.ab-cc .ab-cap b{text-transform:uppercase}
+.game.ab-cu .ab-pair .lp-s,.game.ab-cu .ab-pair .lp-l{display:none}
+.game.ab-cl .ab-pair .lp-u,.game.ab-cl .ab-pair .lp-s{display:none}
+.game.ab-cm .ab-pair.solo .lp-s,.game.ab-cm .ab-pair.solo .lp-l,.game.ab-cc .ab-pair.solo .lp-s,.game.ab-cc .ab-pair.solo .lp-l{display:none}
+.ab-lvl .df{display:none}
+.game.ab-cu .ab-lvl .dm,.game.ab-cl .ab-lvl .dm{display:none}
+.game.ab-cu .ab-lvl .df,.game.ab-cl .ab-lvl .df{display:inline}
 </style>
 </head>
 <body>
@@ -1222,14 +1269,15 @@ function renderStudentMenu(){
  commitStageClock();clearTimeout(autoTimer);
  const p=active();if(!p){renderClassDashboard();return}
  stage="student-menu";syncTeacherHeader();const m=$("#appMain");
- m.innerHTML=`<section class="panel"><div class="topline"><div><div class="muted small">PARTICIPANTE SELECIONADO</div><h1>Olá, ${esc(p.name)}! 👋</h1><p class="muted">Escolha uma atividade para começar a jogar.</p></div><button class="secondary" id="changeStudent">← Voltar aos grupos e participantes</button></div>
- ${abMenuMarkup(p)}<h2 style="margin-top:22px">📚 Sílabas e palavras</h2><div class="category-grid">${["simples","complexas","simples_montar","complexas_montar"].map(c=>`<button class="category" data-cat="${c}"><strong>${catLabel(c)}</strong><span class="muted">${wordsFor(c).length} palavras cadastradas</span><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(progress(p,c)/Math.max(1,wordsFor(c).length)*100)}%"></span></div><span class="small">${progress(p,c)} de ${wordsFor(c).length} concluídas</span></button>`).join("")}</div>
+ m.innerHTML=`<section class="panel"><div class="topline stu-top"><div class="stu-hello"><h1>Olá, ${esc(p.name)}! 👋 O que vamos fazer agora?</h1><div class="stu-stars" id="stuStars" aria-live="polite"><span class="stu-star" aria-hidden="true">⭐</span><span>${starsLabel(totalStars(p))}</span></div></div><div class="stu-btns"><button class="secondary" id="changeStudent">← VOLTAR</button><button class="secondary" id="openCfgBtn" type="button">⚙️ CONFIGURAÇÕES</button></div></div>
+ ${abMenuMarkup(p)}<h2 style="margin-top:22px">📚 Sílabas e palavras</h2><div class="category-grid">${["simples","complexas","simples_montar","complexas_montar"].map(c=>`<button class="category" data-cat="${c}"><strong>${catLabel(c)}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(progress(p,c)/Math.max(1,wordsFor(c).length)*100)}%"></span></div><span class="small">${progress(p,c)} de ${wordsFor(c).length} concluídas</span></button>`).join("")}</div>
  ${flMenuMarkup(p)}
- <div class="admin"><h3>Progresso do participante</h3><p class="muted">Sílabas Simples: ${progress(p,"simples")}/${wordsFor("simples").length} • Sílabas Complexas: ${progress(p,"complexas")}/${wordsFor("complexas").length}</p><p class="muted">Palavras Simples: ${progress(p,"simples_montar")}/${wordsFor("simples").length} • Palavras Complexas: ${progress(p,"complexas_montar")}/${wordsFor("complexas").length}</p><p class="muted">Alfabeto: Caça-Letras ${abUnion(abAlpha(p).caca)}/26 letras • Qual letra começa? ${abInicialDone(abAlpha(p))}/${abWords().length} palavras • ${abAlpha(p).acertos} acertos e ${abAlpha(p).erros} tentativas de novo</p><p class="muted">Fluência de leitura: ${Object.keys(flAlpha(p).textos).filter(k=>flAlpha(p).textos[k].n).length}/${FL_TEXTS.length} textos lidos</p><div class="row"><button class="primary" id="openReport" type="button">📊 Relatório do participante</button><button class="ghost" id="resetStudentProgress">Reiniciar progresso deste participante</button></div></div></section>`;
- $("#changeStudent").onclick=renderClassDashboard;
- m.querySelectorAll("[data-ab]").forEach(b=>b.onclick=()=>abLevels(b.dataset.ab));
- m.querySelectorAll("[data-fl]").forEach(b=>b.onclick=()=>flTexts());
+ <div class="admin"><div class="row"><button class="primary" id="openReport" type="button">📊 Relatório do participante</button><button class="ghost" id="resetStudentProgress">Reiniciar progresso deste participante</button></div></div></section>`;
+ $("#changeStudent").onclick=renderClassDashboard;countUpStars(totalStars(p));
+ m.querySelectorAll("[data-ab]").forEach(b=>b.onclick=()=>abLevels(b.dataset.ab));abWireCaseBar(m);
+ m.querySelectorAll("[data-fl]").forEach(b=>b.onclick=()=>flTexts(+b.dataset.fl));
  $("#openReport").onclick=()=>renderReport(p.id);
+ $("#openCfgBtn").onclick=openCfg;
  m.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>startCategory(b.dataset.cat));
  $("#resetStudentProgress").onclick=()=>{if(confirm("Deseja reiniciar todo o progresso deste participante?")){p.alpha=null;p.fluencia=null;p.done={simples:[],complexas:[],simples_montar:[],complexas_montar:[]};p.next={simples:0,complexas:0,simples_montar:0,complexas_montar:0};saveProfiles();renderStudentMenu()}};
 }
@@ -1242,6 +1290,71 @@ function updateShuffleBtn(){const b=$("#shuffleFamBtn");if(!b)return;const tips=
 function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function rewardMarkup(){return `<div class="hud-pill" id="rewardBar" aria-label="Pontos conquistados">⭐ <b>${points()}</b></div>`}
 function celebrateStars(){const layer=document.createElement("div");layer.className="star-rain";layer.setAttribute("aria-hidden","true");for(let i=0;i<34;i++){const star=document.createElement("span");star.textContent=["⭐","🌟","✨"][i%3];star.style.setProperty("--left",`${Math.random()*100}%`);star.style.setProperty("--delay",`${Math.random()*.65}s`);star.style.setProperty("--duration",`${1.5+Math.random()*1.2}s`);layer.appendChild(star)}document.body.appendChild(layer);setTimeout(()=>layer.remove(),3400)}
+const CFG={
+ get auto(){const p=active();return !!(p&&p.cfg&&p.cfg.auto)},
+ get skip(){const p=active();return !!(p&&p.cfg&&p.cfg.skip)},
+ get delay(){if(CFG._d)return CFG._d;const p=active(),d=p&&p.cfg&&+p.cfg.delay;return [2,4,7].includes(d)?d:4}
+};
+function setCfg(o){const p=active();if(!p)return;p.cfg={auto:!!o.auto,skip:!!o.skip,delay:[2,4,7].includes(+o.delay)?+o.delay:4};saveProfiles()}
+let noAutoOnce=false;
+function autoNext(extra){
+ clearTimeout(autoTimer);if(!CFG.auto)return;
+ if(noAutoOnce){noAutoOnce=false;return}
+ const st=stage,ci=currentIndex;
+ autoTimer=setTimeout(()=>{if(!CFG.auto||stage!==st||currentIndex!==ci)return;const b=$("#nextStage");if(b&&!b.disabled&&!b.classList.contains("hidden"))b.click()},CFG.delay*1000+(extra||0));
+}
+function autoClick(sel,extra){
+ clearTimeout(autoTimer);if(!CFG.auto)return;const tk=abTok;
+ autoTimer=setTimeout(()=>{if(!CFG.auto||abTok!==tk)return;const b=$(sel);if(b&&!b.disabled&&!b.classList.contains("hidden"))b.click()},CFG.delay*1000+(extra||0));
+}
+function openCfg(){
+ if(document.getElementById("cfgOv"))return;
+ const pp=active();if(!pp){alert("Selecione um participante para configurar o jogo.");return}
+ const ov=document.createElement("div");ov.className="cfg-ov";ov.id="cfgOv";
+ ov.innerHTML=`<div class="cfg-box" role="dialog" aria-modal="true" aria-labelledby="cfgT"><h2 id="cfgT">⚙️ Configurações</h2><p class="muted small" style="margin:0 0 8px">Participante: <b>${esc(pp.name)}</b>. As escolhas ficam salvas só para este participante. Por padrão, tudo fica desligado.</p>
+ <label class="cfg-opt"><input type="checkbox" id="cfgAuto" ${CFG.auto?"checked":""}><div><b>⏭️ Transição automática</b><span>Ao concluir cada etapa, o jogo avança sozinho para a próxima etapa, palavra ou texto.</span></div></label>
+ <div class="cfg-delay ${CFG.auto?"":"off"}" id="cfgDelay"><span style="margin:0 6px 0 0;font-weight:800;color:#5b6280">Tempo de espera:</span>${[[2,"2 s"],[4,"4 s"],[7,"7 s"]].map(d=>`<label><input type="radio" name="cfgD" value="${d[0]}" ${CFG.delay===d[0]?"checked":""}>${d[1]}</label>`).join("")}</div>
+ <label class="cfg-opt"><input type="checkbox" id="cfgSkip" ${CFG.skip?"checked":""}><div><b>👆 Avançar sem selecionar</b><span>Libera o botão de avançar sem precisar tocar em cada sílaba, palavra, letra ou figura. As respostas aparecem prontas na tela.</span></div></label>
+ <div class="cfg-actions"><button class="primary" id="cfgOk" type="button">Salvar</button></div></div>`;
+ document.body.appendChild(ov);
+ const au=ov.querySelector("#cfgAuto");au.onchange=()=>ov.querySelector("#cfgDelay").classList.toggle("off",!au.checked);
+ const close=()=>ov.remove();
+ ov.onclick=e=>{if(e.target===ov)close()};
+ ov.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+ ov.querySelector("#cfgOk").onclick=()=>{
+  const d=ov.querySelector('input[name=cfgD]:checked');
+  setCfg({auto:au.checked,skip:ov.querySelector("#cfgSkip").checked,delay:d?+d.value:4});
+  close();clearTimeout(autoTimer);
+  if(["families","read","build","picture"].includes(stage)&&$("#stageBody")){renderStage()}
+  else if(stage==="alpha-game"){if(typeof FL!=="undefined"&&FL&&!FL.finished&&$("#flText"))flStart(FL.text.id);else if(typeof AB!=="undefined"&&AB&&AB.queue&&AB.i<AB.queue.length&&$("#abLeft"))abRound()}
+ };
+ ov.querySelector("#cfgOk").focus();
+}
+function applySkip(w){
+ if(!CFG.skip)return false;
+ if(stage==="families"||stage==="read"){
+  if(stageDone[stage])return false;
+  stageDone[stage]=true;
+  document.querySelectorAll(stage==="families"?".fchip":".cell").forEach(b=>{b.classList.add("marked");b.setAttribute("aria-pressed","true")});
+  const nb=$("#nextStage");if(nb)nb.disabled=false;
+  setFb("🎉 Muito bem! Aperte Já li.");autoNext();return false;
+ }
+ if(stage==="build"){
+  if(stageDone.build)return false;
+  const pool=buildShuffled.map(o=>({s:o.s,i:o.i}));chosen=[];
+  w.s.forEach(sy=>{const k=pool.findIndex(o=>o.s===sy);if(k>=0)chosen.push(pool.splice(k,1)[0])});
+  stageDone.build=true;renderStage();autoNext();return true;
+ }
+ if(stage==="picture"){
+  const body=$("#stageBody");lockInput=true;
+  const bs=[...body.querySelectorAll("[data-picture]")];
+  bs.forEach((b,i)=>{b.disabled=true;if(figureChoices[i]&&figureChoices[i].w===w.w)b.classList.add("correct")});
+  const fbx=$("#figBox");if(fbx)fbx.innerHTML=`<div class="fig-emoji">${figureMarkup(w)}</div><div class="fig-cap">${esc(w.w)}</div>`;
+  const nb=$("#nextStage");if(nb){nb.classList.remove("hidden");nb.disabled=false;nb.textContent="Concluir ▶"}
+  setFb("⭐ Essa é a figura da palavra! Aperte Concluir.");autoNext();return false;
+ }
+ return false;
+}
 function renderActivity(){
  const w=wordsFor(category)[currentIndex];if(!w)return renderCompleteCategory();
  document.body.classList.add("game-mode");
@@ -1250,16 +1363,16 @@ function renderActivity(){
  <div class="hud">
   <button class="hud-btn" id="menuBtn" type="button" aria-label="Menu">☰</button>
   <div class="hud-title"><strong>Palavra ${currentIndex+1} de ${total}</strong><span class="hud-sub"><span id="stageName"></span></span></div>
-  <div class="hud-right">${rewardMarkup()}<button class="hud-btn mini hidden" id="shuffleFamBtn" type="button" aria-label="Embaralhar as sílabas das famílias" title="Embaralhar as sílabas">🔀</button><button class="hud-btn mini" id="caseBtn" type="button" aria-label="Tipo de letra: maiúscula, minúscula, cursiva" title="Tipo de letra"></button><button class="hud-btn" id="soundBtn" type="button" aria-label="Som">${soundOn?"🔊":"🔇"}</button><button class="hud-btn" id="fsBtn" type="button" aria-label="Tela cheia">⛶</button></div>
-  <div class="hud-menu hidden" id="hudMenu"><button type="button" data-go="student">👤 Menu do participante</button><button type="button" data-go="classes">🏫 Grupos e participantes</button><button type="button" data-go="home">⌂ Menu inicial</button><button type="button" data-go="profile">👤 Meu perfil</button><button type="button" data-go="logout">🚪 Sair da conta</button></div>
+  
+  <div class="hud-menu hidden" id="hudMenu"><button type="button" data-go="student">👤 Menu do participante</button><button type="button" data-go="classes">🏫 Grupos e participantes</button><button type="button" data-go="cfg">⚙️ Configurações do jogo</button><button type="button" data-go="home">⌂ Menu inicial</button><button type="button" data-go="profile">👤 Meu perfil</button><button type="button" data-go="logout">🚪 Sair da conta</button></div>
  </div>
  <div class="stage-body" id="stageBody"></div>
- <div class="bottom"><button class="round-btn" id="previousStage" type="button" aria-label="Voltar">◀</button><div class="bottom-text"><div class="feedback" id="feedback" aria-live="polite"></div></div><button class="round-btn" id="restartStage" type="button" aria-label="Reiniciar etapa">↻</button><button class="go-btn" id="nextStage" type="button">Já li ▶</button></div>
+ <div class="bottom"><button class="round-btn" id="previousStage" type="button" aria-label="Voltar">◀</button><div class="bottom-text"><div class="feedback" id="feedback" aria-live="polite"></div></div><button class="round-btn" id="restartStage" type="button" aria-label="Reiniciar etapa">↻</button><button class="go-btn" id="nextStage" type="button">Já li ▶</button><div class="hud-right">${rewardMarkup()}<button class="hud-btn mini hidden" id="shuffleFamBtn" type="button" aria-label="Embaralhar as sílabas das famílias" title="Embaralhar as sílabas">🔀</button><button class="hud-btn mini" id="caseBtn" type="button" aria-label="Tipo de letra: maiúscula, minúscula, cursiva" title="Tipo de letra"></button><button class="hud-btn" id="soundBtn" type="button" aria-label="Som">${soundOn?"🔊":"🔇"}</button><button class="hud-btn" id="fsBtn" type="button" aria-label="Tela cheia">⛶</button></div></div>
  </section>`;
  const menu=$("#hudMenu");
  $("#menuBtn").onclick=e=>{e.stopPropagation();menu.classList.toggle("hidden")};
  $("#game").onclick=e=>{if(!menu.contains(e.target))menu.classList.add("hidden")};
- menu.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==="student")renderStudentMenu();else if(g==="classes")renderClassDashboard();else if(g==="home")renderHome();else if(g==="profile")renderProfile();else if(g==="logout"){if(confirm("Deseja sair da conta do responsável?"))logoutTeacher("Você saiu da conta. Entre novamente para acessar seus participantes.")}});
+ menu.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==="student")renderStudentMenu();else if(g==="classes")renderClassDashboard();else if(g==="cfg"){menu.classList.add("hidden");openCfg()}else if(g==="home")renderHome();else if(g==="profile")renderProfile();else if(g==="logout"){if(confirm("Deseja sair da conta do responsável?"))logoutTeacher("Você saiu da conta. Entre novamente para acessar seus participantes.")}});
  const syncCase=()=>{const g=$("#game"),cb=$("#caseBtn");g.classList.remove("lc","cur");if(caseMode==="l")g.classList.add("lc");if(caseMode==="c")g.classList.add("cur");cb.textContent=CASE_LABEL[caseMode];cb.classList.toggle("cs",caseMode==="c");cb.classList.toggle("on",caseMode!=="u");const n={u:"minúsculas",l:"cursiva",c:"maiúsculas"}[caseMode];cb.title="Mudar para "+n};
  $("#caseBtn").onclick=e=>{e.stopPropagation();caseMode=caseMode==="u"?"l":caseMode==="l"?"c":"u";try{localStorage.setItem('jl_case',caseMode)}catch(_){}syncCase()};
  syncCase();
@@ -1273,9 +1386,9 @@ function renderActivity(){
  updateShuffleBtn();
  $("#soundBtn").onclick=e=>{soundOn=!soundOn;e.currentTarget.textContent=soundOn?"🔊":"🔇"};
  $("#fsBtn").onclick=toggleFullscreen;
- $("#previousStage").onclick=()=>{if(stage==="families")renderStudentMenu();else if(stage==="read"){if(isMontar())renderStudentMenu();else goToStage("families")}else if(stage==="build")goToStage("read");else if(stage==="picture")goToStage("build");else if(stage==="success")goToStage(isMontar()?"build":"picture")};
+ $("#previousStage").onclick=()=>{noAutoOnce=true;clearTimeout(autoTimer);if(stage==="families")renderStudentMenu();else if(stage==="read"){if(isMontar())renderStudentMenu();else goToStage("families")}else if(stage==="build")goToStage("read");else if(stage==="picture")goToStage("build");else if(stage==="success")goToStage(isMontar()?"build":"picture");noAutoOnce=false};
  $("#restartStage").onclick=restartCurrentStage;
- $("#nextStage").onclick=()=>{if(stage==="success")advanceWord();else if(stage==="families"&&stageDone.families)goToStage("read");else if(stage==="read"&&stageDone.read)goToStage("build");else if(stage==="build"&&stageDone.build){if(isMontar())finishWord();else goToStage("picture")}};
+ $("#nextStage").onclick=()=>{if(stage==="success")advanceWord();else if(stage==="families"&&stageDone.families)goToStage("read");else if(stage==="read"&&stageDone.read)goToStage("build");else if(stage==="build"&&stageDone.build){if(isMontar())finishWord();else goToStage("picture")}else if(stage==="picture"&&CFG.skip){lockInput=false;finishWord()}};
  renderStage();
 }
 function toggleFullscreen(){const d=document,el=d.documentElement;try{if(!d.fullscreenElement&&!d.webkitFullscreenElement){(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}else{(d.exitFullscreen||d.webkitExitFullscreen).call(d)}}catch(e){}}
@@ -1288,7 +1401,7 @@ function goToStage(nextStage){
  stage=nextStage;renderStage();
 }
 function restartCurrentStage(){
- if(!["families","read","build","picture"].includes(stage))return;
+ if(!["families","read","build","picture"].includes(stage))return;clearTimeout(autoTimer);
  commitStageClock();lockInput=false;stageDone[stage]=false;
  const w=wordsFor(category)[currentIndex];
  if(stage==="read")readShuffled=distinct(w.s).map((x,i)=>({s:x,i}));
@@ -1306,15 +1419,18 @@ let caseMode='u',famShuffled=null,famMode=0,famBase=null;try{const m=localStorag
 function caseClass(){return caseMode==='l'?' lc':caseMode==='c'?' cur':''}
 const CASE_LABEL={u:'ABC',l:'abc',c:'Abc'};
 function famRows(w){const seen=[];return (famShuffled||w.families||[]).filter(f=>{const k=f.join();if(seen.includes(k))return false;seen.push(k);return true}).map(f=>{const hit=distinct(w.s).filter(x=>f.includes(x));return {list:f,hit,color:hit.length?sylColor(w,hit[0]):"#b8bfd6"}})}
+function totalStars(p){if(!p)return 0;const d=p.done||{};let n=0;["simples","complexas","simples_montar","complexas_montar"].forEach(k=>{n+=(d[k]||[]).length});n+=(p.alpha&&+p.alpha.acertos)||0;const t=(p.fluencia&&p.fluencia.textos)||{};Object.keys(t).forEach(k=>{n+=(t[k]&&+t[k].n)||0});return n}
+function starsLabel(n){return `Você tem <b id="stuStarsNum">${n}</b> ${n===1?"estrela":"estrelas"}`}
+function countUpStars(n){const el=document.getElementById("stuStarsNum");if(!el||n<2||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))return;const t0=performance.now(),dur=Math.min(1200,300+n*12);(function step(t){const k=Math.min(1,(t-t0)/dur);const e=document.getElementById("stuStarsNum");if(!e)return;e.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)})(t0)}
 function points(){const p=active();return p?((p.done&&p.done.simples||[]).length+(p.done&&p.done.complexas||[]).length+(p.done&&p.done.simples_montar||[]).length+(p.done&&p.done.complexas_montar||[]).length):0}
 function setFb(t){const f=$("#feedback");if(f)f.textContent=t}
-function defaultMsg(){return ({families:"👀 Leia as sílabas e toque em cada uma",read:"👀 Leia as sílabas e toque em cada uma",build:"🧩 Toque nas sílabas na ordem certa",picture:"🖼️ Toque na figura da palavra",success:"🎉 Muito bem!"})[stage]||""}
+function defaultMsg(){return ({families:"Leia e toque nas sílabas",read:"Leia e toque nas sílabas",build:"🧩 Toque nas sílabas na ordem certa",picture:"🖼️ Toque na figura da palavra",success:"🎉 Muito bem!"})[stage]||""}
 function sideHTML(w,mode,showFig){
  const n=w.s.length;
  const slots=w.s.map((sy,i)=>{let txt="",cls="empty",dc=sylColor(w,sy);
   if(mode==="done"){txt=sy;cls="ok"}
   else if(mode==="build"&&chosen[i]){txt=chosen[i].s;cls="fill";dc=sylColor(w,txt)}
-  return `<div class="slot-wrap"><button type="button" class="slot2 ${cls}" data-slot="${i}" aria-label="Sílaba ${i+1}">${txt?esc(txt):"&nbsp;"}</button><i class="dot" style="background:${dc};opacity:${txt?1:.35}"></i></div>`}).join("");
+  return `<div class="slot-wrap"><button type="button" class="slot2 ${cls}" data-slot="${i}" aria-label="Sílaba ${i+1}">${txt?esc(txt):"&nbsp;"}</button></div>`}).join("");
  const fig=showFig?`<div class="fig-emoji">${figureMarkup(w)}</div><div class="fig-cap">${esc(w.w)}</div>`:`<span class="fig-ph">figurinha</span>`;
  if(mode==="build")return `<div class="side nofig"><div class="slots" style="--n:${n}">${slots}</div></div>`;
  return `<div class="side ${mode==="dim"?"dimmed":""}"><div class="slots" style="--n:${n}">${slots}</div><div class="fig-box" id="figBox">${fig}</div></div>`;
@@ -1326,7 +1442,7 @@ function bindMarks(sel,key,doneMsg){
   b.classList.add("marked");b.setAttribute("aria-pressed","true");
   if(currentRun){currentRun.stages[key].attempts++;currentRun.stages[key].correct++;currentRun.updated=new Date().toISOString();saveProfiles()}
   const done=els.filter(x=>x.classList.contains("marked")).length;
-  if(done===els.length){commitStageClock();stageDone[key]=true;celebrateStars();playSuccess();const nb=$("#nextStage");if(nb)nb.disabled=false;setFb(doneMsg);startStageClock()}
+  if(done===els.length){commitStageClock();stageDone[key]=true;celebrateStars();playSuccess();const nb=$("#nextStage");if(nb)nb.disabled=false;setFb(doneMsg);startStageClock();autoNext()}
   else setFb(`Muito bem! ${done} de ${els.length}.`);
  });
  if(stageDone[key])els.forEach(b=>{b.classList.add("marked");b.setAttribute("aria-pressed","true")});
@@ -1342,22 +1458,22 @@ function renderStage(){
  setFb(done&&doneMsg[stage]?doneMsg[stage]:defaultMsg());
  if(stage==="families"){
   const rows=famRows(w);
-  body.innerHTML=`<div class="board families" style="--rows:${rows.length}">${rows.map(f=>`<div class="fam-row"><i class="dot" style="background:${f.color}"></i><div class="fam-chips">${f.list.map(sy=>`<button type="button" class="fchip${f.hit.includes(sy)?" target":""}" style="--len:${sy.length};${f.hit.includes(sy)?"--tc:"+sylColor(w,sy):""}" aria-pressed="false">${esc(sy)}</button>`).join("")}</div></div>`).join("")}</div>`;
+  body.innerHTML=`<div class="board families" style="--rows:${rows.length}">${rows.map(f=>`<div class="fam-row"><div class="fam-chips">${f.list.map(sy=>`<button type="button" class="fchip${f.hit.includes(sy)?" target":""}" style="--len:${sy.length};${f.hit.includes(sy)?"--tc:"+sylColor(w,sy):""}" aria-pressed="false">${esc(sy)}</button>`).join("")}</div></div>`).join("")}</div>`;
   bindMarks(".fchip","families","🎉 Famílias lidas! Aperte Já li.");
  }else if(stage==="read"){
   const rows=readShuffled;
-  body.innerHTML=`<div class="board read" style="--rows:${rows.length}">${rows.map(r=>[0,1,2].map(()=>`<button type="button" class="cell" style="--len:${r.s.length}" aria-pressed="false"><span class="cell-t">${esc(r.s)}</span><i class="dot" style="background:${sylColor(w,r.s)}"></i><span class="chk">✓</span></button>`).join("")).join("")}</div>`;
+  body.innerHTML=`<div class="board read" style="--rows:${rows.length}">${rows.map(r=>[0,1,2].map(()=>`<button type="button" class="cell" style="--len:${r.s.length}" aria-pressed="false"><span class="cell-t">${esc(r.s)}</span><span class="chk">✓</span></button>`).join("")).join("")}</div>`;
   bindMarks(".cell","read","🎉 Muito bem! Aperte Já li.");
  }else if(stage==="build"){
   const opts=buildShuffled;
-  body.innerHTML=`<div class="board build"><div class="opts" style="--n:${opts.length}">${opts.map(o=>`<button type="button" class="opt" data-opt="${o.i}" style="--len:${o.s.length}" ${chosen.some(c=>c.i===o.i)?"disabled":""}><span class="cell-t">${esc(o.s)}</span><i class="dot" style="background:${sylColor(w,o.s)}"></i></button>`).join("")}</div></div>${sideHTML(w,"build",false)}`;
+  body.innerHTML=`<div class="board build"><div class="opts" style="--n:${opts.length}">${opts.map(o=>`<button type="button" class="opt" data-opt="${o.i}" style="--len:${o.s.length}" ${chosen.some(c=>c.i===o.i)?"disabled":""}><span class="cell-t">${esc(o.s)}</span></button>`).join("")}</div></div>${sideHTML(w,"build",false)}`;
   body.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>{
    const i=Number(b.dataset.opt);if(lockInput||stageDone.build||chosen.some(c=>c.i===i))return;
    chosen.push({s:buildShuffled.find(o=>o.i===i).s,i});
    if(chosen.length<w.s.length){renderStage();return}
    const correct=chosen.map(c=>c.s).join("")===w.w;
    if(currentRun){currentRun.stages.build.attempts++;if(correct)currentRun.stages.build.correct++;else currentRun.stages.build.errors++;currentRun.updated=new Date().toISOString();saveProfiles()}
-   if(correct){commitStageClock();stageDone.build=true;celebrateStars();playSuccess();renderStage();setFb(isMontar()?"✅ Muito bem! Sílabas na ordem certa. Aperte Concluir.":"✅ Muito bem! Sílabas na ordem certa. Aperte Próxima etapa.")}
+   if(correct){commitStageClock();stageDone.build=true;celebrateStars();playSuccess();renderStage();setFb(isMontar()?"✅ Muito bem! Sílabas na ordem certa. Aperte Concluir.":"✅ Muito bem! Sílabas na ordem certa. Aperte Próxima etapa.");autoNext()}
    else{lockInput=true;renderStage();document.querySelectorAll(".slot2").forEach(x=>x.classList.add("wrong"));setFb("❌ Ops! Essa ordem não está certa. Tente de novo!");setTimeout(()=>{if(stage!=="build")return;lockInput=false;chosen=[];renderStage();setFb("Vamos tentar de novo! Toque nas sílabas na ordem certa.")},900)}
   });
   body.querySelectorAll("[data-slot]").forEach(b=>b.onclick=()=>{const i=Number(b.dataset.slot);if(lockInput||stageDone.build||!chosen[i])return;chosen.length=i;renderStage()});
@@ -1383,12 +1499,13 @@ function renderStage(){
  }
  if(next){next.textContent=stage==="success"?"Próxima palavra ▶":stage==="build"?(isMontar()?"Concluir ▶":"Próxima etapa ▶"):"Já li ▶";next.disabled=!done;next.classList.toggle("hidden",stage==="picture")}
  if(restart)restart.classList.toggle("hidden",stage==="success");
+ if(applySkip(w))return;
  startStageClock();
 }
 
 function renderFigureBox(show){let box=$("#figureBox");if(!box)return;const w=wordsFor(category)[currentIndex];box.innerHTML=show?`<div class="emoji">${figureMarkup(w)}</div><div class="figure-caption">${esc(w.w)}</div>`:""}
 function playSuccess(){if(!soundOn)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const ctx=new C();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type="sine";o.frequency.setValueAtTime(660,ctx.currentTime);o.frequency.setValueAtTime(880,ctx.currentTime+.10);g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.12,ctx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.28);o.start();o.stop(ctx.currentTime+.3);o.onended=()=>ctx.close()}catch(e){}}
-function finishWord(){commitStageClock();celebrateStars();const w=wordsFor(category)[currentIndex];if(!active())return;if(currentRun){currentRun.completed=true;currentRun.finished=new Date().toISOString();currentRun.updated=currentRun.finished;saveProfiles()}active().done[category]=active().done[category]||[];if(!active().done[category].includes(w.w))active().done[category].push(w.w);active().last={category,word:w.w,at:new Date().toISOString()};saveProfiles();const rewardBar=$("#rewardBar");if(rewardBar)rewardBar.outerHTML=rewardMarkup();stage="success";playSuccess();renderStage()}
+function finishWord(){commitStageClock();celebrateStars();const w=wordsFor(category)[currentIndex];if(!active())return;if(currentRun){currentRun.completed=true;currentRun.finished=new Date().toISOString();currentRun.updated=currentRun.finished;saveProfiles()}active().done[category]=active().done[category]||[];if(!active().done[category].includes(w.w))active().done[category].push(w.w);active().last={category,word:w.w,at:new Date().toISOString()};saveProfiles();const rewardBar=$("#rewardBar");if(rewardBar)rewardBar.outerHTML=rewardMarkup();stage="success";playSuccess();renderStage();autoNext()}
 function renderCompleteCategory(){commitStageClock();clearTimeout(autoTimer);stage="complete";const m=$("#appMain");m.innerHTML=`<section class="panel" style="text-align:center"><div style="font-size:4rem">🎉</div><h1>Parabéns, ${esc(active().name)}!</h1><p>Você concluiu todas as palavras desta categoria.</p><div class="progress"><span style="width:100%"></span></div><p class="muted">${progress(active(),category)} de ${wordsFor(category).length} palavras concluídas.</p><div class="row" style="justify-content:center"><button class="primary" id="otherCat">Ir para ${catLabel(category.startsWith("simples")?category.replace("simples","complexas"):category.replace("complexas","simples"))}</button><button class="secondary" id="menu">Voltar ao menu</button></div></section>`;$("#otherCat").onclick=()=>startCategory(category.startsWith("simples")?category.replace("simples","complexas"):category.replace("complexas","simples"));$("#menu").onclick=renderHome}
 ["renderHome","renderClassDashboard","renderStudentMenu","renderReport","renderGate","renderCompleteCategory","renderProfile","renderForgot"].forEach(n=>{const orig=window[n];window[n]=function(){document.body.classList.remove("game-mode");if(typeof flStop==="function")flStop();return orig.apply(this,arguments)}});
 
@@ -1396,6 +1513,8 @@ function renderCompleteCategory(){commitStageClock();clearTimeout(autoTimer);sta
 const AB_LET="ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const AB_SIM={B:"DPQ",D:"BPQ",P:"BDQ",Q:"PGO",M:"NWH",N:"MHU",U:"NVY",V:"UWY",W:"VMU",E:"FAC",F:"ETI",T:"FIL",I:"LJT",L:"IJT",O:"QCG",C:"GOE",G:"CQO",A:"RHE",R:"PBK",H:"NKM",K:"XHR",X:"KYV",Y:"VXU",S:"ZCG",Z:"SN",J:"ILT"};
 const AB_FIG={A:[["ABELHA","🐝"],["AVIÃO","✈️"],["ÁRVORE","🌳"]],B:[["BOLA","⚽"],["BANANA","🍌"],["BALÃO","🎈"]],C:[["CASA","🏠"],["COELHO","🐰"],["CARRO","🚗"]],D:[["DADO","🎲"],["DENTE","🦷"],["DINOSSAURO","🦖"]],E:[["ELEFANTE","🐘"],["ESTRELA","⭐"],["ENVELOPE","✉️"]],F:[["FLOR","🌸"],["FOGO","🔥"],["FADA","🧚"]],G:[["GATO","🐱"],["GIRAFA","🦒"],["GARFO","🍴"]],H:[["HELICÓPTERO","🚁"],["HIPOPÓTAMO","🦛"],["HAMBÚRGUER","🍔"]],I:[["IGREJA","⛪"],["ILHA","🏝️"],["ÍMÃ","🧲"]],J:[["JACARÉ","🐊"],["JOANINHA","🐞"],["JORNAL","📰"]],K:[["KIWI","🥝"],["KARATÊ","🥋"]],L:[["LEÃO","🦁"],["LUA","🌙"],["LIVRO","📖"]],M:[["MACACO","🐵"],["MAÇÃ","🍎"],["MOTO","🏍️"]],N:[["NAVIO","🚢"],["NUVEM","☁️"]],O:[["OVO","🥚"],["ÓCULOS","👓"],["OLHO","👁️"]],P:[["PATO","🦆"],["PIZZA","🍕"],["PEIXE","🐟"]],Q:[["QUEIJO","🧀"]],R:[["RATO","🐭"],["RELÓGIO","⏰"],["ROSA","🌹"]],S:[["SAPO","🐸"],["SOL","☀️"],["SORVETE","🍦"]],T:[["TARTARUGA","🐢"],["TREM","🚆"],["TOMATE","🍅"]],U:[["UVA","🍇"],["URSO","🐻"]],V:[["VACA","🐄"],["VIOLÃO","🎸"],["VULCÃO","🌋"]],W:[["WAFFLE","🧇"]],X:[["XÍCARA","☕"],["XADREZ","♟️"]],Y:[["YOGA","🧘"]],Z:[["ZEBRA","🦓"]]};
+const AB_FIG_EXTRA={A:[["ABACAXI","🍍"],["ANEL","💍"],["ARANHA","🕷️"]],B:[["BOTA","🥾"],["BORBOLETA","🦋"],["BALEIA","🐳"]],C:[["CAVALO","🐴"],["CHAVE","🔑"],["CAMA","🛏️"]],D:[["DOCE","🍬"],["DEDO","👆"],["DIAMANTE","💎"]],E:[["ESCORPIÃO","🦂"],["ESCOLA","🏫"],["ESQUILO","🐿️"]],F:[["FOGUETE","🚀"],["FORMIGA","🐜"],["FANTASMA","👻"]],G:[["GALINHA","🐔"],["GELO","🧊"],["GORILA","🦍"]],H:[["HAMSTER","🐹"],["HOTEL","🏨"],["HOSPITAL","🏥"]],I:[["IGUANA","🦎"],["IOIÔ","🪀"],["IMPRESSORA","🖨️"]],J:[["JAQUETA","🧥"],["JIPE","🚙"],["JARRO","🏺"]],K:[["KOALA","🐨"],["KART","🏎️"]],L:[["LIMÃO","🍋"],["LOBO","🐺"],["LÁPIS","✏️"]],M:[["MELANCIA","🍉"],["MORANGO","🍓"],["MEIA","🧦"]],N:[["NARIZ","👃"],["NOIVA","👰"]],O:[["ONÇA","🐆"],["OVELHA","🐑"],["ÔNIBUS","🚌"]],P:[["PORCO","🐷"],["PIPA","🪁"],["PÃO","🍞"]],Q:[["QUADRO","🖼️"]],R:[["ROBÔ","🤖"],["RAIO","⚡"],["RÁDIO","📻"]],S:[["SAPATO","👞"],["SINO","🔔"],["SERPENTE","🐍"]],T:[["TELEFONE","📞"],["TIGRE","🐯"],["TUBARÃO","🦈"]],U:[["UNHA","💅"],["UNICÓRNIO","🦄"]],V:[["VELA","🕯️"],["VASSOURA","🧹"],["VEADO","🦌"]],W:[["WINDSURFE","🏄"]],X:[["XAMPU","🧴"],["XERIFE","🤠"]],Y:[["YAKISOBA","🍜"]],Z:[["ZERO","0️⃣"]]};
+Object.keys(AB_FIG_EXTRA).forEach(c=>{AB_FIG[c]=(AB_FIG[c]||[]).concat(AB_FIG_EXTRA[c])});
 const AB_POOL=Object.keys(AB_FIG).flatMap(c=>AB_FIG[c].map(x=>({w:x[0],e:x[1],c})));
 let AB=null,abTok=0;
 const abRnd=n=>Math.floor(Math.random()*n);
@@ -1404,8 +1523,21 @@ function abWords(){return AB_POOL}
 function abUnion(o,valid){const s=new Set();Object.values(o||{}).forEach(arr=>(arr||[]).forEach(x=>{if(!valid||valid.has(x))s.add(x)}));return s.size}
 function abInicialDone(a){return abUnion(a.inicial,new Set(AB_POOL.map(x=>x.w)))}
 let abSound=true;try{if(localStorage.getItem("jl_absound")==="0")abSound=false}catch(e){}
+/* Tipo de letra nos jogos do Alfabeto: m=misto (como era), u=MAIÚSCULAS, l=minúsculas, c=cursiva */
+let abCase="m";try{const v=localStorage.getItem("jl_abcase");if(v==="m"||v==="u"||v==="l"||v==="c")abCase=v}catch(e){}
+const AB_CASE_LBL={m:"Aa",u:"ABC",l:"abc",c:"Abc"},AB_CASE_NAME={m:"misto",u:"maiúsculas",l:"minúsculas",c:"cursiva"},AB_CASE_NEXT={m:"u",u:"l",l:"c",c:"m"};
+function abPair(t,solo){return `<span class="ab-pair${solo?" solo":""}"><span class="lp-u">${t}</span><span class="lp-s"> </span><span class="lp-l">${t.toLowerCase()}</span></span>`}
+function abTgt(t,solo){return abCase==="u"?t.toUpperCase():abCase==="l"?t.toLowerCase():solo?t:t+" "+t.toLowerCase()}
+function abCaseBar(){return `<div class="ab-casebar" role="group" aria-label="Tipo de letra"><span>Tipo de letra:</span><button type="button" data-abcase="u" aria-label="Letras maiúsculas">ABC</button><button type="button" data-abcase="l" aria-label="Letras minúsculas">abc</button><button type="button" class="cs" data-abcase="c" aria-label="Letra cursiva">Abc</button><button type="button" data-abcase="m" aria-label="Misto: o jogo escolhe">Misto</button></div>`}
+function abApplyCase(){
+ const g=$("#game");if(g)["m","u","l","c"].forEach(k=>g.classList.toggle("ab-c"+k,k===abCase));
+ const b=$("#abCase");if(b){b.textContent=AB_CASE_LBL[abCase];b.classList.toggle("cs",abCase==="c");b.classList.toggle("on",abCase!=="m");b.title="Tipo de letra: "+AB_CASE_NAME[abCase]+" (toque para mudar)"}
+ document.querySelectorAll("[data-abcase]").forEach(x=>x.classList.toggle("sel",x.dataset.abcase===abCase));
+}
+function abSetCase(v){abCase=v;try{localStorage.setItem("jl_abcase",v)}catch(e){}abApplyCase()}
+function abWireCaseBar(root){root.querySelectorAll("[data-abcase]").forEach(b=>b.onclick=()=>abSetCase(b.dataset.abcase));abApplyCase()}
 const AB_NAME={A:"á",B:"bê",C:"cê",D:"dê",E:"ê",F:"F",G:"gê",H:"agá",I:"i",J:"jóta",K:"cá",L:"L",M:"M",N:"N",O:"ó",P:"pê",Q:"quê",R:"R",S:"S",T:"tê",U:"u",V:"vê",W:"dáblio",X:"xis",Y:"ípsilon",Z:"zê"};
-const AB_SAY={KIWI:"quíui",WAFFLE:"uáfli",YOGA:"ioga",KARATÊ:"caratê",PIZZA:"pítsa",HAMBÚRGUER:"hambúrguer",DINOSSAURO:"dinossauro"};
+const AB_SAY={KIWI:"quíui",WAFFLE:"uáfli",YOGA:"ioga",KARATÊ:"caratê",PIZZA:"pítsa",HAMBÚRGUER:"hambúrguer",DINOSSAURO:"dinossauro",KOALA:"coala",KART:"cárti",HAMSTER:"rãmster",WINDSURFE:"uindissurfi",YAKISOBA:"iaquissoba",IOIÔ:"ioiô"};
 function abWordSay(w){return AB_SAY[w]||String(w).toLowerCase()}
 let abVoice=null;
 function abPickVoice(){try{const vs=speechSynthesis.getVoices()||[];const br=vs.filter(v=>/^pt[-_]BR/i.test(v.lang));if(!br.length)return null;const score=v=>{const n=(v.name||"").toLowerCase();let sc=0;if(/^pt[-_]BR/i.test(v.lang))sc+=10;if(/natural|neural|online/.test(n))sc+=50;if(/google/.test(n))sc+=30;if(/premium|enhanced|aprimorada/.test(n))sc+=25;if(/francisca|antonio|thalita|camila|vitoria|luciana|fernanda|felipe|joana/.test(n))sc+=15;if(/compact/.test(n))sc-=10;return sc};br.sort((a,b)=>score(b)-score(a));return br[0]}catch(e){return null}}
@@ -1427,46 +1559,123 @@ function abShell(c){
  <div class="hud">
   <button class="hud-btn" id="menuBtn" type="button" aria-label="Menu">☰</button>
   <div class="hud-title"><strong>${c.title||"Alfabeto"}</strong><span class="hud-sub">${c.sub||""}</span></div>
-  <div class="hud-right"><div class="hud-pill" aria-label="Estrelas desta rodada">⭐ <b id="abStars">${c.stars||0}</b></div>${c.caseBtn?'<button class="hud-btn mini" id="caseBtn" type="button" aria-label="Tipo de letra: maiúscula, minúscula, cursiva" title="Tipo de letra"></button>':c.noSound?"":`<button class="hud-btn" id="soundBtn" type="button" aria-label="Som" title="Som: ligar ou desligar">${(c.sndGet?c.sndGet():abSound)?"🔊":"🔇"}</button>`}<button class="hud-btn" id="fsBtn" type="button" aria-label="Tela cheia">⛶</button></div>
-  <div class="hud-menu hidden" id="hudMenu"><button type="button" data-go="student">👤 Menu do participante</button><button type="button" data-go="classes">${fam?"👶 Suas crianças":"🏫 Grupos e participantes"}</button><button type="button" data-go="home">⌂ Menu inicial</button><button type="button" data-go="profile">👤 Meu perfil</button><button type="button" data-go="logout">🚪 Sair da conta</button></div>
+  
+  <div class="hud-menu hidden" id="hudMenu"><button type="button" data-go="student">👤 Menu do participante</button><button type="button" data-go="classes">${fam?"👶 Suas crianças":"🏫 Grupos e participantes"}</button><button type="button" data-go="cfg">⚙️ Configurações do jogo</button><button type="button" data-go="home">⌂ Menu inicial</button><button type="button" data-go="profile">👤 Meu perfil</button><button type="button" data-go="logout">🚪 Sair da conta</button></div>
  </div>
  <div class="stage-body ab-stage${c.single?" ab-single":""}${c.cls?" "+c.cls:""}">${c.single||(c.left+c.right)}</div>
- <div class="bottom"><button class="round-btn" id="abPrev" type="button" aria-label="Voltar">◀</button><div class="bottom-text"><div class="feedback" id="abFb" aria-live="polite">${c.msg||""}</div></div><button class="round-btn" id="abRestart" type="button" aria-label="Recomeçar" style="${c.onRestart?"":"visibility:hidden"}">↻</button><button class="go-btn" id="abNext" type="button" ${c.next?(c.next.disabled?"disabled":""):'style="visibility:hidden" disabled'}>${c.next?c.next.label:"Próxima ▶"}</button></div>
+ <div class="bottom${c.bare?" bare":""}"><button class="round-btn" id="abPrev" type="button" aria-label="Voltar">◀</button><div class="bottom-text"><div class="feedback" id="abFb" aria-live="polite">${c.msg||""}</div></div><button class="round-btn" id="abRestart" type="button" aria-label="Recomeçar" style="${c.onRestart?"":"visibility:hidden"}">↻</button><button class="go-btn" id="abNext" type="button" ${c.next?(c.next.disabled?"disabled":""):'style="visibility:hidden" disabled'}>${c.next?c.next.label:"Próxima ▶"}</button><div class="hud-right"><div class="hud-pill" aria-label="Estrelas desta rodada">⭐ <b id="abStars">${c.stars||0}</b></div>${c.caseBtn?'<button class="hud-btn mini" id="caseBtn" type="button" aria-label="Tipo de letra: maiúscula, minúscula, cursiva" title="Tipo de letra"></button>':(c.title?"":'<button class="hud-btn mini" id="abCase" type="button" aria-label="Tipo de letra: misto, maiúscula, minúscula, cursiva" title="Tipo de letra"></button>')+(c.noSound?"":`<button class="hud-btn" id="soundBtn" type="button" aria-label="Som" title="Som: ligar ou desligar">${(c.sndGet?c.sndGet():abSound)?"🔊":"🔇"}</button>`)}<button class="hud-btn" id="fsBtn" type="button" aria-label="Tela cheia">⛶</button></div></div>
  </section>`;
  const menu=$("#hudMenu");
  $("#menuBtn").onclick=e=>{e.stopPropagation();menu.classList.toggle("hidden")};
  $("#game").onclick=e=>{if(!menu.contains(e.target))menu.classList.add("hidden")};
- menu.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==="student")renderStudentMenu();else if(g==="classes")renderClassDashboard();else if(g==="home")renderHome();else if(g==="profile")renderProfile();else if(g==="logout"){if(confirm("Deseja sair da conta do responsável?"))logoutTeacher("Você saiu da conta. Entre novamente para acessar seus participantes.")}});
+ menu.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==="student")renderStudentMenu();else if(g==="classes")renderClassDashboard();else if(g==="cfg"){menu.classList.add("hidden");openCfg()}else if(g==="home")renderHome();else if(g==="profile")renderProfile();else if(g==="logout"){if(confirm("Deseja sair da conta do responsável?"))logoutTeacher("Você saiu da conta. Entre novamente para acessar seus participantes.")}});
  if($("#soundBtn"))$("#soundBtn").onclick=e=>{const cur=c.sndGet?c.sndGet():abSound;const nv=!cur;if(c.sndSet)c.sndSet(nv);else{abSound=nv;try{localStorage.setItem("jl_absound",nv?"1":"0")}catch(_){}}e.currentTarget.textContent=nv?"🔊":"🔇";if(!nv){try{speechSynthesis.cancel()}catch(_){}}else if(c.say)abSpeak(c.say)};
  $("#fsBtn").onclick=toggleFullscreen;
+ if($("#abCase"))$("#abCase").onclick=e=>{e.stopPropagation();abSetCase(AB_CASE_NEXT[abCase])};
+ abApplyCase();
  $("#abPrev").onclick=c.onBack;
  if(c.onRestart)$("#abRestart").onclick=c.onRestart;
  if(c.next&&c.next.fn)$("#abNext").onclick=c.next.fn;
 }
 function abMsg(t){const b=$("#abFb");if(b)b.textContent=t}
 function abStars(){const b=$("#abStars");if(b&&AB)b.textContent=AB.hit}
-function abEnableNext(label,fn){const n=$("#abNext");if(!n)return;n.disabled=false;n.textContent=label;n.onclick=fn}
+function abEnableNext(label,fn){const n=$("#abNext");if(!n)return;n.disabled=false;n.textContent=label;n.onclick=fn;autoClick("#abNext")}
 function abFigFor(c){const l=AB_FIG[c]||[];return l.length?l[abRnd(l.length)]:["",""]}
 function abLevels(game){
- if(game==="teste"){abVoiceTest();return}
+ if(game==="teste"){abSoundMenu();return}
  const p=active();if(!p){renderClassDashboard();return}
  const a=abAlpha(p),caca=game==="caca";
  const total=caca?26:AB_POOL.length;
- const lv=caca?[["Letras maiúsculas","Encontre a letra entre as outras."],["Maiúsculas e minúsculas","A mesma letra pode ser grande ou pequena."],["Letras parecidas","Cuidado com b, d, p, q e outras!"]]:[["2 opções de letra","Escolha entre duas letras."],["3 opções de letra","Agora em letras minúsculas."],["4 opções de letra","Maiúsculas e minúsculas misturadas."]];
- const cards=lv.map((x,i)=>{const L=i+1;const n=caca?(a.caca[L]||[]).length:(a.inicial[L]||[]).filter(w=>AB_POOL.some(q=>q.w===w)).length;return `<button class="ab-lvl" data-lv="${L}" type="button"><strong>${["🌱","🌿","🌳"][i]} Nível ${L}</strong><span class="ab-lvl-d">${x[0]}</span><span class="ab-lvl-s">${x[1]}</span><div class="progress"><span style="width:${Math.min(100,Math.round(n/Math.max(1,total)*100))}%"></span></div><span class="small">${n} de ${total} ${caca?"letras":"palavras"}</span></button>`}).join("");
+ const lv=caca?[["Letras maiúsculas","Encontre a letra entre as outras.","Poucas letras","Encontre a letra entre as outras."],["Maiúsculas e minúsculas","A mesma letra pode ser grande ou pequena.","Mais letras","Encontre todas as letras iguais."],["Letras parecidas","Cuidado com b, d, p, q e outras!","Letras parecidas","Cuidado com b, d, p, q e outras!"]]:[["2 opções de letra","Escolha entre duas letras.","2 opções de letra","Escolha entre duas letras."],["3 opções de letra","Agora em letras minúsculas.","3 opções de letra","Agora com três letras."],["4 opções de letra","Maiúsculas e minúsculas misturadas.","4 opções de letra","Agora com quatro letras, algumas parecidas."]];
+ const cards=lv.map((x,i)=>{const L=i+1;const n=caca?(a.caca[L]||[]).length:(a.inicial[L]||[]).filter(w=>AB_POOL.some(q=>q.w===w)).length;return `<button class="ab-lvl" data-lv="${L}" type="button"><strong>${["🌱","🌿","🌳"][i]} Nível ${L}</strong><span class="ab-lvl-d"><span class="dm">${x[0]}</span><span class="df">${x[2]}</span></span><span class="ab-lvl-s"><span class="dm">${x[1]}</span><span class="df">${x[3]}</span></span><div class="progress"><span style="width:${Math.min(100,Math.round(n/Math.max(1,total)*100))}%"></span></div><span class="small">${n} de ${total} ${caca?"letras":"palavras"}</span></button>`}).join("");
  abShell({sub:caca?"Caça-Letras":"Qual letra começa?",stars:caca?abUnion(a.caca):abInicialDone(a),single:`<div class="ab-board ab-levels">${cards}</div>`,msg:caca?"🔍 Escolha um nível para caçar letras":"🅰️ Escolha um nível para descobrir a letra",onBack:renderStudentMenu});
  document.querySelectorAll(".ab-lvl").forEach(b=>b.onclick=()=>abStart(game,+b.dataset.lv));
 }
-function abVoiceTest(){
+function abSoundMenu(){
+ const p=active();if(!p){renderClassDashboard();return}
+ const cats=[["vogais","🔴","Vogais","A, E, I, O, U","5 letras"],["consoantes","🔵","Consoantes","B, C, D, F, G… e as demais","21 letras"],["completo","🔤","Alfabeto completo","De A até Z","26 letras"]];
+ const cards=cats.map(c=>`<button class="ab-lvl" data-snd="${c[0]}" type="button"><strong>${c[1]} ${c[2]}</strong><span class="ab-lvl-d">${c[3]}</span><span class="ab-lvl-s">${c[4]}</span></button>`).join("");
+ abShell({sub:"Sons das letras",stars:0,noSound:true,single:`<div class="ab-board ab-levels">${cards}</div>`,msg:"🔊 Escolha o grupo de letras",onBack:renderStudentMenu});
+ document.querySelectorAll("[data-snd]").forEach(b=>b.onclick=()=>abSoundMode(b.dataset.snd));
+}
+const SG_NAME={vogais:"Vogais",consoantes:"Consoantes",completo:"Alfabeto completo"};
+function abSetOf(kind){const V="AEIOU".split("");return kind==="vogais"?V:kind==="consoantes"?AB_LET.filter(x=>!V.includes(x)):AB_LET}
+let SG=null;
+function abSoundMode(kind){
+ const p=active();if(!p){renderClassDashboard();return}
+ const modes=[["conhecer","👂","Conhecer as letras","Toque na letra, veja a figura e ouça o som"],["ouvir","🎧","Ouça e escolha","Escute o nome da letra e ache ela na tela"],["figura","🖼️","Letra e figura","Veja a letra e ache a figura que começa com ela"]];
+ const cards=modes.map(c=>`<button class="ab-lvl" data-sm="${c[0]}" type="button"><strong>${c[1]} ${c[2]}</strong><span class="ab-lvl-s">${c[3]}</span></button>`).join("");
+ abShell({sub:"Sons das letras • "+SG_NAME[kind],stars:0,noSound:true,single:`<div class="ab-board ab-levels">${cards}</div>`,msg:"🎮 Escolha como praticar",onBack:abSoundMenu});
+ document.querySelectorAll("[data-sm]").forEach(b=>b.onclick=()=>{const m=b.dataset.sm;m==="conhecer"?abVoiceTest(kind):sgStart(kind,m)});
+}
+function sgStart(kind,game){
+ const set=abSetOf(kind);const n=Math.min(set.length,kind==="vogais"?5:8);
+ SG={kind,game,queue:shuffle([...set]).slice(0,n),i:0,hit:0,err:0};
+ sgRound();
+}
+function sgRound(){
+ const S=SG,l=S.queue[S.i],set=abSetOf(S.kind),list=AB_FIG[l],fig=list[abRnd(list.length)];
+ const nOpt=S.kind==="vogais"?3:4,isLast=S.i+1>=S.queue.length,tok=abTok+1,name=abLetterName(l);
+ const others=shuffle(set.filter(x=>x!==l)).slice(0,nOpt-1);
+ let opts,say,left,msg;
+ if(S.game==="ouvir"){
+  opts=shuffle([l,...others]).map(ch=>({ch,html:ch,ok:ch===l}));
+  say="Ache a letra "+name;msg="Escute e ache a letra 🔊";
+  left=`<div class="ab-left ab-tap" id="abLeft" role="button" tabindex="0" aria-label="Ouvir de novo"><span class="ab-hear-ic" aria-hidden="true">🔊</span><div class="ab-figwrap"><div class="ab-fig" id="abBig">🎧</div><div class="ab-cap" id="abCap"><span class="ab-q">?</span></div></div></div>`;
+ }else{
+  opts=shuffle([{ch:l,html:fig[1],ok:true},...others.map(o=>{const f=AB_FIG[o][abRnd(AB_FIG[o].length)];return {ch:o,html:f[1],ok:false}})]);
+  say="Ache a figura que começa com a letra "+name;msg="Ache a figura que começa com esta letra";
+  left=`<div class="ab-left ab-tap" id="abLeft" role="button" tabindex="0" aria-label="Ouvir de novo"><span class="ab-hear-ic" aria-hidden="true">🔊</span><div class="ab-letter">${abPair(l)}</div><div class="ab-cap" id="abCap"><span class="ab-q">?</span></div></div>`;
+ }
+ abShell({say,sub:`${SG_NAME[S.kind]} • ${S.i+1} de ${S.queue.length}`,stars:S.hit,left,
+  right:`<div class="ab-board"><div class="ab-opts" style="--n:${opts.length}">${opts.map((o,i)=>`<button class="ab-opt" type="button" data-i="${i}" aria-label="Opção ${i+1}">${o.html}</button>`).join("")}</div></div>`,
+  msg,next:{label:isLast?"Concluir ▶":"Próxima ▶",disabled:true},
+  onBack:()=>abSoundMode(S.kind),onRestart:()=>sgRound()});
+ $("#abLeft").onclick=()=>abSpeak(say);$("#abLeft").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abSpeak(say)}};
+ abSayLater(tok,say,450);
+ let solved=false;
+ if(CFG.skip)setTimeout(()=>{if(!abAlive(tok)||solved)return;const i=opts.findIndex(o=>o.ok);const r=document.querySelector('.ab-opt[data-i="'+i+'"]');if(r)r.click()},900);
+ document.querySelectorAll(".ab-opt").forEach(b=>b.onclick=()=>{
+  if(!abAlive(tok)||solved||b.disabled)return;
+  const o=opts[+b.dataset.i];
+  if(o.ok){solved=true;S.hit++;abStars2();b.classList.add("right");document.querySelectorAll(".ab-opt").forEach(x=>{if(x!==b){if(!x.classList.contains("wrong"))x.classList.add("dim");x.disabled=true}});
+   const big=$("#abBig");if(big)big.textContent=fig[1];
+   $("#abCap").innerHTML=`<b>${esc(fig[0].charAt(0))}</b>${esc(fig[0].slice(1))}`;
+   abMsg(["Muito bem! 🎉","Isso mesmo! ⭐","Acertou! 🌟"][abRnd(3)]+" "+l+" de "+fig[0].charAt(0)+fig[0].slice(1).toLowerCase());celebrateStars();abChime();
+   abSpeak(name+" de "+abWordSay(fig[0]));
+   abEnableNext(isLast?"Concluir ▶":"Próxima ▶",()=>{if(!abAlive(tok))return;S.i++;S.i>=S.queue.length?sgFinish():sgRound()})}
+  else{S.err++;b.disabled=true;b.classList.add("wrong");abTick(false);abMsg("Tente de novo! Ouça com atenção. 👂")}
+ });
+}
+function abStars2(){const b=$("#abStars");if(b&&SG)b.textContent=SG.hit}
+function sgFinish(){
+ const S=SG,p=active();if(!p)return;const a=abAlpha(p);
+ a.acertos+=S.hit;a.erros+=S.err;
+ a.sessoes.push({jogo:"sons_"+S.game,nivel:S.kind,quando:new Date().toISOString(),acertos:S.hit,erros:S.err});
+ if(a.sessoes.length>60)a.sessoes=a.sessoes.slice(-60);
+ saveProfiles();
+ const n=S.err===0?3:S.err<=3?2:1,k=S.kind,g=S.game;
+ abShell({sub:`${SG_NAME[k]} • concluído`,stars:S.hit,
+  single:`<div class="ab-board ab-win"><div class="ab-big-stars" aria-label="${n} de 3 estrelas">${"⭐".repeat(n)}${"☆".repeat(3-n)}</div><div class="ab-win-msg">Parabéns, ${esc(p.name)}!</div><div class="ab-win-sub">${S.hit} acertos • tentou de novo ${S.err} ${S.err===1?"vez":"vezes"}</div></div>`,
+  msg:"Você terminou! 🎉 Toque em ↻ para jogar de novo.",
+  next:{label:"Escolher atividade ▶",disabled:false,fn:()=>abSoundMode(k)},
+  onBack:()=>abSoundMode(k),onRestart:()=>sgStart(k,g)});
+ celebrateStars();abChime();autoClick("#abNext");
+}
+function abVoiceTest(kind){
+ kind=kind||"completo";
+ const VOG="AEIOU".split("");
+ const SET=kind==="vogais"?VOG:kind==="consoantes"?AB_LET.filter(x=>!VOG.includes(x)):AB_LET;
+ const dims=kind==="vogais"?[5,1]:kind==="consoantes"?[7,3]:[7,4];
  const picks={};
  const panel=(l)=>{
   if(!l)return `<div class="ab-left ab-hint"><div class="ab-hint-in"><span class="ab-hint-ic">👈</span><span>Toque numa letra para ver e ouvir o seu som</span></div></div>`;
   const list=AB_FIG[l],k=picks[l]%list.length,f=list[k];
-  return `<div class="ab-left"><div class="ab-letter">${l} ${l.toLowerCase()}</div><div class="ab-figwrap"><div class="ab-fig">${f[1]}</div><div class="ab-cap"><b>${esc(f[0].charAt(0))}</b>${esc(f[0].slice(1))}</div></div></div>`};
- abShell({sub:"Sons das letras",stars:0,cls:"ab-letters",
-  left:`<div class="ab-board"><div class="ab-grid">${AB_LET.map(l=>`<button class="ab-tile" type="button" data-l="${l}" aria-label="Letra ${l}">${l}</button>`).join("")}</div></div>`,
+  return `<div class="ab-left"><div class="ab-letter">${abPair(l)}</div><div class="ab-figwrap"><div class="ab-fig">${f[1]}</div><div class="ab-cap"><b>${esc(f[0].charAt(0))}</b>${esc(f[0].slice(1))}</div></div></div>`};
+ abShell({sub:"Sons das letras • "+({vogais:"Vogais",consoantes:"Consoantes",completo:"Alfabeto completo"})[kind],stars:0,cls:"ab-letters",
+  left:`<div class="ab-board"><div class="ab-grid" style="--cols:${dims[0]};--rows:${dims[1]}">${SET.map(l=>`<button class="ab-tile" type="button" data-l="${l}" aria-label="Letra ${l}">${l}</button>`).join("")}</div></div>`,
   right:`<div id="abPanel" class="ab-panelwrap">${panel(null)}</div>`,
-  msg:"Toque numa letra para ver a figura e ouvir o som",onBack:renderStudentMenu});
+  msg:"Toque numa letra para ver a figura e ouvir o som",onBack:()=>abSoundMode(kind)});
  document.querySelectorAll(".ab-tile[data-l]").forEach(b=>b.onclick=()=>{
   const l=b.dataset.l;picks[l]=(picks[l]===undefined)?0:picks[l]+1;
   document.querySelectorAll(".ab-tile.sel").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");
@@ -1497,18 +1706,19 @@ function abCacaRound(){
  for(let k=0;k<cfg.nT;k++)tiles.push({c:L===1?t:(k%2?t.toLowerCase():t),ok:true});
  abDistract(t,cfg.count-cfg.nT,L,L>1).forEach(c=>tiles.push({c,ok:false}));
  shuffle(tiles);S.nT=cfg.nT;
- const fig=abFigFor(t),target=L===1?t:t+" "+t.toLowerCase();
+ const fig=abFigFor(t),target=abTgt(t,L===1);
  const isLast=S.i+1>=S.queue.length;
  const tok=abTok+1;
  const say=abLetterName(t)+" de "+abWordSay(fig[0]);
  abShell({say,sub:`Caça-Letras • ${S.i+1} de ${S.queue.length}`,stars:S.hit,
-  left:`<div class="ab-left ab-tap" id="abLeft" role="button" tabindex="0" aria-label="Ouvir a letra de novo"><span class="ab-hear-ic" aria-hidden="true">🔊</span><div class="ab-letter">${target}</div><div class="ab-figwrap"><div class="ab-fig">${fig[1]}</div><div class="ab-cap"><b>${esc(fig[0].charAt(0))}</b>${esc(fig[0].slice(1))}</div></div></div>`,
+  left:`<div class="ab-left ab-tap" id="abLeft" role="button" tabindex="0" aria-label="Ouvir a letra de novo"><span class="ab-hear-ic" aria-hidden="true">🔊</span><div class="ab-letter">${abPair(t,L===1)}</div><div class="ab-figwrap"><div class="ab-fig">${fig[1]}</div><div class="ab-cap"><b>${esc(fig[0].charAt(0))}</b>${esc(fig[0].slice(1))}</div></div></div>`,
   right:`<div class="ab-board"><div class="ab-grid" style="--cols:${cfg.cols};--rows:${rows}">${tiles.map((x,i)=>`<button class="ab-tile" type="button" data-i="${i}" aria-label="Letra ${x.c}">${x.c}</button>`).join("")}</div></div>`,
   msg:"Ache todas: "+target+" • 0 de "+cfg.nT,
   next:{label:isLast?"Concluir ▶":"Próxima ▶",disabled:true},
   onBack:()=>abLevels("caca"),onRestart:()=>abCacaRound()});
 $("#abLeft").onclick=()=>abSpeak(say);$("#abLeft").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abSpeak(say)}};
  abSayLater(tok,say,450);
+ if(CFG.skip)setTimeout(()=>{if(!abAlive(tok))return;document.querySelectorAll(".ab-tile").forEach(b=>{if(tiles[+b.dataset.i].ok)b.click()})},600);
  document.querySelectorAll(".ab-tile").forEach(b=>b.onclick=()=>{
   if(!abAlive(tok)||b.classList.contains("found"))return;
   const x=tiles[+b.dataset.i];
@@ -1537,6 +1747,7 @@ function abInicialRound(){
  $("#abLeft").onclick=()=>abSpeak(say);$("#abLeft").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abSpeak(say)}};
  abSayLater(tok,say,450);
  let solved=false;
+ if(CFG.skip)setTimeout(()=>{if(!abAlive(tok)||solved)return;const r=document.querySelector('.ab-opt[data-ch="'+c+'"]');if(r)r.click()},900);
  document.querySelectorAll(".ab-opt").forEach(b=>b.onclick=()=>{
   if(!abAlive(tok)||solved||b.disabled)return;
   if(b.dataset.ch===c){solved=true;S.hit++;abStars();b.classList.add("right");document.querySelectorAll(".ab-opt").forEach(x=>{if(x!==b&&!x.classList.contains("wrong"))x.classList.add("dim");x.disabled=x!==b?true:x.disabled});
@@ -1560,12 +1771,13 @@ function abFinish(){
   msg:"Você terminou! 🎉 Toque em ↻ para jogar de novo.",
   next:{label:L<3?"Próximo nível ▶":"Escolher nível ▶",disabled:false,fn:()=>L<3?abStart(g,L+1):abLevels(g)},
   onBack:()=>abLevels(g),onRestart:()=>abStart(g,L)});
- celebrateStars();abChime();
+ celebrateStars();abChime();autoClick("#abNext");
 }
 function abMenuMarkup(p){
  const a=abAlpha(p);
- const card=(g,t,sub,n,tot)=>`<button class="category" data-ab="${g}" type="button"><strong>${t}</strong><span class="muted">${sub}</span><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.min(100,Math.round(n/Math.max(1,tot)*100))}%"></span></div><span class="small">${n} de ${tot} ${g==="caca"?"letras":"palavras"} jogadas</span></button>`;
- return `<h2 style="margin-top:8px">🔤 Alfabeto</h2><div class="row" style="margin:-2px 0 6px"><button class="ghost ab-discreet" data-ab="teste" type="button">🔊 OUVIR SONS DAS LETRAS</button></div><div class="category-grid">${card("caca","🔍 Caça-Letras","Encontre as letras escondidas • 3 níveis",abUnion(a.caca),26)}${card("inicial","🅰️ Qual letra começa?","Descubra a letra inicial da figura • 3 níveis",abInicialDone(a),AB_POOL.length)}</div>`;
+ const card=(g,t,sub,n,tot)=>`<button class="category" data-ab="${g}" type="button"><strong>${t}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.min(100,Math.round(n/Math.max(1,tot)*100))}%"></span></div><span class="small">${n} de ${tot} ${g==="caca"?"letras":"palavras"} jogadas</span></button>`;
+ const snd=`<button class="category" data-ab="teste" type="button"><strong>🔊 Sons das letras</strong><div class="small" style="margin:12px 0 6px">Vogais • Consoantes • Alfabeto completo</div></button>`;
+ return `<h2 style="margin-top:8px">🔤 Alfabeto</h2>${abCaseBar()}<div class="category-grid">${snd}${card("caca","🔍 Caça-Letras","Encontre as letras escondidas • 3 níveis",abUnion(a.caca),26)}${card("inicial","🅰️ Qual letra começa?","Descubra a letra inicial da figura • 3 níveis",abInicialDone(a),AB_POOL.length)}</div>`;
 }
 
 /* ===== Treino de fluência de leitura (reconhecimento de voz) ===== */
@@ -1576,24 +1788,44 @@ const FL_TEXTS=[
  {id:"t4",t:"A Casa",e:"🏠",n:1,x:"A casa é bonita. Na casa tem uma mesa."},
  {id:"t9",t:"A Vaca",e:"🐄",n:1,x:"A vaca come capim. A vaca dá leite. Eu bebo leite."},
  {id:"t10",t:"A Lua",e:"🌙",n:1,x:"A lua sai de noite. A lua é bela. Eu vejo a lua da janela."},
+ {id:"t13",t:"O Sapo",e:"🐸",n:1,x:"O sapo pula na lama. O sapo vê a mosca. A mosca fugiu."},
+ {id:"t14",t:"O Peixe",e:"🐟",n:1,x:"O peixe nada no rio. O peixe é amarelo. Eu vejo o peixe."},
+ {id:"t15",t:"O Sol",e:"☀️",n:1,x:"O sol é amarelo. O sol dá luz. Eu fico no sol com a Lia."},
+ {id:"t16",t:"O Bebê",e:"👶",n:1,x:"O bebê dorme no berço. A mamãe vê o bebê. O bebê é lindo."},
+ {id:"t17",t:"O Macaco",e:"🐒",n:1,x:"O macaco pula no galho. O macaco come banana. Eu rio do macaco."},
+ {id:"t18",t:"O Bolo",e:"🎂",n:1,x:"A mamãe fez um bolo. O bolo é de uva. Eu como o bolo com a Lia."},
  {id:"t5",t:"A Floresta",e:"🌳",n:2,x:"Na floresta grande vive uma coruja branca. Ela dorme de dia e trabalha à noite. Os filhotes brincam perto da árvore."},
  {id:"t6",t:"A Chuva",e:"🌧️",n:2,x:"A chuva forte molhou a grama do jardim. As crianças brincaram de barquinho na enxurrada. Depois o sol brilhou outra vez."},
  {id:"t7",t:"A Feira",e:"🍎",n:2,x:"Eu vou à feira com a minha mãe. Ela compra laranja, abacaxi e framboesa. Eu carrego a sacola cheia de frutas."},
  {id:"t8",t:"A Escola",e:"🏫",n:2,x:"Na escola nova tem uma biblioteca bonita. A professora conta histórias de dragões e princesas. Todos escutam com muita atenção."},
  {id:"t11",t:"O Circo",e:"🎪",n:2,x:"No circo da cidade, o palhaço faz truques com bolas coloridas. O mágico tira um coelho da cartola. A plateia aplaude com alegria."},
- {id:"t12",t:"A Montanha",e:"⛰️",n:2,x:"Meu primo subiu a montanha com a família. No topo, eles viram nuvens brancas e um vale verde. Foi uma aventura inesquecível."}
+ {id:"t12",t:"A Montanha",e:"⛰️",n:2,x:"Meu primo subiu a montanha com a família. No topo, eles viram nuvens brancas e um vale verde. Foi uma aventura inesquecível."},
+ {id:"t19",t:"O Mar",e:"🌊",n:2,x:"No domingo fomos ver o mar. A água estava azul e as ondas batiam na areia. Eu construí um castelo com a minha irmã."},
+ {id:"t20",t:"O Parque",e:"🎡",n:2,x:"Eu brinco no parque com os meus amigos. Pulamos na gangorra e corremos pelo gramado. No fim, tomamos sorvete de chocolate."},
+ {id:"t21",t:"A Fazenda",e:"🚜",n:2,x:"Na fazenda do meu avô tem galinhas, porcos e cavalos. De manhã, ele ordenha a vaca e colhe os ovos frescos."},
+ {id:"t22",t:"O Foguete",e:"🚀",n:2,x:"O foguete branco subiu até as estrelas. O astronauta olhou a Terra pela janela e viu oceanos, florestas e nuvens."},
+ {id:"t23",t:"Os Dinossauros",e:"🦕",n:2,x:"Há milhões de anos, os dinossauros viviam na Terra. Alguns eram gigantes e comiam folhas. Outros caçavam com dentes afiados."},
+ {id:"t24",t:"O Piquenique",e:"🧺",n:2,x:"No sábado, a família fez um piquenique debaixo da mangueira. Levamos sanduíches, suco gelado e uma toalha xadrez. Foi uma tarde feliz."},
+ {id:"t25",t:"A Pipa",e:"🪁",n:1,x:"A pipa é azul. A pipa sobe no céu. Eu vejo a pipa voar."},
+ {id:"t26",t:"O Pão",e:"🍞",n:1,x:"O pão é macio. A vovó faz o pão. Eu como pão com leite."},
+ {id:"t27",t:"O Livro",e:"📖",n:1,x:"O livro é novo. Eu leio o livro de noite. O livro tem um gato."},
+ {id:"t28",t:"O Zoológico",e:"🦁",n:2,x:"No zoológico, vimos girafas, leões e elefantes. A girafa mastigava folhas bem altas. Todos tiraram fotografias."},
+ {id:"t29",t:"O Aniversário",e:"🎉",n:2,x:"Hoje é o aniversário da minha prima. Nós cantamos parabéns e comemos brigadeiro. Ela soprou as velinhas e fez um pedido."},
+ {id:"t30",t:"A Pescaria",e:"🎣",n:2,x:"Meu tio me levou para uma pescaria no rio. Esperamos quietinhos até o peixe beliscar a isca. Voltamos com três peixes e muita felicidade."}
 ];
 let FL=null;
 function flStop(){}
 function flAlpha(p){p.fluencia=p.fluencia||{};const f=p.fluencia;f.textos=f.textos||{};f.sessoes=f.sessoes||[];return f}
-function flTexts(){
+let FL_LVL=1;
+function flTexts(lv){
+ if(lv===1||lv===2)FL_LVL=lv;lv=FL_LVL;
  const p=active();if(!p){renderClassDashboard();return}
  FL=null;const f=flAlpha(p);
  const card=x=>{const r=f.textos[x.id];const lido=r&&r.n;return `<button class="ab-lvl fl-card${lido?" lido":""}" data-id="${x.id}" type="button"><strong>${x.e} ${esc(x.t)}</strong><span class="ab-lvl-s">${x.x.split(/\s+/).length} palavras • ${lido?"✅ Lido "+r.n+(r.n===1?"x":"x"):"Não lido"}</span></button>`};
- const block=(n,t,sub)=>`<div class="fl-block"><div class="fl-block-t">${t}</div><div class="fl-block-s">${sub}</div><div class="fl-texts">${FL_TEXTS.filter(x=>x.n===n).map(card).join("")}</div></div>`;
- abShell({title:"Fluência",sub:"Escolha um texto",stars:Object.keys(f.textos).filter(k=>f.textos[k].n).length,
-  single:`<div class="ab-board fl-pick"><div class="fl-blocks">${block(1,"📘 Palavras simples","Leitura inicial")}${block(2,"📗 Palavras complexas","Leitura avançada")}</div></div>`,
-  msg:"📖 Escolha um texto, leia e toque em cada palavra lida",onBack:renderStudentMenu,noSound:true});
+ const grid=n=>`<div class="fl-block"><div class="fl-block-t">${n===1?"📘 Palavras simples":"📗 Palavras complexas"}</div><div class="fl-block-s">${n===1?"Leitura inicial":"Leitura avançada"}</div><div class="fl-texts">${FL_TEXTS.filter(x=>x.n===n).map(card).join("")}</div></div>`;
+ abShell({title:"Fluência",sub:lv===1?"Palavras simples":"Palavras complexas",stars:Object.keys(f.textos).filter(k=>f.textos[k].n).length,
+  single:`<div class="ab-board fl-pick fl-one">${grid(lv)}</div>`,
+  msg:"",bare:true,onBack:renderStudentMenu,noSound:true});
  document.querySelectorAll(".fl-card").forEach(b=>b.onclick=()=>flStart(b.dataset.id));
 }
 function flStart(id){
@@ -1614,7 +1846,7 @@ function flRender(){
  abShell({title:"Fluência",sub:`${T.e} ${esc(T.t)} • 0 de ${FL.words.length}`,stars:0,caseBtn:true,noSound:true,
   single:`<div class="ab-board fl-board"><div class="fl-text" id="flText">${spans}</div></div>`,
   msg:"Leia o texto e toque em cada palavra que já leu",
-  next:{label:"Concluir ▶",disabled:true},onBack:flTexts,onRestart:()=>flStart(T.id)});
+  next:{label:"Concluir ▶",disabled:true},onBack:()=>flTexts(T.n),onRestart:()=>flStart(T.id)});
  FL.tok=abTok;
  const syncCase=()=>{const t=$("#flText"),cb=$("#caseBtn");if(!t||!cb)return;t.classList.remove("uc","lc","cur");t.classList.add(caseMode==="l"?"lc":caseMode==="c"?"cur":"uc");cb.textContent=CASE_LABEL[caseMode];cb.classList.toggle("cs",caseMode==="c");cb.classList.toggle("on",caseMode!=="u");cb.title="Mudar para "+({u:"minúsculas",l:"cursiva",c:"maiúsculas"}[caseMode]);flFit()};
  $("#caseBtn").onclick=e=>{e.stopPropagation();caseMode=caseMode==="u"?"l":caseMode==="l"?"c":"u";try{localStorage.setItem("jl_case",caseMode)}catch(_){}syncCase()};
@@ -1629,6 +1861,9 @@ function flRender(){
  const box=$("#flText");
  box.onclick=e=>{const el=e.target.closest(".fl-w");if(el)toggle(el)};
  box.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){const el=e.target.closest(".fl-w");if(el){e.preventDefault();toggle(el)}}};
+ if(CFG.skip){const lvl=FL_TEXTS.filter(x=>x.n===T.n),k=lvl.findIndex(x=>x.id===T.id),nx=lvl[k+1];
+  abEnableNext(nx?"Próximo texto ▶":"Escolher texto ▶",()=>{if(!FL||FL.finished||!abAlive(FL.tok))return;document.querySelectorAll(".fl-w").forEach(el=>{el.classList.add("read");el.setAttribute("aria-pressed","true")});FL.words.forEach(x=>x.read=true);FL.done=FL.words.length;flSub();flComplete();nx?flStart(nx.id):flTexts(T.n)});
+  autoClick("#abNext",FL.words.length*900)}
  syncCase();requestAnimationFrame(flFit);setTimeout(flFit,150);
  const tk=FL.tok;window.addEventListener("resize",function f(){if(!abAlive(tk)){window.removeEventListener("resize",f);return}flFit()});
 }
@@ -1636,14 +1871,15 @@ function flComplete(){
  const p=active();const T=FL.text;FL.finished=true;
  const now=new Date().toISOString();
  if(p){const f=flAlpha(p);const r=f.textos[T.id]=f.textos[T.id]||{n:0};r.n=(r.n||0)+1;r.quando=now;f.sessoes.push({texto:T.id,quando:now});if(f.sessoes.length>60)f.sessoes=f.sessoes.slice(-60);saveProfiles()}
- const idx=FL_TEXTS.findIndex(x=>x.id===T.id);const next=FL_TEXTS[idx+1];
- const n=$("#abNext");if(n){n.disabled=false;n.textContent=next?"Próximo texto ▶":"Escolher texto ▶";n.onclick=()=>next?flStart(next.id):flTexts()}
+ const lvl=FL_TEXTS.filter(x=>x.n===T.n);const idx=lvl.findIndex(x=>x.id===T.id);const next=lvl[idx+1];
+ const n=$("#abNext");if(n){n.disabled=false;n.textContent=next?"Próximo texto ▶":"Escolher texto ▶";n.onclick=()=>next?flStart(next.id):flTexts(T.n)}
  abMsg("Parabéns! 🎉 Você leu o texto todo!");
- celebrateStars();abChime();
+ celebrateStars();abChime();autoClick("#abNext");
 }
 function flMenuMarkup(p){
- const f=flAlpha(p);const n=Object.keys(f.textos).filter(k=>f.textos[k].n&&FL_TEXTS.some(t=>t.id===k)).length;const tot=FL_TEXTS.length;
- return `<h2 style="margin-top:22px">📖 Fluência de leitura</h2><div class="category-grid"><button class="category" data-fl="1" type="button"><strong>📖 Leia os textos</strong><span class="muted">Textos curtos com palavras simples e complexas • toque em cada palavra lida</span><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(n/tot*100)}%"></span></div><span class="small">${n} de ${tot} textos lidos</span></button></div>`;
+ const f=flAlpha(p);
+ const card=(n,t,d)=>{const l=FL_TEXTS.filter(x=>x.n===n);const c=l.filter(x=>f.textos[x.id]&&f.textos[x.id].n).length;return `<button class="category" data-fl="${n}" type="button"><strong>${t}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(c/l.length*100)}%"></span></div><span class="small">${c} de ${l.length} textos lidos</span></button>`};
+ return `<h2 style="margin-top:22px">📖 Fluência de leitura</h2><div class="category-grid">${card(1,"📘 Palavras simples","Textos curtos de leitura inicial • toque em cada palavra lida")}${card(2,"📗 Palavras complexas","Textos maiores de leitura avançada • toque em cada palavra lida")}</div>`;
 }
 
 (function(){const t=document.getElementById("hdrMenuBtn"),m=document.getElementById("hdrActions");if(!t||!m)return;
