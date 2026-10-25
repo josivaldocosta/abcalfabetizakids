@@ -606,6 +606,40 @@ body.game-mode .app-footer p{margin:0}
 .fl-texts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(6px,1.4vw,12px);flex:1;min-height:0}
 .bottom.bare{border:0;background:transparent;box-shadow:none}.bottom.bare .bottom-text,.bottom.bare #abRestart,.bottom.bare #abNext{display:none}.fl-one .fl-texts{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:700px){.fl-one .fl-texts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .fl-card{padding:clamp(4px,1.1vh,10px);gap:2px}.fl-card strong{font-size:clamp(.85rem,2.6vh,1.2rem)}
+/* Relatório por bloco */
+.rp-group{margin:26px 0 6px;font-size:1.25rem;display:flex;align-items:center;gap:10px}
+.rp-gpct{font-size:.95rem;font-weight:900;color:#3b4fd0;background:#eef0ff;border-radius:999px;padding:2px 12px}
+.rp-block{margin:12px 0}.rp-block h3{margin:0 0 6px}
+.rp-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:4px 0 6px}.rp-head strong{font-size:1.5rem;color:#1c2150}.rp-head span{color:#5b6280;font-weight:700;font-size:.9rem}
+.rp-bar{margin:4px 0 10px}
+.rp-det summary{cursor:pointer;font-weight:800;color:#3b4fd0;padding:4px 0}
+.rp-chips{display:flex;flex-wrap:wrap;gap:6px;padding:6px 0}
+.rp-chip{border:2px solid #dfe5f5;border-radius:999px;padding:2px 10px;font-size:.82rem;font-weight:700;color:#7a82a6;background:#fff}
+.rp-chip.on{border-color:#22b573;background:#f1fbf5;color:#14653f}
+.rp-items td{padding-top:0}
+@media print{.rp-det .rp-chips{display:flex}}
+/* Guia de orientação */
+.lg-title-row{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:8px 16px;margin:22px 0 6px}
+.lg-title-row h2{margin:0!important}
+.lg-guide-btn{min-height:40px;padding:6px 16px;font-size:.95rem}
+@media(max-width:640px){.lg-title-row{flex-direction:column;align-items:flex-start}}
+.lg-guide{max-width:680px}
+.lg-guide h2{font-size:clamp(1.15rem,3.6vw,1.5rem)}
+.lg-guide h3{margin:16px 0 6px;color:#3b4fd0;font-size:1.05rem}
+.lg-guide ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.lg-guide li,.lg-guide p{line-height:1.45;color:var(--ink2,#1c2150)}
+.lg-guide p{margin:8px 0}
+.lg-g-sub{margin:0 0 4px;font-weight:800;color:#5b6280}
+.lg-g-note{background:#fff6d6;border:2px solid #f3d98a;border-radius:14px;padding:10px 12px}
+/* Submenu da Leitura guiada: opções centralizadas, uma embaixo da outra */
+.fl-one.lg-group{display:flex;flex-direction:column;justify-content:center}
+.fl-one.lg-group .fl-block{align-items:center;text-align:center;width:100%;margin:auto 0}
+.fl-one.lg-group .fl-block-t{font-size:clamp(1.15rem,3.6vh,1.6rem)}
+.fl-one.lg-group .fl-block-s{margin:0 0 clamp(6px,1.6vh,14px)}
+.fl-one.lg-group .fl-texts{grid-template-columns:minmax(0,min(100%,460px));justify-content:center;flex:0 0 auto;width:100%;gap:clamp(8px,1.8vh,14px)}
+.fl-one.lg-group .fl-card{align-items:center;text-align:center;padding:clamp(8px,1.8vh,16px)}
+.fl-one.lg-group .fl-card strong{font-size:clamp(1rem,3.2vh,1.4rem)}
+.fl-one.lg-group .fl-card .ab-lvl-s{font-size:clamp(.75rem,2.1vh,1rem)}
 .fl-card.lido{border-color:#22b573;background:#f1fbf5}
 .fl-board{display:flex;align-items:center;justify-content:center}
 .fl-text{width:100%;max-height:100%;overflow:auto;text-align:center;font-weight:900;color:var(--ink2);line-height:1.55;font-size:2rem}
@@ -636,6 +670,49 @@ body.game-mode .app-footer p{margin:0}
 .cfg-delay label{display:flex;align-items:center;gap:6px;font-weight:800;color:var(--ink2,#1c2150);cursor:pointer}
 .cfg-delay input{width:20px;height:20px;accent-color:#3b4fd0}
 .cfg-delay.off{opacity:.45;pointer-events:none}
+/* ===== Leitura guiada (ritmo por palavra) ===== */
+.cfg-pace{display:flex;flex-direction:column;gap:8px;padding:6px 4px 12px}
+.cfg-pace label{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-weight:800;color:var(--ink2,#1c2150);cursor:pointer}
+.cfg-pace input[type=radio]{width:20px;height:20px;accent-color:#3b4fd0}
+.cfg-pace input[type=number]{width:78px;min-height:38px;border:2px solid #cfd6f0;border-radius:10px;padding:0 8px;font-weight:800;font-size:1rem;color:var(--ink2,#1c2150)}
+.lg-board{display:block}
+.lg-wrap{position:relative;height:100%;display:flex;flex-direction:column;gap:clamp(6px,1.4vh,12px);min-height:0}
+.lg-pace{align-self:center;font-weight:900;color:#6b4a00;background:#fff6d6;border:2px solid #f3d98a;border-radius:999px;padding:2px 14px;font-size:clamp(.72rem,2.2vh,1rem)}
+.lg-text{flex:1;min-height:0;overflow:hidden;display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:.12em .3em;font-weight:900;color:var(--ink2,#1c2150);line-height:1.5;font-size:2rem;text-align:center}
+.lg-text.lg-one{align-items:center;align-content:center;flex-wrap:nowrap}
+.lg-w{display:inline-block;padding:.02em .22em;border-radius:.3em;transition:background .15s,color .15s,transform .15s;user-select:none;-webkit-user-select:none}
+.lg-text.lg-one{padding:.05em 0}
+.lg-one .lg-w{padding:.04em .14em;line-height:1.12;border-radius:.2em;white-space:nowrap}
+.lg-one .lg-w.cur{transform:none;box-shadow:0 .035em 0 #e0a800}
+.lg-one .lg-w.pop{animation:lgPopOne .25s ease-out}
+@keyframes lgPopOne{0%{transform:scale(.82);opacity:.2}100%{transform:none;opacity:1}}
+@media(max-width:640px){.lg-one .lg-w{padding:.03em .1em;border-radius:.16em}}
+.lg-w.idle{color:#9aa3c7;background:transparent;transform:none;box-shadow:none;font-size:.4em}
+.lg-w.pop{animation:lgPop .25s ease-out}
+@keyframes lgPop{0%{transform:scale(.7);opacity:.2}100%{transform:scale(1.12);opacity:1}}
+@media(prefers-reduced-motion:reduce){.lg-w.pop,.lg-one .lg-w.pop{animation:none}}
+.lg-chips{display:flex;flex-wrap:wrap;gap:6px}
+.lg-chip{min-height:38px;border:2px solid #dfe5f5;background:#fff;border-radius:12px;font-weight:900;padding:0 12px;cursor:pointer;color:var(--ink2,#1c2150)}
+.lg-chip:active{filter:brightness(.95)}
+.lg-w.cur{background:#ffd23f;color:#3b2a00;transform:scale(1.12);box-shadow:0 .08em 0 #e0a800;border-color:#e0a800}
+.lg-w.done{color:#0f6b43;background:#e3f8ec}
+.lg-bar{height:clamp(8px,1.6vh,14px);border-radius:99px;background:#e6e9f7;overflow:hidden;flex:none}
+.lg-bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#4f46e5,#22b573);transition:width .3s linear}
+.lg-ctrl{display:flex;align-items:center;justify-content:center;gap:14px;flex:none}
+.lg-clock{font-weight:900;color:#4658bd;font-variant-numeric:tabular-nums;font-size:clamp(.9rem,2.8vh,1.3rem)}
+.lg-count{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(4rem,22vh,10rem);font-weight:900;color:#4f46e5;background:rgba(255,255,255,.88);border-radius:18px;z-index:2}
+.lg-count.off{display:none}
+.game.ab-cu .lg-w{text-transform:uppercase}
+.game.ab-cl .lg-w{text-transform:lowercase}
+.game.ab-cc .lg-w{font-family:"Playwrite BR","Segoe Script","Lucida Handwriting","Snell Roundhand","Brush Script MT","Bradley Hand",cursive;font-weight:600}
+.game.ab-cc .lg-one .lg-w{text-transform:lowercase}
+.game.ab-cc .lg-text{line-height:1.7}
+
+.cfg-sec{padding:12px 4px 2px;border-top:2px solid #eef0f8}
+.cfg-sec b{display:block;color:var(--ink2,#1c2150);font-size:1.05rem}
+.cfg-sec span{display:block;color:#5b6280;font-size:.9rem;font-weight:700;margin-top:2px}
+.cfg-letter{padding-left:4px}
+.cfg-letter label.cs{font-family:"Playwrite BR","Segoe Script","Lucida Handwriting","Snell Roundhand","Brush Script MT","Bradley Hand",cursive;font-weight:600}
 .cfg-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
 .bottom .hud-right{margin-left:auto;flex:0 0 auto}
 .bottom .hud-btn,.bottom .hud-pill{box-shadow:0 4px 0 #e3d3a8}
@@ -652,11 +729,7 @@ body.game-mode .app-footer p{margin:0}
 @media(max-width:640px){.stu-top{flex-direction:column;align-items:stretch}.stu-btns{order:-1;justify-content:center}.stu-btns button{flex:1;white-space:nowrap;font-size:.8rem;padding:0 8px;min-height:48px}}
 
 /* ===== Alfabeto: tipo de letra (Misto / ABC / abc / cursiva) ===== */
-.ab-casebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 12px}
-.ab-casebar>span{font-weight:800;color:#4658bd}
-.ab-casebar button{border:2px solid #dfe5f5;background:#fff;color:#1b2250;border-radius:12px;min-width:56px;height:40px;padding:0 12px;font-size:1.05rem;font-weight:900;cursor:pointer;box-shadow:0 3px 0 #dfe5f5}
-.ab-casebar button.sel{background:#4f46e5;border-color:#4f46e5;color:#fff;box-shadow:0 3px 0 #3730a3}
-.ab-casebar button.cs{font-family:"Playwrite BR","Segoe Script","Lucida Handwriting","Snell Roundhand","Brush Script MT","Bradley Hand",cursive;font-weight:600;line-height:1.5}
+#lgPaceBtn{width:auto;min-width:clamp(34px,5.5vh,44px);padding:0 10px;white-space:nowrap;font-size:clamp(.8rem,2.4vh,1rem);font-weight:900}
 #abCase{width:auto;min-width:clamp(34px,5.5vh,44px);padding:0 9px;white-space:nowrap}
 #abCase.cs{min-width:clamp(54px,9vh,68px);padding:0 12px;font-size:1.05rem;line-height:1.5;overflow:visible;font-family:"Playwrite BR","Segoe Script","Lucida Handwriting","Snell Roundhand","Brush Script MT","Bradley Hand",cursive;font-weight:600}
 .game.ab-cu .ab-tile,.game.ab-cu .ab-opt,.game.ab-cu .ab-cap{text-transform:uppercase}
@@ -1271,17 +1344,111 @@ function renderStudentMenu(){
  stage="student-menu";syncTeacherHeader();const m=$("#appMain");
  m.innerHTML=`<section class="panel"><div class="topline stu-top"><div class="stu-hello"><h1>Olá, ${esc(p.name)}! 👋 O que vamos fazer agora?</h1><div class="stu-stars" id="stuStars" aria-live="polite"><span class="stu-star" aria-hidden="true">⭐</span><span>${starsLabel(totalStars(p))}</span></div></div><div class="stu-btns"><button class="secondary" id="changeStudent">← VOLTAR</button><button class="secondary" id="openCfgBtn" type="button">⚙️ CONFIGURAÇÕES</button></div></div>
  ${abMenuMarkup(p)}<h2 style="margin-top:22px">📚 Sílabas e palavras</h2><div class="category-grid">${["simples","complexas","simples_montar","complexas_montar"].map(c=>`<button class="category" data-cat="${c}"><strong>${catLabel(c)}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(progress(p,c)/Math.max(1,wordsFor(c).length)*100)}%"></span></div><span class="small">${progress(p,c)} de ${wordsFor(c).length} concluídas</span></button>`).join("")}</div>
- ${flMenuMarkup(p)}
+ ${flMenuMarkup(p)}${lgMenuMarkup(p)}
  <div class="admin"><div class="row"><button class="primary" id="openReport" type="button">📊 Relatório do participante</button><button class="ghost" id="resetStudentProgress">Reiniciar progresso deste participante</button></div></div></section>`;
  $("#changeStudent").onclick=renderClassDashboard;countUpStars(totalStars(p));
- m.querySelectorAll("[data-ab]").forEach(b=>b.onclick=()=>abLevels(b.dataset.ab));abWireCaseBar(m);
+ m.querySelectorAll("[data-ab]").forEach(b=>b.onclick=()=>abLevels(b.dataset.ab));
  m.querySelectorAll("[data-fl]").forEach(b=>b.onclick=()=>flTexts(+b.dataset.fl));
+ m.querySelectorAll("[data-lg]").forEach(b=>b.onclick=()=>lgOpen(b.dataset.lg));
  $("#openReport").onclick=()=>renderReport(p.id);
+ const gb=$("#lgGuideBtn");if(gb)gb.onclick=lgGuideOpen;
  $("#openCfgBtn").onclick=openCfg;
  m.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>startCategory(b.dataset.cat));
- $("#resetStudentProgress").onclick=()=>{if(confirm("Deseja reiniciar todo o progresso deste participante?")){p.alpha=null;p.fluencia=null;p.done={simples:[],complexas:[],simples_montar:[],complexas_montar:[]};p.next={simples:0,complexas:0,simples_montar:0,complexas_montar:0};saveProfiles();renderStudentMenu()}};
+ $("#resetStudentProgress").onclick=()=>{if(confirm("Deseja reiniciar todo o progresso deste participante?")){p.alpha=null;p.fluencia=null;p.leitura=null;p.done={simples:[],complexas:[],simples_montar:[],complexas_montar:[]};p.next={simples:0,complexas:0,simples_montar:0,complexas_montar:0};saveProfiles();renderStudentMenu()}};
 }
-function renderReport(profileId){const homeButton=$("#homeBtn");if(homeButton)homeButton.classList.remove("hidden");commitStageClock();const p=profiles.find(x=>x.id===profileId);if(!p)return;const logs=(p.activityLog||[]).slice().reverse();const totals={timeMs:0,attempts:0,errors:0,correct:0};logs.forEach(r=>Object.values(r.stages||{}).forEach(st=>{totals.timeMs+=st.timeMs||0;totals.attempts+=st.attempts||0;totals.errors+=st.errors||0;totals.correct+=st.correct||0}));const percent=totals.attempts?Math.round(totals.correct/totals.attempts*100):0;const rows=logs.length?logs.map(r=>{ensureRunStats(r);const stageRows=["families","read","build","picture"].filter(k=>!(String(r.category).endsWith("_montar")&&(k==="families"||k==="picture"))).map(k=>{const st=r.stages[k]||newStageStats();return `<tr><td>${stageLabel(k)}</td><td>${st.attempts||0}</td><td>${st.errors||0}</td><td>${st.correct||0}</td><td>${(st.attempts||0)?Math.round((st.correct||0)/(st.attempts||0)*100):0}%</td></tr>`}).join("");return `<section class="report-word"><h3>${esc(r.word)} <span class="muted small">${catLabel(r.category).replace(/^\S+ /,"")} • ${r.completed?"Concluída":"Em andamento"}</span></h3><div class="table-scroll"><table class="report-table"><thead><tr><th>Etapa</th><th>Tentativas</th><th>Erros</th><th>Acertos</th><th>%</th></tr></thead><tbody>${stageRows}</tbody></table></div><p class="small muted">Início: ${new Date(r.started).toLocaleString("pt-BR")}${r.finished?" • Conclusão: "+new Date(r.finished).toLocaleString("pt-BR"):""}</p></section>`}).join(""):'<p class="muted">Este participante ainda não possui atividades registradas. Os detalhes aparecerão conforme ele jogar.</p>';const m=$("#appMain");m.innerHTML=`<section class="panel"><div class="topline"><div><div class="muted small">RELATÓRIO INDIVIDUAL</div><h1>📊 ${esc(p.name)}</h1></div><button class="secondary" id="backReport">← Voltar</button></div><div class="report-summary"><div><span>Atividades iniciadas</span><strong>${logs.length}</strong></div><div><span>Tentativas</span><strong>${totals.attempts}</strong></div><div><span>Erros</span><strong>${totals.errors}</strong></div><div><span>Acertos</span><strong>${totals.correct}</strong></div><div><span>Percentual geral</span><strong>${percent}%</strong></div></div><p class="muted small">Percentual calculado como acertos ÷ tentativas registradas. Nas etapas de famílias silábicas e leitura, cada sílaba tocada conta como uma tentativa; na montagem da palavra, cada sequência completa conta como uma tentativa.</p><div class="row" style="margin:12px 0"><button class="secondary" id="printReport">🖨️ Imprimir relatório</button></div><div id="reportDetails">${rows}</div></section>`;$("#backReport").onclick=renderStudentMenu;$("#printReport").onclick=()=>window.print()}
+/* ===== Relatório: evolução por bloco executado (e sub-blocos) ===== */
+function rpPct(a,b){return b?Math.min(100,Math.round(a/b*100)):0}
+function rpBar(v){return `<div class="progress rp-bar" role="img" aria-label="${v}%"><span style="width:${v}%"></span></div>`}
+function abExecAdd(a,jogo,nivel){
+ if(!a.exec){a.exec={};a.sessoes.forEach(s=>{const k=s.jogo+"|"+s.nivel;a.exec[k]=(a.exec[k]||0)+1})}
+ const k=jogo+"|"+nivel;a.exec[k]=(a.exec[k]||0)+1}
+function abExecGet(a,jogo,nivel){
+ const k=jogo+"|"+nivel;
+ return a.exec?(a.exec[k]||0):a.sessoes.filter(s=>s.jogo===jogo&&String(s.nivel)===String(nivel)).length}
+/* Monta os blocos do jogo com o que foi realizado. Cada sub-bloco: {t, n (realizações), tot?, items?} */
+function rpBlocks(p){
+ const out=[];
+ const sub=(t,n,extra)=>Object.assign({t,n:n||0,tot:1,done:n>0?1:0},extra||{});
+ /* Alfabeto */
+ const a=abAlpha(p);
+ const sons=[];
+ [["conhecer","👂 Conhecer as letras"],["ouvir","🎧 Ouça e escolha"],["figura","🖼️ Letra e figura"]].forEach(m=>
+  [["vogais","Vogais"],["consoantes","Consoantes"],["completo","Alfabeto completo"]].forEach(k=>
+   sons.push(sub(`${m[1]} • ${k[1]}`,abExecGet(a,"sons_"+m[0],k[0])))));
+ out.push({g:"🔤 Alfabeto",t:"🔊 Sons das letras",note:"9 sub-blocos (3 modos × 3 grupos de letras)",subs:sons});
+ const niv=(game,txt)=>[1,2,3].map(L=>{const legacy=(a[game][L]||[]).length>0?1:0;return sub(`Nível ${L} • ${txt[L-1]}`,Math.max(abExecGet(a,game,L),legacy))});
+ out.push({g:"🔤 Alfabeto",t:"🔍 Caça-Letras",note:"3 níveis",subs:niv("caca",["Letras maiúsculas","Maiúsculas e minúsculas","Letras parecidas"])});
+ out.push({g:"🔤 Alfabeto",t:"🅰️ Qual letra começa?",note:"3 níveis",subs:niv("inicial",["2 opções de letra","3 opções de letra","4 opções de letra"])});
+ /* Sílabas e palavras */
+ const logs=p.activityLog||[];
+ ["simples","complexas","simples_montar","complexas_montar"].forEach(cat=>{
+  const total=wordsFor(cat).length,done=((p.done||{})[cat]||[]).length;
+  const runs=logs.filter(r=>r.category===cat).map(ensureRunStats);
+  const keys=cat.endsWith("_montar")?["read","build"]:["families","read","build","picture"];
+  const subs=keys.map(k=>{
+   let att=0,err=0,ok=0,real=0;
+   runs.forEach(r=>{const st=r.stages[k]||newStageStats();att+=st.attempts||0;err+=st.errors||0;ok+=st.correct||0;if(r.completed||(st.correct||0)>0)real++});
+   return {t:stageLabel(k),n:real,tot:runs.length,done:real,att,err,ok,stage:true}});
+  const concl=runs.filter(r=>r.completed).length;
+  out.push({g:"📚 Sílabas e palavras",t:catLabel(cat),note:"cada palavra é uma atividade concluída",unit:"atividades",total,done,real:Math.max(concl,done),subs,syl:true});
+ });
+ /* Treino de Leitura Livre */
+ const f=flAlpha(p);
+ [[1,"📘 Palavras simples"],[2,"📗 Palavras complexas"]].forEach(x=>{
+  const l=FL_TEXTS.filter(t=>t.n===x[0]);
+  const items=l.map(t=>({t:t.t,n:(f.textos[t.id]&&f.textos[t.id].n)||0}));
+  out.push({g:"📖 Treino de Leitura Livre",t:x[1],unit:"textos",items})});
+ /* Treino de Fluência Leitora */
+ const d=lgData(p);
+ const lgItems=k=>lgUnits(k).map(u=>({t:u.t,n:(d.u[u.id]&&d.u[u.id].n)||0}));
+ const agg=(label,k,unit)=>{const items=lgItems(k);return {t:label,items,unit,n:items.reduce((s,i)=>s+i.n,0),tot:items.length,done:items.filter(i=>i.n>0).length}};
+ const cn=d.cn!=null?d.cn:(d.sessoes||[]).filter(s=>/-custom$/.test(s.unidade)).length;
+ out.push({g:"⏱️ Treino de Fluência Leitora",t:"📖 Palavras",subs:[agg("📘 Simples","ps","listas"),agg("📗 Complexas","pc","listas"),{t:"✏️ Personalizado",n:cn,noPct:true}]});
+ out.push({g:"⏱️ Treino de Fluência Leitora",t:"💬 Frases",subs:[agg("💬 Simples","fs","textos"),agg("💬 Complexas","fc","textos")]});
+ out.push({g:"⏱️ Treino de Fluência Leitora",t:"📄 Textos curtos",unit:"textos",items:lgItems("tc")});
+ /* totais de cada bloco */
+ out.forEach(b=>{
+  if(b.syl){b.pct=rpPct(b.done,b.total);return}
+  if(b.items){b.done=b.items.filter(i=>i.n>0).length;b.total=b.items.length;b.real=b.items.reduce((s,i)=>s+i.n,0)}
+  else{const s=b.subs.filter(x=>!x.noPct);b.done=s.reduce((q,x)=>q+(x.tot>1||x.items?x.done:(x.n>0?1:0)),0);b.total=s.reduce((q,x)=>q+(x.items?x.tot:1),0);b.real=b.subs.reduce((q,x)=>q+x.n,0)}
+  b.pct=rpPct(b.done,b.total)});
+ return out;
+}
+function rpChips(items){return `<div class="rp-chips">${items.map(i=>`<span class="rp-chip${i.n?" on":""}">${esc(i.t)}${i.n?` • ${i.n}x`:""}</span>`).join("")}</div>`}
+function rpBlockHTML(b){
+ const unit=b.unit||"sub-blocos";
+ const head=`<div class="rp-head"><strong>${b.pct}%</strong> <span>${b.done} de ${b.total} ${unit} concluídos • ${b.real} ${b.real===1?"realização":"realizações"}</span></div>${rpBar(b.pct)}`;
+ let body="";
+ if(b.items)body=`<details class="rp-det"><summary>Ver os ${b.total} ${unit}</summary>${rpChips(b.items)}</details>`;
+ else if(b.syl){
+  const rows=b.subs.map(s=>`<tr><td>${esc(s.t)}</td><td>${s.n}</td><td>${rpPct(s.n,s.tot)}%</td><td>${s.att}</td><td>${s.err}</td><td>${s.ok}</td><td>${s.att?Math.round(s.ok/s.att*100):0}%</td></tr>`).join("");
+  body=`<div class="table-scroll"><table class="report-table"><thead><tr><th>Sub-bloco (etapa)</th><th>Realizações</th><th>% de realização</th><th>Tentativas</th><th>Erros</th><th>Acertos</th><th>% acertos</th></tr></thead><tbody>${rows}</tbody></table></div>`}
+ else{
+  const rows=b.subs.map(s=>{
+   const pc=s.noPct?"—":(s.items?rpPct(s.done,s.tot):(s.n>0?100:0))+"%";
+   const lab=s.items?`${esc(s.t)} <span class="muted small">(${s.done} de ${s.tot} ${s.unit})</span>`:esc(s.t);
+   return `<tr><td>${lab}</td><td>${s.n}</td><td>${pc}</td></tr>`+(s.items?`<tr class="rp-items"><td colspan="3"><details class="rp-det"><summary>Ver as ${s.tot} ${s.unit}</summary>${rpChips(s.items)}</details></td></tr>`:"")}).join("");
+  body=`<div class="table-scroll"><table class="report-table"><thead><tr><th>Sub-bloco</th><th>Realizações</th><th>% de realização</th></tr></thead><tbody>${rows}</tbody></table></div>`}
+ return `<section class="report-word rp-block"><h3>${esc(b.t)}${b.note?` <span class="muted small">${esc(b.note)}</span>`:""}</h3>${head}${body}</section>`;
+}
+function renderReport(profileId){
+ const homeButton=$("#homeBtn");if(homeButton)homeButton.classList.remove("hidden");commitStageClock();
+ const p=profiles.find(x=>x.id===profileId);if(!p)return;
+ const blocks=rpBlocks(p);
+ const geral=Math.round(blocks.reduce((s,b)=>s+b.pct,0)/Math.max(1,blocks.length));
+ const iniciados=blocks.filter(b=>b.pct>0).length,concluidos=blocks.filter(b=>b.pct>=100).length,real=blocks.reduce((s,b)=>s+b.real,0);
+ const groups=[];blocks.forEach(b=>{let g=groups.find(x=>x.t===b.g);if(!g)groups.push(g={t:b.g,bs:[]});g.bs.push(b)});
+ const gHTML=groups.map(g=>{const gp=Math.round(g.bs.reduce((s,b)=>s+b.pct,0)/g.bs.length);return `<h2 class="rp-group">${esc(g.t)} <span class="rp-gpct">${gp}%</span></h2>${rpBar(gp)}${g.bs.map(rpBlockHTML).join("")}`}).join("");
+ const m=$("#appMain");
+ m.innerHTML=`<section class="panel"><div class="topline"><div><div class="muted small">RELATÓRIO INDIVIDUAL</div><h1>📊 ${esc(p.name)}</h1></div><button class="secondary" id="backReport">← Voltar</button></div>
+ <div class="report-summary"><div><span>Evolução geral</span><strong>${geral}%</strong></div><div><span>Blocos iniciados</span><strong>${iniciados} de ${blocks.length}</strong></div><div><span>Blocos concluídos</span><strong>${concluidos} de ${blocks.length}</strong></div><div><span>Realizações</span><strong>${real}</strong></div></div>
+ ${rpBar(geral)}
+ <p class="muted small">A evolução é contada por <b>bloco executado</b>: cada sub-bloco (nível, lista, texto ou etapa) conta como concluído depois de realizado ao menos uma vez, e o percentual do bloco é a fração de sub-blocos concluídos. A evolução geral é a média dos percentuais de todos os blocos. “Realizações” é quantas vezes o sub-bloco foi concluído, incluindo as repetições. Em <b>Sílabas e palavras</b>, cada palavra é uma atividade, e as etapas aparecem como sub-blocos com os acertos e erros.</p>
+ <div class="row" style="margin:12px 0"><button class="secondary" id="printReport">🖨️ Imprimir relatório</button></div>
+ <div id="reportDetails">${gHTML}</div></section>`;
+ $("#backReport").onclick=renderStudentMenu;
+ $("#printReport").onclick=()=>{const ds=[...document.querySelectorAll("#reportDetails details")],was=ds.map(x=>x.open);ds.forEach(x=>x.open=true);window.print();ds.forEach((x,i)=>x.open=was[i])};
+}
 function startCategory(cat){if(!active()){alert("Cadastre ou selecione um jogador primeiro.");return}category=cat;let ws=wordsFor(cat);if(!ws.length){alert("Não há palavras nesta categoria no banco atual.");return}let done=active().done[cat]||[];let next=ws.findIndex((w,i)=>!done.includes(w.w));if(next<0){renderCompleteCategory();return}currentIndex=next;startWord()}
 function startWord(){clearTimeout(autoTimer);const ws=wordsFor(category);if(currentIndex>=ws.length){renderCompleteCategory();return}let w=ws[currentIndex];chosen=[];shuffled=[];readShuffled=distinct(w.s).map((x,i)=>({s:x,i}));lockInput=false;figureChoices=[];buildShuffled=[];famShuffled=null;famMode=0;famBase=null;stageDone={};stage=isMontar()?"read":"families";const p=active();p.activityLog=p.activityLog||[];currentRun=ensureRunStats({id:makeId(),category,word:w.w,started:new Date().toISOString(),updated:new Date().toISOString(),completed:false,stages:{families:newStageStats(),read:newStageStats(),build:newStageStats(),picture:newStageStats()}});p.activityLog.push(currentRun);saveProfiles();renderActivity()}
 function shuffleTokens(arr){const items=arr.map((x,i)=>({s:x,i}));if(items.length<2)return items;let out,t=0;do{out=shuffle([...items]);t++}while(out.map(x=>x.s).join("|")===arr.join("|")&&t<30);return out}
@@ -1293,9 +1460,12 @@ function celebrateStars(){const layer=document.createElement("div");layer.classN
 const CFG={
  get auto(){const p=active();return !!(p&&p.cfg&&p.cfg.auto)},
  get skip(){const p=active();return !!(p&&p.cfg&&p.cfg.skip)},
+ get letter(){const p=active(),l=p&&p.cfg&&p.cfg.letter;return ["m","u","l","c"].includes(l)?l:"m"},
+ get pace(){const p=active(),v=p&&p.cfg&&p.cfg.pace;return ["i","m","a","p"].includes(v)?v:"i"},
+ get secs(){const p=active(),v=p&&p.cfg&&+p.cfg.secs;return v>=0.3&&v<=30?v:2},
  get delay(){if(CFG._d)return CFG._d;const p=active(),d=p&&p.cfg&&+p.cfg.delay;return [2,4,7].includes(d)?d:4}
 };
-function setCfg(o){const p=active();if(!p)return;p.cfg={auto:!!o.auto,skip:!!o.skip,delay:[2,4,7].includes(+o.delay)?+o.delay:4};saveProfiles()}
+function setCfg(o){const p=active();if(!p)return;p.cfg=Object.assign({},p.cfg,{auto:!!o.auto,skip:!!o.skip,letter:["m","u","l","c"].includes(o.letter)?o.letter:"m",delay:[2,4,7].includes(+o.delay)?+o.delay:4});saveProfiles()}
 let noAutoOnce=false;
 function autoNext(extra){
  clearTimeout(autoTimer);if(!CFG.auto)return;
@@ -1315,6 +1485,8 @@ function openCfg(){
  <label class="cfg-opt"><input type="checkbox" id="cfgAuto" ${CFG.auto?"checked":""}><div><b>⏭️ Transição automática</b><span>Ao concluir cada etapa, o jogo avança sozinho para a próxima etapa, palavra ou texto.</span></div></label>
  <div class="cfg-delay ${CFG.auto?"":"off"}" id="cfgDelay"><span style="margin:0 6px 0 0;font-weight:800;color:#5b6280">Tempo de espera:</span>${[[2,"2 s"],[4,"4 s"],[7,"7 s"]].map(d=>`<label><input type="radio" name="cfgD" value="${d[0]}" ${CFG.delay===d[0]?"checked":""}>${d[1]}</label>`).join("")}</div>
  <label class="cfg-opt"><input type="checkbox" id="cfgSkip" ${CFG.skip?"checked":""}><div><b>👆 Avançar sem selecionar</b><span>Libera o botão de avançar sem precisar tocar em cada sílaba, palavra, letra ou figura. As respostas aparecem prontas na tela.</span></div></label>
+ <div class="cfg-sec"><b>🔤 Tipo de letra</b><span>Escolha como as letras aparecem nos jogos do Alfabeto. Também dá para trocar durante o jogo, no botão de letras.</span></div>
+ <div class="cfg-delay cfg-letter">${[["u","ABC",""],["l","abc",""],["c","Abc","cs"],["m","Misto",""]].map(d=>`<label class="${d[2]}"><input type="radio" name="cfgL" value="${d[0]}" ${CFG.letter===d[0]?"checked":""}>${d[1]}</label>`).join("")}</div>
  <div class="cfg-actions"><button class="primary" id="cfgOk" type="button">Salvar</button></div></div>`;
  document.body.appendChild(ov);
  const au=ov.querySelector("#cfgAuto");au.onchange=()=>ov.querySelector("#cfgDelay").classList.toggle("off",!au.checked);
@@ -1323,10 +1495,10 @@ function openCfg(){
  ov.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
  ov.querySelector("#cfgOk").onclick=()=>{
   const d=ov.querySelector('input[name=cfgD]:checked');
-  setCfg({auto:au.checked,skip:ov.querySelector("#cfgSkip").checked,delay:d?+d.value:4});
-  close();clearTimeout(autoTimer);
+  setCfg({auto:au.checked,skip:ov.querySelector("#cfgSkip").checked,letter:(ov.querySelector('input[name=cfgL]:checked')||{}).value,delay:d?+d.value:4});
+  close();clearTimeout(autoTimer);abApplyCase();
   if(["families","read","build","picture"].includes(stage)&&$("#stageBody")){renderStage()}
-  else if(stage==="alpha-game"){if(typeof FL!=="undefined"&&FL&&!FL.finished&&$("#flText"))flStart(FL.text.id);else if(typeof AB!=="undefined"&&AB&&AB.queue&&AB.i<AB.queue.length&&$("#abLeft"))abRound()}
+  else if(stage==="alpha-game"){if($("#lgText")&&typeof LG!=="undefined"&&LG)lgStart(LG.kind,LG.id,LG.i);else if(typeof FL!=="undefined"&&FL&&!FL.finished&&$("#flText"))flStart(FL.text.id);else if(typeof AB!=="undefined"&&AB&&AB.queue&&AB.i<AB.queue.length&&$("#abLeft"))abRound()}
  };
  ov.querySelector("#cfgOk").focus();
 }
@@ -1419,10 +1591,36 @@ let caseMode='u',famShuffled=null,famMode=0,famBase=null;try{const m=localStorag
 function caseClass(){return caseMode==='l'?' lc':caseMode==='c'?' cur':''}
 const CASE_LABEL={u:'ABC',l:'abc',c:'Abc'};
 function famRows(w){const seen=[];return (famShuffled||w.families||[]).filter(f=>{const k=f.join();if(seen.includes(k))return false;seen.push(k);return true}).map(f=>{const hit=distinct(w.s).filter(x=>f.includes(x));return {list:f,hit,color:hit.length?sylColor(w,hit[0]):"#b8bfd6"}})}
-function totalStars(p){if(!p)return 0;const d=p.done||{};let n=0;["simples","complexas","simples_montar","complexas_montar"].forEach(k=>{n+=(d[k]||[]).length});n+=(p.alpha&&+p.alpha.acertos)||0;const t=(p.fluencia&&p.fluencia.textos)||{};Object.keys(t).forEach(k=>{n+=(t[k]&&+t[k].n)||0});return n}
+/* Estrelas: 1 por BLOCO concluído, só na primeira conclusão. Repetir não soma de novo; só zerando o progresso do participante.
+   - Sílabas e palavras: 1 por grupo de 10 palavras concluídas (na ordem do jogo)
+   - Alfabeto: 1 por nível de Caça-Letras e de Qual letra começa?, e 1 por modo e grupo de Sons das letras
+   - Treino de Leitura Livre e Treino de Fluência Leitora: 1 por texto ou lista lida (o Personalizado é treino livre e não rende estrela) */
+function sgLedger(A){
+ if(A.sg)return A.sg;
+ const o={};
+ (A.sessoes||[]).forEach(x=>{if(!x||String(x.jogo).indexOf("sons_")!==0)return;const k=x.jogo+"|"+x.nivel;if(o[k]==null)o[k]=x.jogo==="sons_conhecer"?1:(+x.acertos||0)});
+ if(A.exec)Object.keys(A.exec).forEach(k=>{if(k.indexOf("sons_conhecer|")===0&&A.exec[k]>0&&o[k]==null)o[k]=1});
+ return o}
+function sgAward(A,jogo,nivel,n){if(!A.sg)A.sg=sgLedger(A);const k=jogo+"|"+nivel;if(A.sg[k]==null)A.sg[k]=n}
+function totalStars(p){
+ if(!p)return 0;let n=0;const d=p.done||{};
+ ["simples","complexas","simples_montar","complexas_montar"].forEach(cat=>{
+  const ws=wordsFor(cat),dn=new Set(d[cat]||[]);
+  for(let i=0;i<ws.length;i+=10){if(ws.slice(i,i+10).every(w=>dn.has(w.w)))n++}});
+ const A=p.alpha;
+ if(A){A.sessoes=A.sessoes||[];
+  ["caca","inicial"].forEach(g=>[1,2,3].forEach(L=>{if(abExecGet(A,g,L)>0||((A[g]||{})[L]||[]).length>0)n++}));
+  const lg=sgLedger(A);
+  ["ouvir","figura","conhecer"].forEach(m=>["vogais","consoantes","completo"].forEach(k=>{if(abExecGet(A,"sons_"+m,k)>0||lg["sons_"+m+"|"+k]!=null)n++}))}
+ const t=(p.fluencia&&p.fluencia.textos)||{};Object.keys(t).forEach(k=>{if(t[k]&&+t[k].n>0)n++});
+ const U=(p.leitura&&p.leitura.u)||{};Object.keys(U).forEach(k=>{if(U[k]&&+U[k].n>0)n++});
+ return n}
+function repMsg(first,n){return first?" ⭐ +1 estrela!":(n>1?" Você já treinou "+n+" vezes. 💪":"")}
 function starsLabel(n){return `Você tem <b id="stuStarsNum">${n}</b> ${n===1?"estrela":"estrelas"}`}
 function countUpStars(n){const el=document.getElementById("stuStarsNum");if(!el||n<2||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))return;const t0=performance.now(),dur=Math.min(1200,300+n*12);(function step(t){const k=Math.min(1,(t-t0)/dur);const e=document.getElementById("stuStarsNum");if(!e)return;e.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)})(t0)}
-function points(){const p=active();return p?((p.done&&p.done.simples||[]).length+(p.done&&p.done.complexas||[]).length+(p.done&&p.done.simples_montar||[]).length+(p.done&&p.done.complexas_montar||[]).length):0}
+/* Estrelas do participante: o mesmo total do painel principal, somado de todos os jogos e atualizado quando um jogo ou etapa é concluído */
+function points(){const p=active();return p?totalStars(p):0}
+function hudStarsRefresh(){const t=totalStars(active()),b=$("#abStars");if(b)b.textContent=t;const w=$("#rewardBar");if(w)w.outerHTML=rewardMarkup()}
 function setFb(t){const f=$("#feedback");if(f)f.textContent=t}
 function defaultMsg(){return ({families:"Leia e toque nas sílabas",read:"Leia e toque nas sílabas",build:"🧩 Toque nas sílabas na ordem certa",picture:"🖼️ Toque na figura da palavra",success:"🎉 Muito bem!"})[stage]||""}
 function sideHTML(w,mode,showFig){
@@ -1524,18 +1722,17 @@ function abUnion(o,valid){const s=new Set();Object.values(o||{}).forEach(arr=>(a
 function abInicialDone(a){return abUnion(a.inicial,new Set(AB_POOL.map(x=>x.w)))}
 let abSound=true;try{if(localStorage.getItem("jl_absound")==="0")abSound=false}catch(e){}
 /* Tipo de letra nos jogos do Alfabeto: m=misto (como era), u=MAIÚSCULAS, l=minúsculas, c=cursiva */
-let abCase="m";try{const v=localStorage.getItem("jl_abcase");if(v==="m"||v==="u"||v==="l"||v==="c")abCase=v}catch(e){}
+let abCase="m";function abLoadCase(){try{abCase=CFG.letter}catch(e){abCase="m"}}
 const AB_CASE_LBL={m:"Aa",u:"ABC",l:"abc",c:"Abc"},AB_CASE_NAME={m:"misto",u:"maiúsculas",l:"minúsculas",c:"cursiva"},AB_CASE_NEXT={m:"u",u:"l",l:"c",c:"m"};
 function abPair(t,solo){return `<span class="ab-pair${solo?" solo":""}"><span class="lp-u">${t}</span><span class="lp-s"> </span><span class="lp-l">${t.toLowerCase()}</span></span>`}
-function abTgt(t,solo){return abCase==="u"?t.toUpperCase():abCase==="l"?t.toLowerCase():solo?t:t+" "+t.toLowerCase()}
-function abCaseBar(){return `<div class="ab-casebar" role="group" aria-label="Tipo de letra"><span>Tipo de letra:</span><button type="button" data-abcase="u" aria-label="Letras maiúsculas">ABC</button><button type="button" data-abcase="l" aria-label="Letras minúsculas">abc</button><button type="button" class="cs" data-abcase="c" aria-label="Letra cursiva">Abc</button><button type="button" data-abcase="m" aria-label="Misto: o jogo escolhe">Misto</button></div>`}
+function abTgt(t,solo){abLoadCase();return abCase==="u"?t.toUpperCase():abCase==="l"?t.toLowerCase():solo?t:t+" "+t.toLowerCase()}
 function abApplyCase(){
+ abLoadCase();
  const g=$("#game");if(g)["m","u","l","c"].forEach(k=>g.classList.toggle("ab-c"+k,k===abCase));
  const b=$("#abCase");if(b){b.textContent=AB_CASE_LBL[abCase];b.classList.toggle("cs",abCase==="c");b.classList.toggle("on",abCase!=="m");b.title="Tipo de letra: "+AB_CASE_NAME[abCase]+" (toque para mudar)"}
  document.querySelectorAll("[data-abcase]").forEach(x=>x.classList.toggle("sel",x.dataset.abcase===abCase));
 }
-function abSetCase(v){abCase=v;try{localStorage.setItem("jl_abcase",v)}catch(e){}abApplyCase()}
-function abWireCaseBar(root){root.querySelectorAll("[data-abcase]").forEach(b=>b.onclick=()=>abSetCase(b.dataset.abcase));abApplyCase()}
+function abSetCase(v){const p=active();if(p){p.cfg=Object.assign({},p.cfg,{letter:v});saveProfiles()}abCase=v;abApplyCase()}
 const AB_NAME={A:"á",B:"bê",C:"cê",D:"dê",E:"ê",F:"F",G:"gê",H:"agá",I:"i",J:"jóta",K:"cá",L:"L",M:"M",N:"N",O:"ó",P:"pê",Q:"quê",R:"R",S:"S",T:"tê",U:"u",V:"vê",W:"dáblio",X:"xis",Y:"ípsilon",Z:"zê"};
 const AB_SAY={KIWI:"quíui",WAFFLE:"uáfli",YOGA:"ioga",KARATÊ:"caratê",PIZZA:"pítsa",HAMBÚRGUER:"hambúrguer",DINOSSAURO:"dinossauro",KOALA:"coala",KART:"cárti",HAMSTER:"rãmster",WINDSURFE:"uindissurfi",YAKISOBA:"iaquissoba",IOIÔ:"ioiô"};
 function abWordSay(w){return AB_SAY[w]||String(w).toLowerCase()}
@@ -1563,7 +1760,7 @@ function abShell(c){
   <div class="hud-menu hidden" id="hudMenu"><button type="button" data-go="student">👤 Menu do participante</button><button type="button" data-go="classes">${fam?"👶 Suas crianças":"🏫 Grupos e participantes"}</button><button type="button" data-go="cfg">⚙️ Configurações do jogo</button><button type="button" data-go="home">⌂ Menu inicial</button><button type="button" data-go="profile">👤 Meu perfil</button><button type="button" data-go="logout">🚪 Sair da conta</button></div>
  </div>
  <div class="stage-body ab-stage${c.single?" ab-single":""}${c.cls?" "+c.cls:""}">${c.single||(c.left+c.right)}</div>
- <div class="bottom${c.bare?" bare":""}"><button class="round-btn" id="abPrev" type="button" aria-label="Voltar">◀</button><div class="bottom-text"><div class="feedback" id="abFb" aria-live="polite">${c.msg||""}</div></div><button class="round-btn" id="abRestart" type="button" aria-label="Recomeçar" style="${c.onRestart?"":"visibility:hidden"}">↻</button><button class="go-btn" id="abNext" type="button" ${c.next?(c.next.disabled?"disabled":""):'style="visibility:hidden" disabled'}>${c.next?c.next.label:"Próxima ▶"}</button><div class="hud-right"><div class="hud-pill" aria-label="Estrelas desta rodada">⭐ <b id="abStars">${c.stars||0}</b></div>${c.caseBtn?'<button class="hud-btn mini" id="caseBtn" type="button" aria-label="Tipo de letra: maiúscula, minúscula, cursiva" title="Tipo de letra"></button>':(c.title?"":'<button class="hud-btn mini" id="abCase" type="button" aria-label="Tipo de letra: misto, maiúscula, minúscula, cursiva" title="Tipo de letra"></button>')+(c.noSound?"":`<button class="hud-btn" id="soundBtn" type="button" aria-label="Som" title="Som: ligar ou desligar">${(c.sndGet?c.sndGet():abSound)?"🔊":"🔇"}</button>`)}<button class="hud-btn" id="fsBtn" type="button" aria-label="Tela cheia">⛶</button></div></div>
+ <div class="bottom${c.bare?" bare":""}"><button class="round-btn" id="abPrev" type="button" aria-label="Voltar">◀</button><div class="bottom-text"><div class="feedback" id="abFb" aria-live="polite">${c.msg||""}</div></div><button class="round-btn" id="abRestart" type="button" aria-label="Recomeçar" style="${c.onRestart?"":"visibility:hidden"}">↻</button><button class="go-btn" id="abNext" type="button" ${c.next?(c.next.disabled?"disabled":""):'style="visibility:hidden" disabled'}>${c.next?c.next.label:"Próxima ▶"}</button><div class="hud-right"><div class="hud-pill" aria-label="Estrelas desta rodada">⭐ <b id="abStars">${totalStars(active())}</b></div>${c.lgPace?`<button class="hud-btn mini" id="lgPaceBtn" type="button" aria-label="Nível de leitura: tempo por palavra" title="Nível de leitura: tempo por palavra">${lgPaceBtnTxt()}</button>`:""}${c.caseBtn?'<button class="hud-btn mini" id="caseBtn" type="button" aria-label="Tipo de letra: maiúscula, minúscula, cursiva" title="Tipo de letra"></button>':(c.title&&!c.abCase?"":'<button class="hud-btn mini" id="abCase" type="button" aria-label="Tipo de letra: misto, maiúscula, minúscula, cursiva" title="Tipo de letra"></button>')+(c.noSound?"":`<button class="hud-btn" id="soundBtn" type="button" aria-label="Som" title="Som: ligar ou desligar">${(c.sndGet?c.sndGet():abSound)?"🔊":"🔇"}</button>`)}<button class="hud-btn" id="fsBtn" type="button" aria-label="Tela cheia">⛶</button></div></div>
  </section>`;
  const menu=$("#hudMenu");
  $("#menuBtn").onclick=e=>{e.stopPropagation();menu.classList.toggle("hidden")};
@@ -1572,13 +1769,14 @@ function abShell(c){
  if($("#soundBtn"))$("#soundBtn").onclick=e=>{const cur=c.sndGet?c.sndGet():abSound;const nv=!cur;if(c.sndSet)c.sndSet(nv);else{abSound=nv;try{localStorage.setItem("jl_absound",nv?"1":"0")}catch(_){}}e.currentTarget.textContent=nv?"🔊":"🔇";if(!nv){try{speechSynthesis.cancel()}catch(_){}}else if(c.say)abSpeak(c.say)};
  $("#fsBtn").onclick=toggleFullscreen;
  if($("#abCase"))$("#abCase").onclick=e=>{e.stopPropagation();abSetCase(AB_CASE_NEXT[abCase])};
+ if($("#lgPaceBtn"))$("#lgPaceBtn").onclick=e=>{e.stopPropagation();lgPaceOpen()};
  abApplyCase();
  $("#abPrev").onclick=c.onBack;
  if(c.onRestart)$("#abRestart").onclick=c.onRestart;
  if(c.next&&c.next.fn)$("#abNext").onclick=c.next.fn;
 }
 function abMsg(t){const b=$("#abFb");if(b)b.textContent=t}
-function abStars(){const b=$("#abStars");if(b&&AB)b.textContent=AB.hit}
+function abStars(){/* estrelas só contam ao concluir o jogo */}
 function abEnableNext(label,fn){const n=$("#abNext");if(!n)return;n.disabled=false;n.textContent=label;n.onclick=fn;autoClick("#abNext")}
 function abFigFor(c){const l=AB_FIG[c]||[];return l.length?l[abRnd(l.length)]:["",""]}
 function abLevels(game){
@@ -1647,17 +1845,18 @@ function sgRound(){
   else{S.err++;b.disabled=true;b.classList.add("wrong");abTick(false);abMsg("Tente de novo! Ouça com atenção. 👂")}
  });
 }
-function abStars2(){const b=$("#abStars");if(b&&SG)b.textContent=SG.hit}
+function abStars2(){/* estrelas só contam ao concluir o jogo */}
 function sgFinish(){
  const S=SG,p=active();if(!p)return;const a=abAlpha(p);
- a.acertos+=S.hit;a.erros+=S.err;
+ const firstRun=abExecGet(a,"sons_"+S.game,S.kind)===0&&sgLedger(a)["sons_"+S.game+"|"+S.kind]==null;
+ a.acertos+=S.hit;a.erros+=S.err;abExecAdd(a,"sons_"+S.game,S.kind);sgAward(a,"sons_"+S.game,S.kind,S.hit);
  a.sessoes.push({jogo:"sons_"+S.game,nivel:S.kind,quando:new Date().toISOString(),acertos:S.hit,erros:S.err});
  if(a.sessoes.length>60)a.sessoes=a.sessoes.slice(-60);
  saveProfiles();
  const n=S.err===0?3:S.err<=3?2:1,k=S.kind,g=S.game;
  abShell({sub:`${SG_NAME[k]} • concluído`,stars:S.hit,
   single:`<div class="ab-board ab-win"><div class="ab-big-stars" aria-label="${n} de 3 estrelas">${"⭐".repeat(n)}${"☆".repeat(3-n)}</div><div class="ab-win-msg">Parabéns, ${esc(p.name)}!</div><div class="ab-win-sub">${S.hit} acertos • tentou de novo ${S.err} ${S.err===1?"vez":"vezes"}</div></div>`,
-  msg:"Você terminou! 🎉 Toque em ↻ para jogar de novo.",
+  msg:"Você terminou! 🎉"+repMsg(firstRun,abExecGet(a,"sons_"+S.game,S.kind))+" Toque em ↻ para jogar de novo.",
   next:{label:"Escolher atividade ▶",disabled:false,fn:()=>abSoundMode(k)},
   onBack:()=>abSoundMode(k),onRestart:()=>sgStart(k,g)});
  celebrateStars();abChime();autoClick("#abNext");
@@ -1667,7 +1866,7 @@ function abVoiceTest(kind){
  const VOG="AEIOU".split("");
  const SET=kind==="vogais"?VOG:kind==="consoantes"?AB_LET.filter(x=>!VOG.includes(x)):AB_LET;
  const dims=kind==="vogais"?[5,1]:kind==="consoantes"?[7,3]:[7,4];
- const picks={};
+ const picks={},seen=new Set();let regd=false;
  const panel=(l)=>{
   if(!l)return `<div class="ab-left ab-hint"><div class="ab-hint-in"><span class="ab-hint-ic">👈</span><span>Toque numa letra para ver e ouvir o seu som</span></div></div>`;
   const list=AB_FIG[l],k=picks[l]%list.length,f=list[k];
@@ -1678,6 +1877,7 @@ function abVoiceTest(kind){
   msg:"Toque numa letra para ver a figura e ouvir o som",onBack:()=>abSoundMode(kind)});
  document.querySelectorAll(".ab-tile[data-l]").forEach(b=>b.onclick=()=>{
   const l=b.dataset.l;picks[l]=(picks[l]===undefined)?0:picks[l]+1;
+  seen.add(l);if(!regd&&seen.size>=SET.length){regd=true;const pp=active();if(pp){const aa=abAlpha(pp);abExecAdd(aa,"sons_conhecer",kind);sgAward(aa,"sons_conhecer",kind,1);aa.sessoes.push({jogo:"sons_conhecer",nivel:kind,quando:new Date().toISOString(),acertos:0,erros:0});if(aa.sessoes.length>60)aa.sessoes=aa.sessoes.slice(-60);saveProfiles();hudStarsRefresh();celebrateStars()}}
   document.querySelectorAll(".ab-tile.sel").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");
   $("#abPanel").innerHTML=panel(l);
   const f=AB_FIG[l][picks[l]%AB_FIG[l].length];
@@ -1759,16 +1959,17 @@ function abInicialRound(){
 }
 function abFinish(){
  const S=AB,p=active();if(!p)return;const a=abAlpha(p);
+ const firstRun=abExecGet(a,S.game,S.level)===0&&(a[S.game][S.level]||[]).length===0;
  const arr=a[S.game][S.level]=a[S.game][S.level]||[];
  S.queue.forEach(x=>{const k=S.game==="caca"?x:x.w;if(!arr.includes(k))arr.push(k)});
- a.acertos+=S.hit;a.erros+=S.err;
+ a.acertos+=S.hit;a.erros+=S.err;abExecAdd(a,S.game,S.level);
  a.sessoes.push({jogo:S.game,nivel:S.level,quando:new Date().toISOString(),acertos:S.hit,erros:S.err});
  if(a.sessoes.length>60)a.sessoes=a.sessoes.slice(-60);
  saveProfiles();
  const n=S.err===0?3:S.err<=3?2:1;const g=S.game,L=S.level;
  abShell({sub:`${g==="caca"?"Caça-Letras":"Qual letra começa?"} • Nível ${L} concluído`,stars:S.hit,
   single:`<div class="ab-board ab-win"><div class="ab-big-stars" aria-label="${n} de 3 estrelas">${"⭐".repeat(n)}${"☆".repeat(3-n)}</div><div class="ab-win-msg">Parabéns, ${esc(p.name)}!</div><div class="ab-win-sub">${S.hit} acertos • tentou de novo ${S.err} ${S.err===1?"vez":"vezes"}</div></div>`,
-  msg:"Você terminou! 🎉 Toque em ↻ para jogar de novo.",
+  msg:"Você terminou! 🎉"+repMsg(firstRun,abExecGet(a,g,L))+" Toque em ↻ para jogar de novo.",
   next:{label:L<3?"Próximo nível ▶":"Escolher nível ▶",disabled:false,fn:()=>L<3?abStart(g,L+1):abLevels(g)},
   onBack:()=>abLevels(g),onRestart:()=>abStart(g,L)});
  celebrateStars();abChime();autoClick("#abNext");
@@ -1777,7 +1978,7 @@ function abMenuMarkup(p){
  const a=abAlpha(p);
  const card=(g,t,sub,n,tot)=>`<button class="category" data-ab="${g}" type="button"><strong>${t}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.min(100,Math.round(n/Math.max(1,tot)*100))}%"></span></div><span class="small">${n} de ${tot} ${g==="caca"?"letras":"palavras"} jogadas</span></button>`;
  const snd=`<button class="category" data-ab="teste" type="button"><strong>🔊 Sons das letras</strong><div class="small" style="margin:12px 0 6px">Vogais • Consoantes • Alfabeto completo</div></button>`;
- return `<h2 style="margin-top:8px">🔤 Alfabeto</h2>${abCaseBar()}<div class="category-grid">${snd}${card("caca","🔍 Caça-Letras","Encontre as letras escondidas • 3 níveis",abUnion(a.caca),26)}${card("inicial","🅰️ Qual letra começa?","Descubra a letra inicial da figura • 3 níveis",abInicialDone(a),AB_POOL.length)}</div>`;
+ return `<h2 style="margin-top:8px">🔤 Alfabeto</h2><div class="category-grid">${snd}${card("caca","🔍 Caça-Letras","Encontre as letras escondidas • 3 níveis",abUnion(a.caca),26)}${card("inicial","🅰️ Qual letra começa?","Descubra a letra inicial da figura • 3 níveis",abInicialDone(a),AB_POOL.length)}</div>`;
 }
 
 /* ===== Treino de fluência de leitura (reconhecimento de voz) ===== */
@@ -1823,7 +2024,7 @@ function flTexts(lv){
  FL=null;const f=flAlpha(p);
  const card=x=>{const r=f.textos[x.id];const lido=r&&r.n;return `<button class="ab-lvl fl-card${lido?" lido":""}" data-id="${x.id}" type="button"><strong>${x.e} ${esc(x.t)}</strong><span class="ab-lvl-s">${x.x.split(/\s+/).length} palavras • ${lido?"✅ Lido "+r.n+(r.n===1?"x":"x"):"Não lido"}</span></button>`};
  const grid=n=>`<div class="fl-block"><div class="fl-block-t">${n===1?"📘 Palavras simples":"📗 Palavras complexas"}</div><div class="fl-block-s">${n===1?"Leitura inicial":"Leitura avançada"}</div><div class="fl-texts">${FL_TEXTS.filter(x=>x.n===n).map(card).join("")}</div></div>`;
- abShell({title:"Fluência",sub:lv===1?"Palavras simples":"Palavras complexas",stars:Object.keys(f.textos).filter(k=>f.textos[k].n).length,
+ abShell({title:"Treino de Leitura Livre",sub:lv===1?"Palavras simples":"Palavras complexas",stars:Object.keys(f.textos).filter(k=>f.textos[k].n).length,
   single:`<div class="ab-board fl-pick fl-one">${grid(lv)}</div>`,
   msg:"",bare:true,onBack:renderStudentMenu,noSound:true});
  document.querySelectorAll(".fl-card").forEach(b=>b.onclick=()=>flStart(b.dataset.id));
@@ -1839,11 +2040,11 @@ function flFit(){
  box.style.fontSize=fs+"px";let guard=0;
  while(box.scrollHeight>par.clientHeight-4&&fs>12&&guard++<60){fs*=.94;box.style.fontSize=fs+"px"}
 }
-function flSub(){const s=document.querySelector(".hud-sub");if(s&&FL)s.textContent=`${FL.text.e} ${FL.text.t} • ${FL.done} de ${FL.words.length}`;const b=$("#abStars");if(b&&FL)b.textContent=FL.done}
+function flSub(){const s=document.querySelector(".hud-sub");if(s&&FL)s.textContent=`${FL.text.e} ${FL.text.t} • ${FL.done} de ${FL.words.length}`;}
 function flRender(){
  const T=FL.text;const tok0=abTok+1;
  const spans=FL.words.map((w,i)=>`<span class="fl-w" data-i="${i}" role="button" tabindex="0" aria-pressed="false">${esc(w.raw)}</span>`).join(" ");
- abShell({title:"Fluência",sub:`${T.e} ${esc(T.t)} • 0 de ${FL.words.length}`,stars:0,caseBtn:true,noSound:true,
+ abShell({title:"Treino de Leitura Livre",sub:`${T.e} ${esc(T.t)} • 0 de ${FL.words.length}`,stars:0,caseBtn:true,noSound:true,
   single:`<div class="ab-board fl-board"><div class="fl-text" id="flText">${spans}</div></div>`,
   msg:"Leia o texto e toque em cada palavra que já leu",
   next:{label:"Concluir ▶",disabled:true},onBack:()=>flTexts(T.n),onRestart:()=>flStart(T.id)});
@@ -1868,20 +2069,300 @@ function flRender(){
  const tk=FL.tok;window.addEventListener("resize",function f(){if(!abAlive(tk)){window.removeEventListener("resize",f);return}flFit()});
 }
 function flComplete(){
- const p=active();const T=FL.text;FL.finished=true;
+ const p=active();const T=FL.text;FL.finished=true;let flN=0;
  const now=new Date().toISOString();
- if(p){const f=flAlpha(p);const r=f.textos[T.id]=f.textos[T.id]||{n:0};r.n=(r.n||0)+1;r.quando=now;f.sessoes.push({texto:T.id,quando:now});if(f.sessoes.length>60)f.sessoes=f.sessoes.slice(-60);saveProfiles()}
+ if(p){const f=flAlpha(p);const r=f.textos[T.id]=f.textos[T.id]||{n:0};r.n=(r.n||0)+1;r.quando=now;flN=r.n;f.sessoes.push({texto:T.id,quando:now});if(f.sessoes.length>60)f.sessoes=f.sessoes.slice(-60);saveProfiles();hudStarsRefresh()}
  const lvl=FL_TEXTS.filter(x=>x.n===T.n);const idx=lvl.findIndex(x=>x.id===T.id);const next=lvl[idx+1];
  const n=$("#abNext");if(n){n.disabled=false;n.textContent=next?"Próximo texto ▶":"Escolher texto ▶";n.onclick=()=>next?flStart(next.id):flTexts(T.n)}
- abMsg("Parabéns! 🎉 Você leu o texto todo!");
+ abMsg("Parabéns! 🎉 Você leu o texto todo!"+repMsg(flN===1,flN));
  celebrateStars();abChime();autoClick("#abNext");
 }
 function flMenuMarkup(p){
  const f=flAlpha(p);
  const card=(n,t,d)=>{const l=FL_TEXTS.filter(x=>x.n===n);const c=l.filter(x=>f.textos[x.id]&&f.textos[x.id].n).length;return `<button class="category" data-fl="${n}" type="button"><strong>${t}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(c/l.length*100)}%"></span></div><span class="small">${c} de ${l.length} textos lidos</span></button>`};
- return `<h2 style="margin-top:22px">📖 Fluência de leitura</h2><div class="category-grid">${card(1,"📘 Palavras simples","Textos curtos de leitura inicial • toque em cada palavra lida")}${card(2,"📗 Palavras complexas","Textos maiores de leitura avançada • toque em cada palavra lida")}</div>`;
+ return `<h2 style="margin-top:22px">📖 Treino de Leitura Livre</h2><div class="category-grid">${card(1,"📘 Palavras simples","Textos curtos de leitura inicial • toque em cada palavra lida")}${card(2,"📗 Palavras complexas","Textos maiores de leitura avançada • toque em cada palavra lida")}</div>`;
 }
 
+/* ===== Leitura guiada: intervenção com ritmo por palavra (Iniciante / Intermediário / Avançado) =====
+   Usa as mesmas palavras (WORDS) e os mesmos textos (FL_TEXTS) do jogo. O marcador fica sobre cada palavra
+   pelo tempo do "Nível de leitura" (Iniciante 3 s, Intermediário 2 s, Avançado 1 s ou Personalizado). */
+const LG_PACE={i:{n:"Iniciante",e:"🐢",s:3},m:{n:"Intermediário",e:"🐇",s:2},a:{n:"Avançado",e:"🚀",s:1},p:{n:"Personalizado",e:"✏️",s:2}};
+function lgPaceInfo(){const b=LG_PACE[CFG.pace]||LG_PACE.i;return{n:b.n,e:b.e,s:CFG.pace==="p"?CFG.secs:b.s}}
+function lgSecTxt(x){return String(x).replace(".",",")+(x===1?" segundo":" segundos")+" por palavra"}
+const LG_KINDS={
+ ps:{t:"📘 Palavras simples",s:"Listas de 12 palavras, como a cartela do protocolo",kind:"words",cat:"simples"},
+ pc:{t:"📗 Palavras complexas",s:"Listas de 12 palavras, como a cartela do protocolo",kind:"words",cat:"complexas"},
+ fs:{t:"💬 Frases simples",s:"Uma frase de cada vez",kind:"sent",lv:1},
+ fc:{t:"💬 Frases complexas",s:"Uma frase de cada vez",kind:"sent",lv:2},
+ tc:{t:"📄 Textos curtos",s:"Parágrafo completo",kind:"text",lv:2}
+};
+/* Grupos do menu inicial: Palavras (Simples, Complexas, Personalizado), Frases (Simples, Complexas) e Textos curtos */
+const LG_GROUPS={
+ p:{t:"📖 Palavras",s:"Escolha o tipo de palavras",kinds:["ps","pc"],names:{ps:"📘 Simples",pc:"📗 Complexas"},custom:true},
+ f:{t:"💬 Frases",s:"Uma frase de cada vez",kinds:["fs","fc"],names:{fs:"💬 Simples",fc:"💬 Complexas"}}
+};
+function lgGroupOf(k){return Object.keys(LG_GROUPS).find(g=>LG_GROUPS[g].kinds.includes(k))||null}
+function lgOpen(key){LG_GROUPS[key]?lgGroup(key):lgMenu(key)}
+function lgBackTo(k,custom){const g=custom?"p":lgGroupOf(k);g?lgGroup(g):renderStudentMenu()}
+let LG=null,LGK=null;const LGCUST={};
+function lgNormSecs(v){const x=Math.round(parseFloat(String(v).replace(",","."))*10)/10;return x>=0.3&&x<=30?x:2}
+function lgPaceBtnTxt(){return "🕒 "+String(lgPaceInfo().s).replace(".",",")+" s"}
+function lgPaceRefresh(){
+ const b=$("#lgPaceBtn");if(b)b.textContent=lgPaceBtnTxt();
+ const pc=lgPaceInfo(),e=document.querySelector(".lg-pace");
+ if(e)e.textContent=`${pc.e} ${pc.n} • ${lgSecTxt(pc.s)}`;
+ else if(LGK&&!LG)lgOpen(LGK);
+}
+function lgPaceOpen(){
+ if(document.getElementById("lgPaceOv"))return;
+ const p=active();if(!p)return;
+ const L=LG,wasPlay=!!(L&&L.state==="play");if(wasPlay)lgPause();
+ const cur=CFG.pace;
+ const ov=document.createElement("div");ov.className="cfg-ov";ov.id="lgPaceOv";
+ ov.innerHTML=`<div class="cfg-box" role="dialog" aria-modal="true" aria-labelledby="lgPT"><h2 id="lgPT">🕒 Nível de leitura</h2><p class="muted small" style="margin:0 0 8px">Tempo que o marcador fica sobre cada palavra. Vale só para a Leitura guiada.</p>
+ <div class="cfg-pace">${[["i","🐢 Iniciante — 3 segundos por palavra"],["m","🐇 Intermediário — 2 segundos por palavra"],["a","🚀 Avançado — 1 segundo por palavra"]].map(d=>`<label><input type="radio" name="lgP" value="${d[0]}" ${cur===d[0]?"checked":""}>${d[1]}</label>`).join("")}<label><input type="radio" name="lgP" value="p" ${cur==="p"?"checked":""}>✏️ Personalizado — <input type="number" id="lgSecs" min="0.3" max="30" step="0.1" inputmode="decimal" value="${CFG.secs}" aria-label="Segundos por palavra"> segundos por palavra</label></div>
+ <div class="cfg-actions"><button class="primary" id="lgPaceOk" type="button">Aplicar</button></div></div>`;
+ document.body.appendChild(ov);
+ const sec=ov.querySelector("#lgSecs");sec.onfocus=sec.oninput=()=>{ov.querySelector('input[name=lgP][value=p]').checked=true};
+ const close=()=>{ov.remove();if(wasPlay&&LG===L&&abAlive(L.tok)&&L.state==="pause")lgResume()};
+ ov.onclick=e=>{if(e.target===ov)close()};
+ ov.addEventListener("keydown",e=>{if(e.key==="Escape")close();else if(e.key==="Enter"){e.preventDefault();ov.querySelector("#lgPaceOk").click()}});
+ ov.querySelector("#lgPaceOk").onclick=()=>{
+  const v=(ov.querySelector('input[name=lgP]:checked')||{}).value||"i";
+  p.cfg=Object.assign({},p.cfg,{pace:["i","m","a","p"].includes(v)?v:"i",secs:lgNormSecs(sec.value)});saveProfiles();
+  lgPaceRefresh();close()};
+ ov.querySelector("#lgPaceOk").focus();
+}
+
+/* Palavras extras só da Leitura guiada (completam 15 listas de 12 em cada bloco) */
+const LG_EXTRA={simples:["LAGO","MULA","RODA","VIDA","PATA","GATA","CAFÉ","JUDÔ","NOVO","TELA","LOJA","SALAME","PALITO","PIJAMA","PERIGO","GELADO","VELUDO","MORENO","FIGURA","DOMINÓ","TIJOLO","BEBIDA","TELEFONE","PIRULITO","CAPIVARA","LIMONADA","CARAMELO","FUMAÇA","MINUTO","MADURO","SEGURO","PILOTO","BOTINA","BELEZA","SEMANA","LAMINA","PEPITA","CABELUDO","CARETA"],
+ complexas:["FRIO","BICHO","TERRA","MASSA","CREME","PRAIA","PRIMO","LETRA","CLIMA","GLOBO","GARFO","CAMPO","CAIXA","LEITE","JOELHO","COLHER","GUERRA","QUENTE","PESSOA","BRINCO","BRANCO","ABRAÇO","LADRÃO","GRANDE","TRILHO","PATRÃO","CLASSE","FLAUTA","PASTEL","JARDIM","PORTÃO","FEIJÃO","CHINELO","CHUPETA","FACHADA","BILHETE","FILHOTE","TELHADO","ESPELHO","CAMINHO","CARINHO","COZINHA","TAMANHO","AQUÁRIO","BARRIGA","CORRIDA","CRIANÇA","ESTRADA","PLANETA","SOLDADO","VESTIDO","MONTANHA","PERGUNTA","VASSOURA","PLÁSTICO","CHOCOLATE","CHURRASCO","PASSARINHO","FLORESTA","CASTELO","GIRASSOL","TRABALHO","PRESENTE","ELEFANTE","GRAMADO","ABRIGO","VIOLÃO","SANDÁLIA","BRINQUEDO","BIGODE","ZEBRA","CRAVO"]};
+function lgBank(cat){
+ const seen=new Set(),out=[];
+ wordsFor(cat).map(x=>x.w).concat(LG_EXTRA[cat]||[]).forEach(w=>{const k=w.normalize("NFC").toUpperCase();if(!seen.has(k)){seen.add(k);out.push(w)}});
+ return out;
+}
+function lgPool(cat,rand){const a=lgBank(cat);return rand?shuffle(a.slice()):a}
+function lgCustomWords(t,q,rand){
+ const S=lgPool("simples",rand),C=lgPool("complexas",rand);
+ if(t==="s")return S.slice(0,q);
+ if(t==="c")return C.slice(0,q);
+ const out=[];let i=0,j=0;
+ while(out.length<q&&(i<S.length||j<C.length)){
+  if(out.length%2===0){out.push(i<S.length?S[i++]:C[j++])}
+  else{out.push(j<C.length?C[j++]:S[i++])}
+ }
+ return out;
+}
+function lgCustomOpen(k){
+ if(document.getElementById("lgCustOv"))return;
+ const p=active();if(!p)return;
+ const d=lgData(p),sv=d.custom||{};
+ const nS=lgBank("simples").length,nC=lgBank("complexas").length,max={s:nS,c:nC,m:nS+nC};
+ const t0=["s","c","m"].includes(sv.tipo)?sv.tipo:"s";
+ const q0=Math.min(max[t0],Math.max(1,parseInt(sv.qtd)||12)),o0=sv.ordem==="o"?"o":"r";
+ const rad=(n,v,cur,txt)=>`<label><input type="radio" name="${n}" value="${v}" ${cur===v?"checked":""}>${txt}</label>`;
+ const ov=document.createElement("div");ov.className="cfg-ov";ov.id="lgCustOv";
+ ov.innerHTML=`<div class="cfg-box" role="dialog" aria-modal="true" aria-labelledby="lgCT"><h2 id="lgCT">✏️ Personalizar treino</h2><p class="muted small" style="margin:0 0 8px">Monte o treino de palavras. Elas aparecem uma de cada vez, no tempo do botão 🕒 da barra de baixo.</p>
+ <div class="cfg-sec"><b>Quais palavras?</b></div>
+ <div class="cfg-pace">${rad("lgCt","s",t0,"📘 Só palavras simples")}${rad("lgCt","c",t0,"📗 Só palavras complexas")}${rad("lgCt","m",t0,"🔀 Misturar simples e complexas, alternando")}</div>
+ <div class="cfg-sec"><b>Quantas palavras?</b></div>
+ <div class="cfg-pace"><label>Quantidade: <input type="number" id="lgQtd" min="1" max="${max[t0]}" step="1" inputmode="numeric" value="${q0}" aria-label="Quantidade de palavras"> palavras</label><div class="lg-chips">${[5,10,12,20,30].map(n=>`<button type="button" class="lg-chip" data-q="${n}">${n}</button>`).join("")}</div><span class="small muted" id="lgMaxTxt">Máximo: ${max[t0]} palavras</span></div>
+ <div class="cfg-sec"><b>Ordem</b></div>
+ <div class="cfg-pace">${rad("lgCo","r",o0,"🎲 Sorteadas (cada treino é diferente)")}${rad("lgCo","o",o0,"🔢 Em sequência (as primeiras do banco)")}</div>
+ <div class="cfg-actions"><button class="secondary" id="lgCCancel" type="button">Cancelar</button><button class="primary" id="lgCOk" type="button">Começar ▶</button></div></div>`;
+ document.body.appendChild(ov);
+ const qtd=ov.querySelector("#lgQtd"),mx=ov.querySelector("#lgMaxTxt");
+ const tipo=()=>(ov.querySelector('input[name=lgCt]:checked')||{value:"s"}).value;
+ const upd=()=>{const m=max[tipo()];qtd.max=m;mx.textContent="Máximo: "+m+" palavras";if(+qtd.value>m)qtd.value=m};
+ ov.querySelectorAll('input[name=lgCt]').forEach(r=>r.onchange=upd);
+ ov.querySelectorAll(".lg-chip").forEach(b=>b.onclick=()=>{qtd.value=Math.min(max[tipo()],+b.dataset.q)});
+ const close=()=>ov.remove();
+ ov.onclick=e=>{if(e.target===ov)close()};
+ ov.addEventListener("keydown",e=>{if(e.key==="Escape")close();else if(e.key==="Enter"){e.preventDefault();ov.querySelector("#lgCOk").click()}});
+ ov.querySelector("#lgCCancel").onclick=close;
+ ov.querySelector("#lgCOk").onclick=()=>{
+  const t=tipo(),o=(ov.querySelector('input[name=lgCo]:checked')||{value:"r"}).value;
+  let q=Math.round(+qtd.value);if(!(q>=1))q=12;q=Math.min(q,max[t]);
+  d.custom={tipo:t,qtd:q,ordem:o};saveProfiles();
+  const id=k+"-custom";
+  LGCUST[id]={id,t:"Treino personalizado",e:"✏️",items:[lgCustomWords(t,q,o==="r")],custom:true,sub:""};
+  close();lgStart(k,id,0)};
+ ov.querySelector("#lgCOk").focus();
+}
+
+function lgData(p){p.leitura=p.leitura||{};p.leitura.u=p.leitura.u||{};p.leitura.sessoes=p.leitura.sessoes||[];return p.leitura}
+function lgUnits(k){
+ const K=LG_KINDS[k];
+ if(K.kind==="words"){
+  const ws=lgBank(K.cat),out=[];
+  for(let i=0;i<ws.length;i+=12){const l=ws.slice(i,i+12);let j=0;while(l.length<12&&ws.length>=12)l.push(ws[j++%ws.length]);const n=i/12+1;out.push({id:k+"-"+n,t:"Lista "+n,e:K.cat==="simples"?"📘":"📗",items:[l],sub:l.slice(0,3).join(" • ")+"…"})}
+  return out}
+ const seen=new Set();
+ return FL_TEXTS.filter(x=>x.n===K.lv&&!seen.has(x.id)&&seen.add(x.id)).map(x=>{
+  const sents=(x.x.match(/[^.!?]+[.!?]+/g)||[x.x]).map(z=>z.trim());
+  return K.kind==="sent"?{id:k+"-"+x.id,t:x.t,e:x.e,items:sents,sub:sents.length+" frases"}:{id:k+"-"+x.id,t:x.t,e:x.e,items:[x.x],sub:x.x.split(/\s+/).length+" palavras"}});
+}
+function lgDoneCount(k){const d=lgData(active()||{});return lgUnits(k).filter(u=>d.u[u.id]&&d.u[u.id].n).length}
+function lgMenuMarkup(p){
+ const d=lgData(p),pc=lgPaceInfo();
+ const lido=k=>lgUnits(k).filter(u=>d.u[u.id]&&d.u[u.id].n).length;
+ const card=key=>{
+  const G=LG_GROUPS[key],ks=G?G.kinds:[key];
+  const tot=ks.reduce((a,k)=>a+lgUnits(k).length,0),c=ks.reduce((a,k)=>a+lido(k),0);
+  const unit=LG_KINDS[ks[0]].kind==="words"?"listas lidas":"textos lidos";
+  return `<button class="category" data-lg="${key}" type="button"><strong>${G?G.t:LG_KINDS[key].t}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(c/Math.max(1,tot)*100)}%"></span></div><span class="small">${c} de ${tot} ${unit}</span></button>`};
+ return `<div class="lg-title-row"><h2 style="margin:22px 0 0">⏱️ Treino de Fluência Leitora</h2><button class="secondary lg-guide-btn" id="lgGuideBtn" type="button">📋 Guia de orientação</button></div><div class="category-grid">${["p","f","tc"].map(card).join("")}</div>`;
+}
+function lgGroup(g){
+ const p=active();if(!p){renderClassDashboard();return}
+ LG=null;LGK=g;const d=lgData(p),G=LG_GROUPS[g],pc=lgPaceInfo();
+ const card=k=>{const U=lgUnits(k),c=U.filter(u=>d.u[u.id]&&d.u[u.id].n).length;return `<button class="ab-lvl fl-card" data-k="${k}" type="button"><strong>${G.names[k]}</strong><span class="ab-lvl-s">${c} de ${U.length} ${LG_KINDS[k].kind==="words"?"listas lidas":"textos lidos"}</span></button>`};
+ const cust=G.custom?`<button class="ab-lvl fl-card lg-custom" data-custom="1" type="button"><strong>✏️ Personalizado</strong><span class="ab-lvl-s">Escolha o tipo e a quantidade • misture simples e complexas</span></button>`:"";
+ abShell({title:"Treino de Fluência Leitora",abCase:true,lgPace:true,sub:G.t.replace(/^\S+\s/,""),stars:G.kinds.reduce((a,k)=>a+lgDoneCount(k),0),
+  single:`<div class="ab-board fl-pick fl-one lg-group"><div class="fl-block"><div class="fl-block-t">${G.t}</div><div class="fl-block-s">${G.s} • ${pc.e} ${pc.n} (${lgSecTxt(pc.s)}) — mude no botão 🕒 da barra de baixo</div><div class="fl-texts">${G.kinds.map(card).join("")}${cust}</div></div></div>`,
+  msg:"",bare:true,noSound:true,onBack:renderStudentMenu});
+ document.querySelectorAll(".fl-card").forEach(b=>b.onclick=()=>b.dataset.custom?lgCustomOpen(G.kinds[0]):lgMenu(b.dataset.k));
+}
+/* Guia de orientação ao professor ou responsável (abre sobre a página) */
+function lgGuideOpen(){
+ if(document.getElementById("lgGuideOv"))return;
+ const ov=document.createElement("div");ov.className="cfg-ov";ov.id="lgGuideOv";
+ const li=a=>a.map(x=>{const i=x.indexOf(":");return i>0&&i<16?`<li><b>${x.slice(0,i+1)}</b>${x.slice(i+1)}</li>`:`<li>${x}</li>`}).join("");
+ ov.innerHTML=`<div class="cfg-box lg-guide" role="dialog" aria-modal="true" aria-labelledby="lgGT">
+ <h2 id="lgGT">📋 Guia de orientação ao professor ou responsável</h2>
+ <p class="lg-g-sub">Fluência leitora: como acompanhar o desenvolvimento da criança</p>
+ <h3>1. O que observar durante a leitura?</h3>
+ <ul>${li(["Precisão: observe se a criança lê as palavras corretamente, sem trocar, omitir ou acrescentar sons.","Ritmo: perceba se a leitura acontece de forma contínua, sem pausas excessivas, hesitações constantes ou separação de todas as sílabas.","Entonação: observe se a criança respeita a pontuação e utiliza uma entonação natural ao ler frases e textos.","Fluência: verifique se a leitura ocorre com precisão, ritmo adequado e naturalidade, sem depender constantemente de ajuda.","Compreensão: após a leitura, observe se a criança entende o que leu e consegue explicar o significado ou responder a perguntas sobre o texto."])}</ul>
+ <h3>2. Como orientar os treinos?</h3>
+ <ul>${li(["Comece com palavras e textos adequados ao nível de leitura da criança.","Aumente a dificuldade gradualmente, respeitando o ritmo de aprendizagem.","Priorize a leitura correta e a compreensão, sem cobrar rapidez excessiva.","Realize treinos curtos e faça pausas quando a criança demonstrar cansaço.","Incentive o esforço e valorize cada avanço, evitando comparações com outras crianças.","Repita os exercícios sempre que necessário para fortalecer a segurança na leitura."])}</ul>
+ <h3>3. Atenção: qual é o papel do aplicativo?</h3>
+ <p>O sistema, site, aplicativo ou jogo não tem capacidade de determinar, por conta própria, se a criança é ou não fluente na leitura.</p>
+ <p>A ferramenta oferece atividades para treinar e desenvolver as habilidades leitoras, mas não avalia integralmente a precisão, o ritmo, a entonação e a compreensão do aluno.</p>
+ <p>Essa avaliação cabe ao professor e/ou responsável que acompanha a criança, por meio da observação atenta de seu desempenho durante a leitura.</p>
+ <p>A quantidade de palavras lidas e o tempo utilizado são apenas indicadores parciais e não comprovam, isoladamente, a fluência leitora.</p>
+ <p class="lg-g-note"><b>Importante:</b> o objetivo é ajudar a criança a desenvolver uma leitura cada vez mais segura, natural e compreensiva, respeitando suas necessidades e seu ritmo de aprendizagem.</p>
+ <div class="cfg-actions"><button class="primary" id="lgGuideOk" type="button">Entendi</button></div></div>`;
+ document.body.appendChild(ov);
+ const close=()=>{ov.remove();document.removeEventListener("keydown",esc2)};
+ const esc2=e=>{if(e.key==="Escape")close()};
+ document.addEventListener("keydown",esc2);
+ ov.onclick=e=>{if(e.target===ov)close()};
+ ov.querySelector("#lgGuideOk").onclick=close;
+ ov.querySelector("#lgGuideOk").focus({preventScroll:true});ov.querySelector(".cfg-box").scrollTop=0;
+}
+function lgMenu(k){
+ const p=active();if(!p){renderClassDashboard();return}
+ LG=null;LGK=k;const d=lgData(p),K=LG_KINDS[k],U=lgUnits(k),pc=lgPaceInfo();
+ const card=u=>{const r=d.u[u.id],lido=r&&r.n;return `<button class="ab-lvl fl-card${lido?" lido":""}" data-id="${u.id}" type="button"><strong>${u.e} ${esc(u.t)}</strong><span class="ab-lvl-s">${esc(u.sub)} • ${lido?"✅ Lido "+r.n+"x":"Não lido"}</span></button>`};
+ const cust="";
+ abShell({title:"Treino de Fluência Leitora",abCase:true,lgPace:true,sub:K.t.replace(/^\S+\s/,""),stars:lgDoneCount(k),
+  single:`<div class="ab-board fl-pick fl-one"><div class="fl-block"><div class="fl-block-t">${K.t}</div><div class="fl-block-s">${K.s} • ${pc.e} ${pc.n} (${lgSecTxt(pc.s)}) — mude no botão 🕒 da barra de baixo</div><div class="fl-texts">${U.map(card).join("")}${cust}</div></div></div>`,
+  msg:"",bare:true,noSound:true,onBack:()=>lgBackTo(k)});
+ document.querySelectorAll(".fl-card").forEach(b=>b.onclick=()=>lgStart(k,b.dataset.id,0));
+}
+function lgStart(k,id,i){
+ const u=LGCUST[id]||lgUnits(k).find(x=>x.id===id);if(!u)return;i=i||0;
+ const item=u.items[i],isList=Array.isArray(item);
+ LG={kind:k,id,u,i,isList,words:isList?item.slice():String(item).split(/\s+/).filter(Boolean),idx:-1,state:"idle",el:0,timer:null,clk:null};
+ lgRender();
+}
+function lgFmt(ms){const s=Math.round(ms/1000);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
+function lgFit(){
+ const t=$("#lgText");if(!t)return;
+ let fs;
+ if(t.classList.contains("lg-one")){const ml=Math.max(7,...((LG&&LG.words)||[]).map(w=>w.length));fs=Math.min(t.clientHeight*.5,t.clientWidth*.9/(ml*.7))}
+ else fs=Math.min(t.clientWidth/7,t.clientHeight/2.4);
+ fs=Math.max(14,fs);t.style.fontSize=fs+"px";let g=0;
+ while((t.scrollHeight>t.clientHeight+2||t.scrollWidth>t.clientWidth+2)&&fs>12&&g++<70){fs*=.93;t.style.fontSize=fs+"px"}
+}
+function lgRender(){
+ LGK=null;const L=LG,total=L.u.items.length,pc=lgPaceInfo();
+ const spans=L.isList?`<span class="lg-w idle" id="lgOne">Pronto? 👀</span>`:L.words.map((w,n)=>`<span class="lg-w" data-i="${n}">${esc(w)}</span>`).join("");
+ const sub=`${L.u.e} ${esc(L.u.t)}${total>1?` • frase ${L.i+1} de ${total}`:""}${L.isList?` • ${L.words.length} palavras`:""}`;
+ abShell({title:"Treino de Fluência Leitora",abCase:true,lgPace:true,sub,stars:lgDoneCount(L.kind),noSound:true,
+  single:`<div class="ab-board lg-board"><div class="lg-wrap"><div class="lg-text${L.isList?" lg-list lg-one":""}" id="lgText">${spans}</div><div class="lg-bar"><span id="lgFill"></span></div><div class="lg-ctrl"><button class="go-btn" id="lgPlay" type="button">▶ Começar</button><span class="lg-clock" id="lgClock">⏱ 0:00</span>${L.isList?`<span class="lg-clock" id="lgNum">Palavra 0 de ${L.words.length}</span>`:""}</div><div class="lg-count off" id="lgCount" aria-live="assertive"></div></div></div>`,
+  msg:L.isList?"Aperte ▶ Começar. As palavras aparecem uma de cada vez":"Aperte ▶ Começar e leia a palavra que está acesa",next:{label:"Próxima ▶",disabled:true},
+  onBack:()=>L.u.custom?lgBackTo(L.kind,true):lgMenu(L.kind),onRestart:()=>lgStart(L.kind,L.id,L.i)});
+ L.tok=abTok;
+ $("#lgPlay").onclick=lgToggle;
+ const cb=$("#abCase");if(cb)cb.addEventListener("click",()=>setTimeout(lgFit,30));
+ lgFit();requestAnimationFrame(lgFit);setTimeout(lgFit,150);
+ const tk=L.tok;window.addEventListener("resize",function f(){if(!abAlive(tk)){window.removeEventListener("resize",f);return}lgFit()});
+ if(CFG.skip)abEnableNext(lgNextInfo().label,()=>lgFinish(true));
+ else if(CFG.auto)setTimeout(()=>{if(LG===L&&abAlive(L.tok)&&L.state==="idle")lgToggle()},1200);
+}
+function lgNextInfo(){
+ const L=LG,total=L.u.items.length;
+ if(L.i<total-1)return{label:"Próxima frase ▶",go:()=>lgStart(L.kind,L.id,L.i+1)};
+ if(L.u.custom)return{label:"Escolher ▶",go:()=>lgBackTo(L.kind,true)};
+ const U=lgUnits(L.kind),k=U.findIndex(x=>x.id===L.id),nx=U[k+1];
+ return nx?{label:LG_KINDS[L.kind].kind==="words"?"Próxima lista ▶":"Próximo texto ▶",go:()=>lgStart(L.kind,nx.id,0)}:{label:"Escolher ▶",go:()=>lgMenu(L.kind)};
+}
+function lgToggle(){
+ const L=LG;if(!L||!abAlive(L.tok)||L.state==="done"||L.state==="count")return;
+ if(L.state==="play")lgPause();
+ else if(L.state==="idle")lgCountdown();
+ else lgResume();
+}
+function lgCountdown(){
+ const L=LG;L.state="count";const c=$("#lgCount"),b=$("#lgPlay");if(b){b.disabled=true;b.textContent="…"}
+ let n=3;const tick=()=>{
+  if(LG!==L||!abAlive(L.tok))return;
+  if(n<=0){if(c)c.classList.add("off");if(b)b.disabled=false;lgResume();return}
+  if(c){c.textContent=n;c.classList.remove("off")}n--;L.timer=setTimeout(tick,750)};
+ abMsg("Prepare-se… 👀");tick();
+}
+function lgResume(){
+ const L=LG;if(!L||!abAlive(L.tok))return;
+ L.state="play";L.t0=Date.now()-L.el;const b=$("#lgPlay");if(b)b.textContent="⏸ Pausar";abMsg("Leia a palavra que está acesa 📖");
+ clearInterval(L.clk);L.clk=setInterval(()=>{if(LG!==L||!abAlive(L.tok)||L.state!=="play"){clearInterval(L.clk);return}L.el=Date.now()-L.t0;const k=$("#lgClock");if(k)k.textContent="⏱ "+lgFmt(L.el)},250);
+ lgStep();
+}
+function lgPause(){
+ const L=LG;clearTimeout(L.timer);clearInterval(L.clk);L.state="pause";
+ if(L.isList){if(L.idx>=0)L.idx--}
+ else{const els=document.querySelectorAll("#lgText .lg-w");if(L.idx>=0&&els[L.idx]){els[L.idx].classList.remove("cur","done");L.idx--}}
+ const b=$("#lgPlay");if(b)b.textContent="▶ Continuar";abMsg("Pausado. Aperte ▶ Continuar quando quiser");
+}
+function lgStep(){
+ const L=LG;if(!L||!abAlive(L.tok)||L.state!=="play")return;
+ if(L.isList){
+  L.idx++;
+  if(L.idx>=L.words.length){lgFinish(false);return}
+  const o=$("#lgOne");
+  if(o){o.textContent=L.words[L.idx];o.classList.remove("idle","pop");void o.offsetWidth;o.classList.add("cur","pop")}
+  const f=$("#lgFill");if(f)f.style.width=Math.round((L.idx+1)/L.words.length*100)+"%";
+  const n=$("#lgNum");if(n)n.textContent="Palavra "+(L.idx+1)+" de "+L.words.length;
+  L.timer=setTimeout(lgStep,lgPaceInfo().s*1000);return;
+ }
+ const els=document.querySelectorAll("#lgText .lg-w");
+ if(L.idx>=0&&els[L.idx]){els[L.idx].classList.remove("cur");els[L.idx].classList.add("done")}
+ L.idx++;
+ if(L.idx>=L.words.length){lgFinish(false);return}
+ els[L.idx].classList.add("cur");
+ const f=$("#lgFill");if(f)f.style.width=Math.round(L.idx/L.words.length*100)+"%";
+ L.timer=setTimeout(lgStep,lgPaceInfo().s*1000);
+}
+function lgFinish(skipped){
+ const L=LG;if(!L||L.state==="done")return;
+ clearTimeout(L.timer);clearInterval(L.clk);L.state="done";
+ const f=$("#lgFill");if(f)f.style.width="100%";
+ if(L.isList){const t=$("#lgText");if(t){t.innerHTML='<span class="lg-w done">✅ Muito bem!</span>';lgFit()}const n=$("#lgNum");if(n)n.textContent=L.words.length+" de "+L.words.length+" palavras"}
+ else document.querySelectorAll("#lgText .lg-w").forEach(e=>{e.classList.remove("cur");e.classList.add("done")});
+ const b=$("#lgPlay");if(b){b.disabled=false;b.textContent="↻ Ler de novo";b.onclick=()=>lgStart(L.kind,L.id,L.i)}
+ const p=active(),total=L.u.items.length,last=L.i>=total-1,now=new Date().toISOString();let lgN=0;
+ if(p){const d=lgData(p);
+  if(last&&!L.u.custom){const r=d.u[L.u.id]=d.u[L.u.id]||{n:0};r.n=(r.n||0)+1;r.quando=now;lgN=r.n}
+  if(last&&L.u.custom){if(d.cn==null)d.cn=d.sessoes.filter(s=>/-custom$/.test(s.unidade)).length;d.cn++}
+  d.sessoes.push({unidade:L.u.id,item:L.i,quando:now,ms:skipped?0:Math.round(L.el),ritmo:CFG.pace,palavras:L.words.length});if(d.sessoes.length>60)d.sessoes=d.sessoes.slice(-60);
+  saveProfiles()}
+ hudStarsRefresh();
+ const nx=lgNextInfo();
+ abMsg(last?"Parabéns! 🎉 Você leu tudo"+(skipped?"!":" em "+lgFmt(L.el)+"!")+(L.u.custom?"":repMsg(lgN===1,lgN)):"Muito bem! 👏 Vamos para a próxima frase");
+ if(last)celebrateStars();abChime();
+ abEnableNext(nx.label,nx.go);
+}
 (function(){const t=document.getElementById("hdrMenuBtn"),m=document.getElementById("hdrActions");if(!t||!m)return;
 const set=o=>{m.classList.toggle("open",o);t.setAttribute("aria-expanded",o?"true":"false");t.textContent=o?"✕":"☰"};
 t.addEventListener("click",e=>{e.stopPropagation();set(!m.classList.contains("open"))});
