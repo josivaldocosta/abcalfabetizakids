@@ -744,6 +744,32 @@ body.game-mode .app-footer p{margin:0}
 .ab-lvl .df{display:none}
 .game.ab-cu .ab-lvl .dm,.game.ab-cl .ab-lvl .dm{display:none}
 .game.ab-cu .ab-lvl .df,.game.ab-cl .ab-lvl .df{display:inline}
+
+/* ===== Consciência fonológica ===== */
+.fn-blocks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:clamp(6px,1.4vh,14px);overflow:auto}
+@media(orientation:portrait){.fn-blocks{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:minmax(86px,1fr)}}
+.fn-blocks .ab-lvl strong{font-size:clamp(1rem,3.2vh,1.5rem)}
+.fn-col{display:flex;flex-direction:column;align-items:center;gap:1.4cqh;flex:1 1 0;min-width:0;height:100%}
+.fn-col .ab-opt{flex:1 1 auto;min-height:0;height:auto;width:100%;max-width:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqh}
+.fn-em{display:block;line-height:1;font-size:min(34cqh,calc(62cqw / var(--n)))}
+.fn-cap{font-size:min(8cqh,calc(30cqw / var(--n)));font-weight:900;letter-spacing:.04em;color:var(--ink2)}
+.fn-spk{width:clamp(36px,7vh,52px);height:clamp(36px,7vh,52px);font-size:1rem;flex:0 0 auto}
+.ab-fig .fig-img,.fn-em .fig-img{width:1em;height:1em}
+.fn-tip{font-weight:800;color:#5b6280;text-align:center;font-size:min(5.4cqh,3.6cqw);max-width:92%;line-height:1.25}
+.fn-hy{color:#b8bdcc}
+.fn-slots{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:1.6cqw;width:min(92cqw,calc(var(--n) * 24cqh))}
+.fn-slot{aspect-ratio:1/1.1;border:0;border-radius:14px;background:#eef1fb;box-shadow:inset 0 -6px 0 #7f88b8;font-weight:900;font-size:min(12cqh,7cqw);color:var(--ink2);padding:0;min-width:0;min-height:0;line-height:1}
+.fn-slot.fill{background:#fff;box-shadow:inset 0 -6px 0 var(--ink2)}
+.fn-slot.ok{background:#e6f9ee;color:#0f6b43;box-shadow:inset 0 -6px 0 #8ad9b1}
+.fn-slot.bad{background:#ffe4e8;color:#9f1239;box-shadow:inset 0 -6px 0 #f43f5e;animation:shake .4s}
+.fn-dit{gap:2.4cqh}.fn-dit .ab-fig{font-size:min(36cqh,52cqw)}.fn-slots{width:min(92cqw,calc(var(--n) * 17cqh))}
+.ab-opt.reading{border-color:#ff9f1c!important;background:#fff1c2!important;box-shadow:0 0 0 6px rgba(255,159,28,.4)!important;transform:scale(1.04);transition:transform .15s}
+.ab-cap.reading{background:#fff1c2;color:#c2410c;border-radius:16px;box-shadow:0 0 0 8px #fff1c2}
+.ab-letter.reading{filter:brightness(1.12);transform:scale(1.06);transition:transform .15s}
+.fn-erase{width:clamp(38px,7vh,54px);height:clamp(38px,7vh,54px)}
+.ab-tile.used{opacity:.3;box-shadow:none;transform:translateY(3px)}
+.game.ab-cc .fn-slot{font-family:"Playwrite BR","Segoe Script",cursive;font-weight:600}
+.game.ab-cl .fn-slot{text-transform:lowercase}
 </style>
 </head>
 <body>
@@ -1344,17 +1370,18 @@ function renderStudentMenu(){
  stage="student-menu";syncTeacherHeader();const m=$("#appMain");
  m.innerHTML=`<section class="panel"><div class="topline stu-top"><div class="stu-hello"><h1>Olá, ${esc(p.name)}! 👋 O que vamos fazer agora?</h1><div class="stu-stars" id="stuStars" aria-live="polite"><span class="stu-star" aria-hidden="true">⭐</span><span>${starsLabel(totalStars(p))}</span></div></div><div class="stu-btns"><button class="secondary" id="changeStudent">← VOLTAR</button><button class="secondary" id="openCfgBtn" type="button">⚙️ CONFIGURAÇÕES</button></div></div>
  ${abMenuMarkup(p)}<h2 style="margin-top:22px">📚 Sílabas e palavras</h2><div class="category-grid">${["simples","complexas","simples_montar","complexas_montar"].map(c=>`<button class="category" data-cat="${c}"><strong>${catLabel(c)}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(progress(p,c)/Math.max(1,wordsFor(c).length)*100)}%"></span></div><span class="small">${progress(p,c)} de ${wordsFor(c).length} concluídas</span></button>`).join("")}</div>
- ${flMenuMarkup(p)}${lgMenuMarkup(p)}
+ ${fnMenuMarkup(p)}${flMenuMarkup(p)}${lgMenuMarkup(p)}
  <div class="admin"><div class="row"><button class="primary" id="openReport" type="button">📊 Relatório do participante</button><button class="ghost" id="resetStudentProgress">Reiniciar progresso deste participante</button></div></div></section>`;
  $("#changeStudent").onclick=renderClassDashboard;countUpStars(totalStars(p));
  m.querySelectorAll("[data-ab]").forEach(b=>b.onclick=()=>abLevels(b.dataset.ab));
+  m.querySelectorAll("[data-fn]").forEach(b=>b.onclick=()=>fnOpen(b.dataset.fn));
  m.querySelectorAll("[data-fl]").forEach(b=>b.onclick=()=>flTexts(+b.dataset.fl));
  m.querySelectorAll("[data-lg]").forEach(b=>b.onclick=()=>lgOpen(b.dataset.lg));
  $("#openReport").onclick=()=>renderReport(p.id);
  const gb=$("#lgGuideBtn");if(gb)gb.onclick=lgGuideOpen;
  $("#openCfgBtn").onclick=openCfg;
  m.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>startCategory(b.dataset.cat));
- $("#resetStudentProgress").onclick=()=>{if(confirm("Deseja reiniciar todo o progresso deste participante?")){p.alpha=null;p.fluencia=null;p.leitura=null;p.done={simples:[],complexas:[],simples_montar:[],complexas_montar:[]};p.next={simples:0,complexas:0,simples_montar:0,complexas_montar:0};saveProfiles();renderStudentMenu()}};
+ $("#resetStudentProgress").onclick=()=>{if(confirm("Deseja reiniciar todo o progresso deste participante?")){p.alpha=null;p.fono=null;p.fluencia=null;p.leitura=null;p.done={simples:[],complexas:[],simples_montar:[],complexas_montar:[]};p.next={simples:0,complexas:0,simples_montar:0,complexas_montar:0};saveProfiles();renderStudentMenu()}};
 }
 /* ===== Relatório: evolução por bloco executado (e sub-blocos) ===== */
 function rpPct(a,b){return b?Math.min(100,Math.round(a/b*100)):0}
@@ -1392,7 +1419,11 @@ function rpBlocks(p){
   const concl=runs.filter(r=>r.completed).length;
   out.push({g:"📚 Sílabas e palavras",t:catLabel(cat),note:"cada palavra é uma atividade concluída",unit:"atividades",total,done,real:Math.max(concl,done),subs,syl:true});
  });
- /* Treino de Leitura Livre */
+ /* Consciência fonológica */
+  const fd=fnData(p);
+  out.push({g:"🧠 Consciência fonológica",t:"🎵 Rimas",note:`${FN_B.length} blocos`,subs:FN_B.map((b,i)=>sub(`Bloco ${i+1}`,fd.n["rimas|"+(i+1)]))});
+  [["silabas","👏 Conte as sílabas"],["inicial","🔤 Som inicial"],["ditado","✏️ Ditado com letras"]].forEach(x=>out.push({g:"🧠 Consciência fonológica",t:x[1],note:"3 níveis",subs:[1,2,3].map(L=>sub(`Nível ${L}`,fd.n[x[0]+"|"+L]))}));
+  /* Treino de Leitura Livre */
  const f=flAlpha(p);
  [[1,"📘 Palavras simples"],[2,"📗 Palavras complexas"]].forEach(x=>{
   const l=FL_TEXTS.filter(t=>t.n===x[0]);
@@ -1612,7 +1643,8 @@ function totalStars(p){
   ["caca","inicial"].forEach(g=>[1,2,3].forEach(L=>{if(abExecGet(A,g,L)>0||((A[g]||{})[L]||[]).length>0)n++}));
   const lg=sgLedger(A);
   ["ouvir","figura","conhecer"].forEach(m=>["vogais","consoantes","completo"].forEach(k=>{if(abExecGet(A,"sons_"+m,k)>0||lg["sons_"+m+"|"+k]!=null)n++}))}
- const t=(p.fluencia&&p.fluencia.textos)||{};Object.keys(t).forEach(k=>{if(t[k]&&+t[k].n>0)n++});
+ const FD=p.fono&&p.fono.n;if(FD)Object.keys(FD).forEach(k=>{if(FD[k]>0)n++});
+  const t=(p.fluencia&&p.fluencia.textos)||{};Object.keys(t).forEach(k=>{if(t[k]&&+t[k].n>0)n++});
  const U=(p.leitura&&p.leitura.u)||{};Object.keys(U).forEach(k=>{if(U[k]&&+U[k].n>0)n++});
  return n}
 function repMsg(first,n){return first?" ⭐ +1 estrela!":(n>1?" Você já treinou "+n+" vezes. 💪":"")}
@@ -1980,6 +2012,238 @@ function abMenuMarkup(p){
  const snd=`<button class="category" data-ab="teste" type="button"><strong>🔊 Sons das letras</strong><div class="small" style="margin:12px 0 6px">Vogais • Consoantes • Alfabeto completo</div></button>`;
  return `<h2 style="margin-top:8px">🔤 Alfabeto</h2><div class="category-grid">${snd}${card("caca","🔍 Caça-Letras","Encontre as letras escondidas • 3 níveis",abUnion(a.caca),26)}${card("inicial","🅰️ Qual letra começa?","Descubra a letra inicial da figura • 3 níveis",abInicialDone(a),AB_POOL.length)}</div>`;
 }
+
+/* ===== Consciência fonológica: 1 Rimas, 2 Conte as sílabas, 3 Som inicial, 4 Ditado com letras =====
+   Banco validado previamente (nada de rima gerada ao acaso). Cada palavra: palavra|divisão silábica|sílaba tônica|pronúncia (IPA, PT-BR)|figura.
+   Figura vazia = usa a ilustração de IMAGENS_NOVAS. Rima = da vogal tônica ao fim, com a pronúncia (ó aberto ≠ ô fechado). */
+const FN_RAW=`GATO|ga-to|1|ˈga.tu|🐱
+PATO|pa-to|1|ˈpa.tu|🦆
+RATO|ra-to|1|ˈʁa.tu|🐀
+MALA|ma-la|1|ˈma.lɐ|🧳
+BALA|ba-la|1|ˈba.lɐ|🍬
+FALA|fa-la|1|ˈfa.lɐ|🗣️
+VELA|ve-la|1|ˈvɛ.lɐ|🕯️
+TELA|te-la|1|ˈtɛ.lɐ|🖥️
+JANELA|ja-ne-la|2|ʒaˈnɛ.lɐ|🪟
+PANELA|pa-ne-la|2|paˈnɛ.lɐ|🍲
+TIGELA|ti-ge-la|2|tʃiˈʒɛ.lɐ|
+MÃO|mão|1|ˈmɐ̃w̃|✋
+PÃO|pão|1|ˈpɐ̃w̃|🍞
+CÃO|cão|1|ˈkɐ̃w̃|🐶
+LEÃO|le-ão|2|leˈɐ̃w̃|🦁
+AVIÃO|a-vi-ão|3|a.viˈɐ̃w̃|✈️
+BALÃO|ba-lão|2|baˈlɐ̃w̃|🎈
+LIMÃO|li-mão|2|liˈmɐ̃w̃|🍋
+SABÃO|sa-bão|2|saˈbɐ̃w̃|🧼
+TUBARÃO|tu-ba-rão|3|tu.baˈʁɐ̃w̃|🦈
+BOLA|bo-la|1|ˈbɔ.lɐ|⚽
+COLA|co-la|1|ˈkɔ.lɐ|
+MOLA|mo-la|1|ˈmɔ.lɐ|
+ESCOLA|es-co-la|2|isˈkɔ.lɐ|🏫
+SACOLA|sa-co-la|2|saˈkɔ.lɐ|
+UVA|u-va|1|ˈu.vɐ|🍇
+LUVA|lu-va|1|ˈlu.vɐ|🧤
+CHUVA|chu-va|1|ˈʃu.vɐ|🌧️
+QUEIJO|quei-jo|1|ˈkej.ʒu|🧀
+BEIJO|bei-jo|1|ˈbej.ʒu|💋
+CÉU|céu|1|ˈsɛw|🌌
+CHAPÉU|cha-péu|2|ʃaˈpɛw|🎩
+TROFÉU|tro-féu|2|tɾoˈfɛw|🏆
+PAPEL|pa-pel|2|paˈpɛw|📄
+ANEL|a-nel|2|aˈnɛw|💍
+HOTEL|ho-tel|2|oˈtɛw|🏨
+LATA|la-ta|1|ˈla.tɐ|
+BATATA|ba-ta-ta|2|baˈta.tɐ|🥔
+BARATA|ba-ra-ta|2|baˈɾa.tɐ|🪳
+GRAVATA|gra-va-ta|2|gɾaˈva.tɐ|👔
+FOCA|fo-ca|1|ˈfɔ.kɐ|🦭
+MINHOCA|mi-nho-ca|2|miˈɲɔ.kɐ|🪱
+PIPOCA|pi-po-ca|2|piˈpɔ.kɐ|🍿
+CAFÉ|ca-fé|2|kaˈfɛ|☕
+PÉ|pé|1|ˈpɛ|🦶
+JACARÉ|ja-ca-ré|3|ʒa.kaˈɾɛ|🐊
+DENTE|den-te|1|ˈdẽ.tʃi|🦷
+PENTE|pen-te|1|ˈpẽ.tʃi|🪮
+GENTE|gen-te|1|ˈʒẽ.tʃi|👥
+PRESENTE|pre-sen-te|2|pɾeˈzẽ.tʃi|🎁
+SERPENTE|ser-pen-te|2|seɾˈpẽ.tʃi|🐍
+QUENTE|quen-te|1|ˈkẽ.tʃi|🔥
+CASA|ca-sa|1|ˈka.zɐ|🏠
+ASA|a-sa|1|ˈa.zɐ|🪽
+MAÇÃ|ma-çã|2|maˈsɐ̃|🍎
+LÃ|lã|1|ˈlɐ̃|🧶
+MANHÃ|ma-nhã|2|maˈɲɐ̃|🌅
+VACINA|va-ci-na|2|vaˈsi.nɐ|💉
+BUZINA|bu-zi-na|2|buˈzi.nɐ|
+MENINA|me-ni-na|2|meˈni.nɐ|👧
+SOL|sol|1|ˈsɔw|☀️
+CARACOL|ca-ra-col|3|ka.ɾaˈkɔw|🐌`;
+const FNW={};FN_RAW.split("\n").forEach(l=>{const a=l.split("|");FNW[a[0]]={w:a[0],s:a[1],t:+a[2],i:a[3],e:a[4]}});
+"TARTARUGA🐢 MAGO🧙 OVO🥚 VACA🐄 SAPO🐸 LUA🌙 MACACO🐒 FACA🔪 DADO🎲 JACA BANANA🍌 CEBOLA🧅 CENOURA🥕 XÍCARA☕ CHAVE🔑 GELO🧊 GIRAFA🦒 COELHO🐰 ABELHA🐝 ELEFANTE🐘 IGREJA⛪".split(" ").forEach(x=>{const m=x.match(/^([A-ZÀ-Ú]+)(.*)$/u);if(!FNW[m[1]])FNW[m[1]]={w:m[1],e:m[2]}});
+function fnFig(w){const x=FNW[w]||{};return figureMarkup({w,e:x.e||"",img:x.e?null:IMAGENS_NOVAS[w]})}
+/* Famílias de rima [chave, nível, palavras]. Chave = rima real (vogal tônica até o fim). Famílias de mesma 1ª letra da chave nunca são sorteadas juntas (evita rima aproximada). */
+const FN_FAM=[["atu",1,"GATO PATO RATO"],["ala",1,"MALA BALA FALA"],["Ela",1,"VELA TELA"],["ao",1,"MÃO PÃO CÃO"],["Ola",1,"BOLA COLA MOLA"],["uva",1,"UVA LUVA CHUVA"],["eijo",1,"QUEIJO BEIJO"],
+["Ela",2,"JANELA PANELA VELA TIGELA"],["Ola",2,"ESCOLA SACOLA BOLA"],["ao",2,"LEÃO AVIÃO BALÃO LIMÃO SABÃO TUBARÃO"],["Eu",2,"PAPEL ANEL HOTEL"],["ata",2,"LATA BATATA BARATA GRAVATA"],["Oca",2,"FOCA MINHOCA PIPOCA"],["E",2,"CAFÉ PÉ JACARÉ"],
+["ente",3,"DENTE PENTE GENTE PRESENTE SERPENTE QUENTE"],["aza",3,"CASA ASA"],["an",3,"MAÇÃ LÃ MANHÃ"],["ina",3,"VACINA BUZINA MENINA"],["Eu",3,"CÉU CHAPÉU TROFÉU"],["Ow",3,"SOL CARACOL"]];
+const FNK={};FN_FAM.forEach(f=>f[2].split(" ").forEach(w=>FNK[w]=f[0]));
+const fnG=k=>k[0].toLowerCase();
+function fnBuild(){
+ const out=[[],[],[]];let qn=0;
+ [1,2,3].forEach(lv=>{
+  const lists=FN_FAM.filter(f=>f[1]===lv).map(f=>{const ws=f[2].split(" "),n=ws.length,ps=[];for(let d=1;d<n&&ps.length<8;d++)for(let i=0;i<n&&ps.length<8;i++)ps.push([f[0],ws[i],ws[(i+d)%n]]);return ps});
+  const flat=[];for(let r=0;r<8;r++)lists.forEach(l=>{if(l[r])flat.push(l[r])});
+  const no=lv===3?4:3,pool=Object.keys(FNK).filter(w=>FN_FAM.some(f=>f[1]<=lv&&f[2].split(" ").includes(w)));
+  flat.forEach(([k,t,a])=>{
+   const ds=[],used=new Set([fnG(k)]);let j=qn*5+3,g=0;qn++;
+   while(ds.length<no-1&&g++<400){const w=pool[(j+=7)%pool.length],kk=FNK[w];if(!used.has(fnG(kk))){used.add(fnG(kk));ds.push(w)}}
+   const q={t,a,o:[a,...ds],lv};
+   if(fnRimaOk(q))out[lv-1].push(q)});
+ });
+ /* 12 blocos: 4 por nível */
+ const B=[];out.forEach(l=>{for(let i=0;i<4;i++)B.push(l.slice(Math.round(i*l.length/4),Math.round((i+1)*l.length/4)))});return B}
+/* Validação: exatamente uma alternativa rima com o alvo; as demais não rimam nem são rimas aproximadas */
+function fnRimaOk(q){const k=FNK[q.t];if(!k||FNK[q.a]!==k||q.a===q.t)return false;return q.o.filter(w=>FNK[w]===k).length===1&&q.o.every(w=>w===q.a||(FNK[w]&&fnG(FNK[w])!==fnG(k)))&&new Set(q.o).size===q.o.length}
+const FN_B=fnBuild().filter(b=>b.length);
+window.FN_BANCO={palavras:FNW,familias:FN_FAM,blocos:FN_B};
+/* Sílabas: palavra:divisão:figura */
+const FN_SIL="SOL:sol:☀️,PÃO:pão:🍞,MÃO:mão:✋,PÉ:pé:🦶,FLOR:flor:🌸,TREM:trem:🚆,LUZ:luz:💡,BOLA:bo-la:⚽,GATO:ga-to:🐱,CASA:ca-sa:🏠,PATO:pa-to:🦆,VACA:va-ca:🐄,SAPO:sa-po:🐸,FACA:fa-ca:🔪,LUA:lu-a:🌙,BOLO:bo-lo:🎂,DADO:da-do:🎲,JANELA:ja-ne-la:🪟,BANANA:ba-na-na:🍌,SAPATO:sa-pa-to:👞,CAVALO:ca-va-lo:🐴,MACACO:ma-ca-co:🐒,TOMATE:to-ma-te:🍅,CAMISA:ca-mi-sa:👕,LARANJA:la-ran-ja:🍊,PIPOCA:pi-po-ca:🍿,MOCHILA:mo-chi-la:🎒,ABELHA:a-be-lha:🐝,TELEFONE:te-le-fo-ne:📞,BORBOLETA:bor-bo-le-ta:🦋,ELEFANTE:e-le-fan-te:🐘,MELANCIA:me-lan-ci-a:🍉,TARTARUGA:tar-ta-ru-ga:🐢,ABACAXI:a-ba-ca-xi:🍍,BICICLETA:bi-ci-cle-ta:🚲,CHOCOLATE:cho-co-la-te:🍫".split(",").map(x=>{const a=x.split(":");return{w:a[0],s:a[1].split("-"),e:a[2]}});
+/* Som inicial: fonema inicial de cada figura (pela pronúncia, não pela letra) */
+const FN_F={};"BOLA:b BANANA:b BALÃO:b CASA:k QUEIJO:k COELHO:k SAPO:s CEBOLA:s CENOURA:s XÍCARA:x CHAVE:x CHUVA:x JANELA:j GELO:j JACA:j GIRAFA:j GATO:g PATO:p MACACO:m FACA:f VACA:v LUA:l ABELHA:a ELEFANTE:e IGREJA:i OVO:o UVA:u TARTARUGA:t MAGO:m DADO:d".split(" ").forEach(x=>{const a=x.split(":");FN_F[a[0]]=a[1]});
+const FN_I1=[["TAR","tár","TARTARUGA","MAGO,OVO"],["BO","bó","BOLA","GATO,CASA"],["MA","má","MACACO","LUA,PATO"],["CA","cá","CASA","BOLA,SAPO"],["PA","pá","PATO","VACA,LUA"],["SA","sá","SAPO","GATO,BOLA"],["LU","lú","LUA","VACA,PATO"],["VA","vá","VACA","LUA,CASA"],["FA","fá","FACA","BOLA,VACA"],["DA","dá","DADO","BOLA,GATO"],["GA","gá","GATO","PATO,CASA"],["JA","já","JACA","GATO,PATO"]];
+const FN_I2=[["BOLA","BANANA","SAPO,GATO"],["CASA","QUEIJO","BOLA,SAPO"],["SAPO","CEBOLA","CASA,GATO"],["XÍCARA","CHAVE","SAPO,JANELA"],["JANELA","GELO","CASA,CHAVE"],["COELHO","CASA","BOLA,GATO"],["CENOURA","SAPO","CASA,BOLA"],["CHUVA","XÍCARA","GATO,SAPO"],["GIRAFA","JACA","GATO,BOLA"],["BALÃO","BOLA","MACACO,SAPO"],["QUEIJO","COELHO","BOLA,SAPO"]];
+const FN_I3=[["A","á","ABELHA","BOLA,CASA,SAPO"],["E","ê","ELEFANTE","GATO,BOLA,LUA"],["I","i","IGREJA","VACA,PATO,SAPO"],["O","ô","OVO","MACACO,FACA,LUA"],["U","u","UVA","CASA,BOLA,PATO"],["M","mmm","MACACO","BOLA,SAPO,LUA"],["S","sss","SAPO","MACACO,FACA,VACA"],["F","fff","FACA","VACA,SAPO,MACACO"],["V","vvv","VACA","FACA,GATO,LUA"],["L","lll","LUA","MACACO,SAPO,BOLA"]];
+const FN_L={A:"a",E:"e",I:"i",O:"o",U:"u",M:"m",S:"s",F:"f",V:"v",L:"l"};
+const FN_DIT=[["BOLA GATO PATO VACA FACA LUA SAPO MALA UVA JACA","⚽ 🐱 🦆 🐄 🔪 🌙 🐸 🧳 🍇 "],["CHAVE BANANA JANELA PIPOCA MACACO TOMATE SAPATO CAMISA","🔑 🍌 🪟 🍿 🐒 🍅 👞 👕"],["CAFÉ SOFÁ AVIÃO MAÇÃ LIMÃO BEBÊ JACARÉ FEIJÃO","☕ 🛋️ ✈️ 🍎 🍋 👶 🐊 🫘"]].map(x=>{const w=x[0].split(" "),e=x[1].split(" ");return w.map((a,i)=>({w:a,e:e[i]||""}))});
+const FN_ET=[["rimas","🎵","Rimas","Palavras que terminam com o mesmo som"],["silabas","👏","Conte as sílabas","Bata palmas e conte os pedacinhos"],["inicial","🔤","Som inicial","Descubra com que som a palavra começa"],["ditado","✏️","Ditado com letras","Escute e escreva letra por letra"]];
+const FN_LV={silabas:[["1 e 2 sílabas","Palavras curtas e familiares."],["2 e 3 sílabas","Palavras um pouco maiores."],["1 a 4 sílabas","Todas as extensões, até 4 pedacinhos."]],inicial:[["Sílaba inicial","Qual figura começa com a sílaba?"],["Mesmo som inicial","Ouça a palavra; o som vale mais que a letra."],["Som da letra","O som da letra, não o nome dela."]],ditado:[["Palavras curtas","Palavras de 3 e 4 letras."],["Palavras maiores","Dígrafos e mais letras."],["Acentos e til","É, Á, Ã, Ê, Ç… cada marca conta."]]};
+function fnData(p){p.fono=p.fono||{};p.fono.n=p.fono.n||{};p.fono.h=p.fono.h||{};return p.fono}
+const fnN=(p,et,k)=>fnData(p).n[et+"|"+k]||0;
+function fnMenuMarkup(p){
+ const card=(e,i)=>{const tot=e[0]==="rimas"?FN_B.length:3;let c=0;for(let k=1;k<=tot;k++)if(fnN(p,e[0],k))c++;
+  return `<button class="category" data-fn="${e[0]}" type="button"><strong>${i+1}. ${e[1]} ${e[2]}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(c/tot*100)}%"></span></div><span class="small">${c} de ${tot} ${e[0]==="rimas"?"blocos":"níveis"} jogados • ${e[3]}</span></button>`};
+ return `<h2 style="margin-top:22px">🧠 Consciência fonológica</h2><div class="category-grid">${FN_ET.map(card).join("")}</div>`}
+function fnOpen(et){et==="rimas"?fnBlocks():fnLevels(et)}
+const fnTitle="Consciência fonológica";
+function fnBlocks(){
+ const p=active();if(!p){renderClassDashboard();return}
+ const cards=FN_B.map((b,i)=>`<button class="ab-lvl" data-b="${i+1}" type="button"><strong>🎵 Bloco ${i+1}</strong><span class="ab-lvl-d">${b.length} palavras para treinar</span><span class="ab-lvl-s">${fnN(p,"rimas",i+1)} rodadas</span></button>`).join("");
+ abShell({title:fnTitle,sub:"🎵 Rimas",noSound:true,single:`<div class="ab-board fn-blocks">${cards}</div>`,msg:"🎵 Escolha o bloco de rimas para jogar",onBack:renderStudentMenu});
+ document.querySelectorAll("[data-b]").forEach(b=>b.onclick=()=>fnStart("rimas",+b.dataset.b))}
+function fnLevels(et){
+ const p=active();if(!p){renderClassDashboard();return}const E=FN_ET.find(x=>x[0]===et);
+ const cards=FN_LV[et].map((x,i)=>`<button class="ab-lvl" data-lv="${i+1}" type="button"><strong>${["🌱","🌿","🌳"][i]} Nível ${i+1}</strong><span class="ab-lvl-d">${x[0]}</span><span class="ab-lvl-s">${x[1]}</span><span class="small">${fnN(p,et,i+1)} rodadas</span></button>`).join("");
+ abShell({title:fnTitle,sub:E[1]+" "+E[2],noSound:true,single:`<div class="ab-board ab-levels">${cards}</div>`,msg:E[1]+" Escolha um nível para jogar",onBack:renderStudentMenu});
+ document.querySelectorAll("[data-lv]").forEach(b=>b.onclick=()=>fnStart(et,+b.dataset.lv))}
+let FN=null;
+function fnStart(et,k){
+ let qs;
+ if(et==="rimas")qs=FN_B[k-1].slice();
+ else if(et==="silabas")qs=shuffle(FN_SIL.filter(x=>k===1?x.s.length<=2:k===2?x.s.length>=2&&x.s.length<=3:true)).slice(0,8);
+ else if(et==="inicial"){const src=k===1?FN_I1:k===2?FN_I2:FN_I3;qs=shuffle(src.filter(q=>fnIniOk(q,k))).slice(0,8)}
+ else qs=shuffle(FN_DIT[k-1].slice()).slice(0,6);
+ FN={et,k,qs,i:0,hit:0,err:0,re:0};fnRound()}
+function fnIniOk(q,lvl){const t=q[0];
+ if(lvl===1)return q[2].startsWith(t)&&q[3].split(",").every(w=>!w.startsWith(t)&&FNW[w]);
+ if(lvl===2)return !!FN_F[t]&&FN_F[t]===FN_F[q[1]]&&q[2].split(",").every(w=>FN_F[w]&&FN_F[w]!==FN_F[t]);
+ const f=FN_L[t];return !!f&&FN_F[q[2]]===f&&q[3].split(",").every(w=>FN_F[w]&&FN_F[w]!==f)}
+function fnRound(){const S=FN;S.re=0;({rimas:fnRimaR,silabas:fnSilR,inicial:fnIniR,ditado:fnDitR})[S.et]()}
+function fnHead(){const S=FN,E=FN_ET.find(x=>x[0]===S.et);return{title:`Pergunta ${S.i+1} de ${S.qs.length}`,sub:`${E[1]} ${S.et==="rimas"?"Rimas "+S.k:E[2]} • acertos de primeira: ${S.hit}`,abCase:true}}
+function fnSub(){const s=document.querySelector(".hud-sub");if(s)s.textContent=fnHead().sub}
+function fnBackFn(){return FN.et==="rimas"?fnBlocks:()=>fnLevels(FN.et)}
+function fnNextLbl(){return FN.i+1>=FN.qs.length?"Concluir ▶":"Próxima ▶"}
+function fnOk(tok,msg,sayT){const S=FN;if(S.re===0)S.hit++;fnSub();abMsg(msg);celebrateStars();abChime();if(sayT)setTimeout(()=>{if(abAlive(tok))abSpeak(sayT)},600);
+ abEnableNext(fnNextLbl(),()=>{if(!abAlive(tok))return;S.i++;S.i>=S.qs.length?fnFinish():fnRound()})}
+function fnBad(msg){FN.err++;FN.re++;abTick(false);abMsg(msg);setTimeout(()=>abSpeak("Tente de novo!"),250)}
+const fnPraise=()=>["Muito bem! 🎉","Isso mesmo! ⭐","Acertou! 🌟"][abRnd(3)];
+function fnLeft(inner,say){return `<div class="ab-left ab-tap" id="abLeft" role="button" tabindex="0" aria-label="Ouvir de novo"><span class="ab-hear-ic" aria-hidden="true">🔊</span>${inner}</div>`}
+let FNQ=0;
+function fnClr(){document.querySelectorAll(".reading").forEach(x=>x.classList.remove("reading"))}
+{const _sp=abSpeak;abSpeak=function(t){FNQ++;fnClr();_sp(t)}}
+function fnQueue(tok,arr){if(!abSound||!window.speechSynthesis)return;const id=++FNQ;fnClr();try{speechSynthesis.cancel()}catch(e){}
+ if(!abVoice)abVoice=abPickVoice();let i=0;
+ const next=()=>{if(id!==FNQ||!abAlive(tok)||i>=arr.length)return;const it=arr[i++],tx=typeof it==="string"?it:it.t,el=typeof it==="string"?null:document.querySelector(it.sel);const u=new SpeechSynthesisUtterance(tx);u.lang="pt-BR";if(abVoice)u.voice=abVoice;u.rate=.85;u.pitch=1.05;let f=false;const go=()=>{if(f)return;f=true;if(el)el.classList.remove("reading");setTimeout(next,350)};u.onstart=()=>{if(el&&id===FNQ)el.classList.add("reading")};u.onend=go;u.onerror=go;setTimeout(go,9000);try{speechSynthesis.speak(u)}catch(e){go()}};
+ setTimeout(next,60)}
+function fnBindLeft(say,tok,intro){const l=$("#abLeft");if(!l)return;const seq=intro||[say],go=()=>fnQueue(tok,seq);l.onclick=go;l.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};setTimeout(()=>{if(abAlive(tok))go()},450)}
+function fnPicOpts(words,cap){return `<div class="ab-board"><div class="ab-opts fn-opts" style="--n:${words.length}">${words.map(w=>`<div class="fn-col"><button class="ab-opt" type="button" data-w="${esc(w)}" aria-label="${esc(w)}"><span class="fn-em">${fnFig(w)}</span>${cap?`<span class="fn-cap ab-cap">${esc(w)}</span>`:""}</button><button class="round-btn fn-spk" type="button" data-s="${esc(w)}" aria-label="Ouvir ${esc(w)}">🔊</button></div>`).join("")}</div></div>`}
+function fnBindPics(ok,onOk,onBad,tok){
+ document.querySelectorAll(".fn-spk").forEach(b=>b.onclick=e=>{e.stopPropagation();abSpeak(abWordSay(b.dataset.s));const c=document.querySelector(`.fn-opts .ab-opt[data-w="${b.dataset.s}"]`);if(c){c.classList.add("reading");setTimeout(()=>c.classList.remove("reading"),1500)}});
+ const all=[...document.querySelectorAll(".fn-opts .ab-opt")];let solved=false;
+ const pick=b=>{if(!abAlive(tok)||solved||b.disabled)return;
+  if(b.dataset.w===ok){solved=true;b.classList.add("right");all.forEach(x=>{if(x!==b){if(!x.classList.contains("wrong"))x.classList.add("dim");x.disabled=true}});onOk(b)}
+  else{b.disabled=true;b.classList.add("wrong");onBad(b)}};
+ all.forEach(b=>b.onclick=()=>pick(b));
+ if(CFG.skip)setTimeout(()=>{if(abAlive(tok)&&!solved){const r=all.find(x=>x.dataset.w===ok);if(r)r.click()}},900)}
+function fnRimaR(){
+ const S=FN,q=S.qs[S.i],tok=abTok+1,opts=shuffle(q.o.slice()),say=abWordSay(q.t);
+ abShell(Object.assign(fnHead(),{say,
+  left:fnLeft(`<div class="ab-figwrap"><div class="ab-fig">${fnFig(q.t)}</div><div class="ab-cap">${esc(q.t)}</div></div>`),
+  right:fnPicOpts(opts,true),msg:`🎵 Qual palavra termina com o mesmo som de ${q.t.toLowerCase()}?`,
+  next:{label:fnNextLbl(),disabled:true},onBack:fnBlocks,onRestart:fnRound}));
+ fnBindLeft(say,tok,[{t:`Qual palavra termina com o mesmo som de ${abWordSay(q.t)}?`,sel:"#abLeft .ab-cap"},...opts.map(w=>({t:abWordSay(w),sel:`.fn-opts .ab-opt[data-w="${w}"]`}))]);
+ fnBindPics(q.a,()=>{const r=FNW[q.a],t=FNW[q.t];fnOk(tok,`${fnPraise()} ${q.t} e ${q.a} terminam com o mesmo som: ${rimaTxt(q.a)}`,abWordSay(q.t)+" e "+abWordSay(q.a)+" rimam")},
+  ()=>fnBad("Tente de novo! Ouça o final das palavras. 👂"),tok)}
+function rimaTxt(w){const x=FNW[w];if(!x||!x.s)return"";const sy=x.s.split("-");return "-"+sy.slice(Math.max(0,x.t-1)).join("").replace(/^(?:qu|gu|[^aeiouáàâãéêíóôõú])+/i,"")}
+function fnSilR(){
+ const S=FN,q=S.qs[S.i],tok=abTok+1,n=q.s.length,say=abWordSay(q.w);
+ abShell(Object.assign(fnHead(),{say,
+  left:fnLeft(`<div class="ab-figwrap"><div class="ab-fig">${figureMarkup({w:q.w,e:q.e,img:null})}</div><div class="ab-cap" id="abCap">${esc(q.w)}</div><div class="fn-tip">Dica para o adulto: bata palmas junto com a criança a cada pedacinho da palavra.</div></div>`),
+  right:`<div class="ab-board"><div class="ab-opts" style="--n:4">${[1,2,3,4].map(x=>`<button class="ab-opt" type="button" data-n="${x}" aria-label="${x}">${x}</button>`).join("")}</div></div>`,
+  msg:"👏 Quantas sílabas tem esta palavra?",next:{label:fnNextLbl(),disabled:true},onBack:fnBackFn(),onRestart:fnRound}));
+ fnBindLeft(say,tok,[{t:say,sel:"#abCap"},"Quantas sílabas tem esta palavra? Bata palmas a cada pedacinho e toque no número certo."]);let solved=false;const bs=[...document.querySelectorAll(".ab-opt")];
+ bs.forEach(b=>b.onclick=()=>{if(!abAlive(tok)||solved||b.disabled)return;
+  if(+b.dataset.n===n){solved=true;b.classList.add("right");bs.forEach(x=>{if(x!==b){if(!x.classList.contains("wrong"))x.classList.add("dim");x.disabled=true}});
+   $("#abCap").innerHTML=q.s.map((s,i)=>`<span style="color:${PALETTE[i%4]}">${esc(s)}</span>`).join('<span class="fn-hy">-</span>');
+   fnOk(tok,`${fnPraise()} ${q.w.toLowerCase()} tem ${n} ${n===1?"sílaba":"sílabas"}: ${q.s.join("-")}`,q.s.join(", "))}
+  else{b.disabled=true;b.classList.add("wrong");fnBad("Tente de novo! Bata palmas a cada pedacinho. 👏")}});
+ if(CFG.skip)setTimeout(()=>{if(abAlive(tok)&&!solved){const r=bs.find(x=>+x.dataset.n===n);if(r)r.click()}},900)}
+function fnIniR(){
+ const S=FN,q=S.qs[S.i],tok=abTok+1,L=S.k;let left,say,ok,words,tip="",msgQ;
+ if(L===1){say=q[1];ok=q[2];words=shuffle([q[2],...q[3].split(",")]);left=fnLeft(`<div class="ab-letter">${esc(q[0])}</div>`);msgQ=`🔤 Qual figura começa com o som ${q[0]}?`}
+ else if(L===2){say=abWordSay(q[0]);ok=q[1];words=shuffle([q[1],...q[2].split(",")]);left=fnLeft(`<div class="ab-figwrap"><div class="ab-fig">${fnFig(q[0])}</div><div class="ab-cap">${esc(q[0])}</div></div>`);msgQ=`🔤 Qual figura começa com o mesmo som de ${q[0].toLowerCase()}?`}
+ else{say=q[1];ok=q[2];words=shuffle([q[2],...q[3].split(",")]);left=fnLeft(`<div class="ab-figwrap"><div class="ab-letter">${abPair(q[0],false)}</div><div class="fn-tip">Dica para o adulto: faça só o som /${FN_L[q[0]]}/, sem dizer o nome da letra.</div></div>`);msgQ=`🔤 Qual figura começa com o som da letra ${q[0]}?`}
+ abShell(Object.assign(fnHead(),{say,left,right:fnPicOpts(words,false),msg:msgQ,next:{label:fnNextLbl(),disabled:true},onBack:fnBackFn(),onRestart:fnRound}));
+ fnBindLeft(say,tok,L===1?["Qual figura começa com o som",{t:q[1],sel:"#abLeft .ab-letter"},"Toque na figura certa."]:L===2?[{t:say,sel:"#abLeft .ab-cap"},`Qual figura começa com o mesmo som de ${say}? Toque na figura certa.`]:[`Qual figura começa com o som da letra ${abLetterName(q[0])}?`,{t:q[1],sel:"#abLeft .ab-letter"},"Toque na figura certa."]);
+ fnBindPics(ok,()=>fnOk(tok,`${fnPraise()} ${ok.charAt(0)}${ok.slice(1).toLowerCase()} começa com esse som.`,abWordSay(ok)),()=>fnBad("Tente de novo! Escute o começo de cada figura. 👂"),tok)}
+function fnDecoys(w,n){const base=[...w],ex=[];base.forEach(c=>{const b=c.normalize("NFD").replace(/[\u0300-\u036f]/g,"");if(b!==c&&!ex.includes(b))ex.push(b)});
+ const pool="ABCDEFGHIJLMNOPRSTUV".split("").filter(c=>!base.includes(c)&&!ex.includes(c));let h=0;for(const c of w)h=(h*31+c.charCodeAt(0))%997;
+ while(ex.length<n&&pool.length){ex.push(pool.splice(h%pool.length,1)[0]);h+=7}return ex}
+function fnDitR(){
+ const S=FN,q=S.qs[S.i],tok=abTok+1,w=q.w,L=[...w],say=abWordSay(w);
+ const tiles=shuffle([...L,...fnDecoys(w,S.k===1?2:3)].map((c,i)=>({c,id:i})));
+ const slots=L.map(()=>null);const cols=tiles.length<=6?3:4,rows=Math.ceil(tiles.length/cols);
+ const fig=figureMarkup({w,e:q.e,img:q.e?null:IMAGENS_NOVAS[w]});
+ abShell(Object.assign(fnHead(),{say,
+  left:fnLeft(`<div class="ab-figwrap fn-dit"><div class="ab-fig">${fig}</div><div class="fn-slots" id="fnSlots" style="--n:${L.length}"></div><button class="round-btn fn-erase" id="fnErase" type="button" aria-label="Apagar a última letra">⌫</button></div>`),
+  right:`<div class="ab-board"><div class="ab-grid" style="--cols:${cols};--rows:${rows}">${tiles.map(t=>`<button class="ab-tile" type="button" data-id="${t.id}" aria-label="Letra ${t.c}">${t.c}</button>`).join("")}</div></div>`,
+  msg:"✏️ Escute e escreva a palavra, letra por letra.",next:{label:fnNextLbl(),disabled:true},onBack:fnBackFn(),onRestart:fnRound}));
+ fnBindLeft(say,tok,["Escute e escreva a palavra, letra por letra. Toque nas letras na ordem certa.",say]);let done=false,busy=false;
+ const bt=[...document.querySelectorAll(".ab-tile")];
+ const paint=(bad)=>{$("#fnSlots").innerHTML=slots.map((s,i)=>`<button type="button" class="fn-slot${s?" fill":""}${bad&&bad[i]?" bad":""}${done?" ok":""}" data-i="${i}" aria-label="Posição ${i+1}">${s?esc(s.c):""}</button>`).join("");
+  document.querySelectorAll(".fn-slot").forEach(b=>b.onclick=()=>{if(done||busy)return;const s=slots[+b.dataset.i];if(s)rm(+b.dataset.i)});
+  bt.forEach(b=>{const u=slots.some(s=>s&&s.id===+b.dataset.id);b.disabled=u||done;b.classList.toggle("used",u)})};
+ const rm=i=>{slots[i]=null;paint()};
+ const chk=()=>{if(slots.some(s=>!s))return;const got=slots.map(s=>s.c).join("");
+  if(got===w){done=true;paint();fnOk(tok,`${fnPraise()} Você escreveu ${w.charAt(0)}${w.slice(1).toLowerCase()}!`,say)}
+  else{const bad=slots.map((s,i)=>s.c!==L[i]);busy=true;paint(bad);fnBad("Quase! Corrija as letras vermelhas. ✏️");
+   setTimeout(()=>{if(!abAlive(tok))return;bad.forEach((b,i)=>{if(b)slots[i]=null});busy=false;paint()},1100)}};
+ bt.forEach(b=>b.onclick=()=>{if(!abAlive(tok)||done||busy)return;const i=slots.findIndex(s=>!s);if(i<0)return;slots[i]=tiles.find(t=>t.id===+b.dataset.id);paint();abTick(true);chk()});
+ $("#fnErase").onclick=e=>{e.stopPropagation();if(done||busy)return;for(let i=slots.length-1;i>=0;i--)if(slots[i]){rm(i);break}};
+ paint();
+ if(CFG.skip)setTimeout(()=>{if(!abAlive(tok)||done)return;L.forEach((c,i)=>{const t=tiles.find(x=>x.c===c&&!slots.some(s=>s&&s.id===x.id));slots[i]=t});paint();chk()},900)}
+function fnFinish(){
+ const S=FN,p=active();if(!p)return;const d=fnData(p),key=S.et+"|"+S.k;
+ const first=!d.n[key];d.n[key]=(d.n[key]||0)+1;d.h[key]=(d.h[key]||0)+S.hit;saveProfiles();
+ const order=FN_ET.map(x=>x[0]),idx=order.indexOf(S.et),last=S.et==="rimas"?S.k>=FN_B.length:S.k>=3;
+ let nx;
+ if(!last)nx=[S.et==="rimas"?"Próximo bloco ▶":"Próximo nível ▶",()=>fnStart(S.et,S.k+1)];
+ else if(idx<3)nx=[`Etapa ${idx+2} ▶`,()=>fnOpen(order[idx+1])];
+ else nx=["Concluir ▶",renderStudentMenu];
+ const n=S.err===0?3:S.err<=3?2:1,E=FN_ET[idx],k=S.k;
+ abShell({title:fnTitle,sub:`${E[1]} ${E[2]} • ${S.et==="rimas"?"Bloco":"Nível"} ${k} concluído`,noSound:false,
+  single:`<div class="ab-board ab-win"><div class="ab-big-stars" aria-label="${n} de 3 estrelas">${"⭐".repeat(n)}${"☆".repeat(3-n)}</div><div class="ab-win-msg">Parabéns, ${esc(p.name)}!</div><div class="ab-win-sub">${S.hit} acertos de primeira • tentou de novo ${S.err} ${S.err===1?"vez":"vezes"}</div></div>`,
+  msg:"Você terminou! 🎉"+repMsg(first,d.n[key])+" Toque em ↻ para jogar de novo.",
+  next:{label:nx[0],disabled:false,fn:nx[1]},onBack:S.et==="rimas"?fnBlocks:()=>fnLevels(S.et),onRestart:()=>fnStart(S.et,k)});
+ celebrateStars();abChime();autoClick("#abNext")}
 
 /* ===== Treino de fluência de leitura (reconhecimento de voz) ===== */
 const FL_TEXTS=[
