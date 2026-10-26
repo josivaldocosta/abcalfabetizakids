@@ -1435,8 +1435,10 @@ function rpBlocks(p){
  const agg=(label,k,unit)=>{const items=lgItems(k);return {t:label,items,unit,n:items.reduce((s,i)=>s+i.n,0),tot:items.length,done:items.filter(i=>i.n>0).length}};
  const cn=d.cn!=null?d.cn:(d.sessoes||[]).filter(s=>/-custom$/.test(s.unidade)).length;
  out.push({g:"⏱️ Treino de Fluência Leitora",t:"📖 Palavras",subs:[agg("📘 Simples","ps","listas"),agg("📗 Complexas","pc","listas"),{t:"✏️ Personalizado",n:cn,noPct:true}]});
- out.push({g:"⏱️ Treino de Fluência Leitora",t:"💬 Frases",subs:[agg("💬 Simples","fs","textos"),agg("💬 Complexas","fc","textos")]});
- out.push({g:"⏱️ Treino de Fluência Leitora",t:"📄 Textos curtos",unit:"textos",items:lgItems("tc")});
+ const csn=(d.sessoes||[]).filter(s=>s.unidade==="ss-custom").length;
+  out.push({g:"⏱️ Treino de Fluência Leitora",t:"💬 Frases",subs:[agg("💬 Simples","fs","textos"),agg("💬 Complexas","fc","textos")]});
+ out.push({g:"⏱️ Treino de Fluência Leitora",t:"🔡 Sílabas",subs:[agg("📘 Simples","ss","listas"),agg("📗 Complexas","sc","listas"),{t:"✏️ Personalizado",n:csn,noPct:true}]});
+  out.push({g:"⏱️ Treino de Fluência Leitora",t:"📄 Textos curtos",unit:"textos",items:lgItems("tc")});
  /* totais de cada bloco */
  out.forEach(b=>{
   if(b.syl){b.pct=rpPct(b.done,b.total);return}
@@ -2353,7 +2355,12 @@ function flMenuMarkup(p){
 const LG_PACE={i:{n:"Iniciante",e:"🐢",s:3},m:{n:"Intermediário",e:"🐇",s:2},a:{n:"Avançado",e:"🚀",s:1},p:{n:"Personalizado",e:"✏️",s:2}};
 function lgPaceInfo(){const b=LG_PACE[CFG.pace]||LG_PACE.i;return{n:b.n,e:b.e,s:CFG.pace==="p"?CFG.secs:b.s}}
 function lgSecTxt(x){return String(x).replace(".",",")+(x===1?" segundo":" segundos")+" por palavra"}
+/* Bancos de sílabas do treino de fluência. Simples = consoante + vogal. Complexas = dígrafos, encontros consonantais, sílabas travadas, ç, c/g suaves, nasais */
+const SIL_S="BA BE BI BO BU CA CO CU DA DE DI DO DU FA FE FI FO FU GA GO GU JA JE JI JO JU LA LE LI LO LU MA ME MI MO MU NA NE NI NO NU PA PE PI PO PU RA RE RI RO RU SA SE SI SO SU TA TE TI TO TU VA VE VI VO VU ZA ZE ZI ZO ZU".split(" ");
+const SIL_C="CE CI GE GI QUE QUI GUE GUI ÇA ÇO ÇU CHA CHE CHI CHO CHU LHA LHE LHI LHO LHU NHA NHE NHI NHO NHU BRA BRE BRI BRO BRU CRA CRE CRI CRO CRU DRA DRE DRI DRO DRU FRA FRE FRI FRO FRU GRA GRE GRI GRO GRU PRA PRE PRI PRO PRU TRA TRE TRI TRO TRU BLA BLE BLI BLO BLU CLA CLE CLI CLO CLU FLA FLE FLI FLO FLU GLA GLE GLI GLO GLU PLA PLE PLI PLO PLU AR ER IR OR UR AL EL IL OL UL AS ES IS OS US AN EN IN ON UN BAR CAL DOR FAL GAS LAN MAR NOS PER SOL TEM VEZ ÃO ÃE ÕE RRA RRE RRI RRO RRU SSA SSE SSI SSO SSU".split(" ");
 const LG_KINDS={
+ ss:{t:"🔡 Sílabas simples",s:"Blocos de 12 sílabas (consoante + vogal)",kind:"words",cat:"silS",sil:true},
+ sc:{t:"🔡 Sílabas complexas",s:"Blocos de 12 sílabas (dígrafos, encontros, travadas)",kind:"words",cat:"silC",sil:true},
  ps:{t:"📘 Palavras simples",s:"Listas de 12 palavras, como a cartela do protocolo",kind:"words",cat:"simples"},
  pc:{t:"📗 Palavras complexas",s:"Listas de 12 palavras, como a cartela do protocolo",kind:"words",cat:"complexas"},
  fs:{t:"💬 Frases simples",s:"Uma frase de cada vez",kind:"sent",lv:1},
@@ -2363,11 +2370,12 @@ const LG_KINDS={
 /* Grupos do menu inicial: Palavras (Simples, Complexas, Personalizado), Frases (Simples, Complexas) e Textos curtos */
 const LG_GROUPS={
  p:{t:"📖 Palavras",s:"Escolha o tipo de palavras",kinds:["ps","pc"],names:{ps:"📘 Simples",pc:"📗 Complexas"},custom:true},
- f:{t:"💬 Frases",s:"Uma frase de cada vez",kinds:["fs","fc"],names:{fs:"💬 Simples",fc:"💬 Complexas"}}
+ f:{t:"💬 Frases",s:"Uma frase de cada vez",kinds:["fs","fc"],names:{fs:"💬 Simples",fc:"💬 Complexas"}},
+ s:{t:"🔡 Sílabas",s:"Escolha o tipo de sílabas",kinds:["ss","sc"],names:{ss:"📘 Simples",sc:"📗 Complexas"},custom:true}
 };
 function lgGroupOf(k){return Object.keys(LG_GROUPS).find(g=>LG_GROUPS[g].kinds.includes(k))||null}
 function lgOpen(key){LG_GROUPS[key]?lgGroup(key):lgMenu(key)}
-function lgBackTo(k,custom){const g=custom?"p":lgGroupOf(k);g?lgGroup(g):renderStudentMenu()}
+function lgBackTo(k,custom){const g=custom?(lgGroupOf(k)||"p"):lgGroupOf(k);g?lgGroup(g):renderStudentMenu()}
 let LG=null,LGK=null;const LGCUST={};
 function lgNormSecs(v){const x=Math.round(parseFloat(String(v).replace(",","."))*10)/10;return x>=0.3&&x<=30?x:2}
 function lgPaceBtnTxt(){return "🕒 "+String(lgPaceInfo().s).replace(".",",")+" s"}
@@ -2402,6 +2410,7 @@ function lgPaceOpen(){
 const LG_EXTRA={simples:["LAGO","MULA","RODA","VIDA","PATA","GATA","CAFÉ","JUDÔ","NOVO","TELA","LOJA","SALAME","PALITO","PIJAMA","PERIGO","GELADO","VELUDO","MORENO","FIGURA","DOMINÓ","TIJOLO","BEBIDA","TELEFONE","PIRULITO","CAPIVARA","LIMONADA","CARAMELO","FUMAÇA","MINUTO","MADURO","SEGURO","PILOTO","BOTINA","BELEZA","SEMANA","LAMINA","PEPITA","CABELUDO","CARETA"],
  complexas:["FRIO","BICHO","TERRA","MASSA","CREME","PRAIA","PRIMO","LETRA","CLIMA","GLOBO","GARFO","CAMPO","CAIXA","LEITE","JOELHO","COLHER","GUERRA","QUENTE","PESSOA","BRINCO","BRANCO","ABRAÇO","LADRÃO","GRANDE","TRILHO","PATRÃO","CLASSE","FLAUTA","PASTEL","JARDIM","PORTÃO","FEIJÃO","CHINELO","CHUPETA","FACHADA","BILHETE","FILHOTE","TELHADO","ESPELHO","CAMINHO","CARINHO","COZINHA","TAMANHO","AQUÁRIO","BARRIGA","CORRIDA","CRIANÇA","ESTRADA","PLANETA","SOLDADO","VESTIDO","MONTANHA","PERGUNTA","VASSOURA","PLÁSTICO","CHOCOLATE","CHURRASCO","PASSARINHO","FLORESTA","CASTELO","GIRASSOL","TRABALHO","PRESENTE","ELEFANTE","GRAMADO","ABRIGO","VIOLÃO","SANDÁLIA","BRINQUEDO","BIGODE","ZEBRA","CRAVO"]};
 function lgBank(cat){
+ if(cat==="silS")return SIL_S.slice();if(cat==="silC")return SIL_C.slice();
  const seen=new Set(),out=[];
  wordsFor(cat).map(x=>x.w).concat(LG_EXTRA[cat]||[]).forEach(w=>{const k=w.normalize("NFC").toUpperCase();if(!seen.has(k)){seen.add(k);out.push(w)}});
  return out;
@@ -2418,27 +2427,40 @@ function lgCustomWords(t,q,rand){
  }
  return out;
 }
+/* Sílabas personalizado: a configuração escolhida fica salva no participante e é mantida em todos os blocos seguintes, até o jogador mudá-la manualmente */
+function lgSilWords(cfg,adv){
+ const q=cfg.qtd,rand=cfg.ordem==="r"||cfg.tipo==="x";
+ const take=(a,n,key)=>{const o=cfg[key]||0,r=rand?shuffle(a.slice()):a.slice(o).concat(a.slice(0,o));if(adv&&!rand)cfg[key]=(o+n)%a.length;return r.slice(0,Math.min(n,a.length))};
+ if(cfg.tipo==="s")return take(SIL_S,q,"oS");
+ if(cfg.tipo==="c")return take(SIL_C,q,"oC");
+ const a=take(SIL_S,Math.ceil(q/2),"oS"),b=take(SIL_C,Math.floor(q/2),"oC");
+ if(cfg.tipo==="x")return shuffle(a.concat(b));
+ const out=[];for(let i=0;i<Math.max(a.length,b.length);i++){if(i<a.length)out.push(a[i]);if(i<b.length)out.push(b[i])}return out}
+function lgSilUnit(cfg){cfg.bn=(cfg.bn||0)+1;return{id:"ss-custom",t:"Treino personalizado • bloco "+cfg.bn,e:"✏️",items:[lgSilWords(cfg,true)],custom:true,sil:true,sub:""}}
+function lgSilNext(){const p=active();if(!p)return;const d=lgData(p);if(!d.silCfg){lgGroup("s");return}
+ const u=lgSilUnit(d.silCfg);LGCUST[u.id]=u;saveProfiles();lgStart("ss",u.id,0)}
+function lgSilCfgTxt(c){if(!c)return"";return c.qtd+" sílabas • "+({s:"só simples",c:"só complexas",m:"simples e complexas alternadas",x:"simples e complexas embaralhadas"})[c.tipo]+(c.tipo==="x"?"":c.ordem==="o"?" • em sequência":" • sorteadas")}
 function lgCustomOpen(k){
  if(document.getElementById("lgCustOv"))return;
  const p=active();if(!p)return;
- const d=lgData(p),sv=d.custom||{};
- const nS=lgBank("simples").length,nC=lgBank("complexas").length,max={s:nS,c:nC,m:nS+nC};
- const t0=["s","c","m"].includes(sv.tipo)?sv.tipo:"s";
+ const SIL=!!(LG_KINDS[k]&&LG_KINDS[k].sil),W=SIL?"sílabas":"palavras",d=lgData(p),sv=(SIL?d.silCfg:d.custom)||{};
+ const nS=lgBank(SIL?"silS":"simples").length,nC=lgBank(SIL?"silC":"complexas").length,max={s:nS,c:nC,m:nS+nC,x:nS+nC};
+ const t0=(SIL?["s","c","m","x"]:["s","c","m"]).includes(sv.tipo)?sv.tipo:"s";
  const q0=Math.min(max[t0],Math.max(1,parseInt(sv.qtd)||12)),o0=sv.ordem==="o"?"o":"r";
  const rad=(n,v,cur,txt)=>`<label><input type="radio" name="${n}" value="${v}" ${cur===v?"checked":""}>${txt}</label>`;
  const ov=document.createElement("div");ov.className="cfg-ov";ov.id="lgCustOv";
- ov.innerHTML=`<div class="cfg-box" role="dialog" aria-modal="true" aria-labelledby="lgCT"><h2 id="lgCT">✏️ Personalizar treino</h2><p class="muted small" style="margin:0 0 8px">Monte o treino de palavras. Elas aparecem uma de cada vez, no tempo do botão 🕒 da barra de baixo.</p>
- <div class="cfg-sec"><b>Quais palavras?</b></div>
- <div class="cfg-pace">${rad("lgCt","s",t0,"📘 Só palavras simples")}${rad("lgCt","c",t0,"📗 Só palavras complexas")}${rad("lgCt","m",t0,"🔀 Misturar simples e complexas, alternando")}</div>
- <div class="cfg-sec"><b>Quantas palavras?</b></div>
- <div class="cfg-pace"><label>Quantidade: <input type="number" id="lgQtd" min="1" max="${max[t0]}" step="1" inputmode="numeric" value="${q0}" aria-label="Quantidade de palavras"> palavras</label><div class="lg-chips">${[5,10,12,20,30].map(n=>`<button type="button" class="lg-chip" data-q="${n}">${n}</button>`).join("")}</div><span class="small muted" id="lgMaxTxt">Máximo: ${max[t0]} palavras</span></div>
+ ov.innerHTML=`<div class="cfg-box" role="dialog" aria-modal="true" aria-labelledby="lgCT"><h2 id="lgCT">✏️ Personalizar treino</h2><p class="muted small" style="margin:0 0 8px">Monte o treino de ${W}. ${SIL?"As sílabas":"Elas"} aparecem uma de cada vez, no tempo do botão 🕒 da barra de baixo.</p>
+ <div class="cfg-sec"><b>Quais ${W}?</b></div>
+ <div class="cfg-pace">${rad("lgCt","s",t0,"📘 Só "+W+" simples")}${rad("lgCt","c",t0,"📗 Só "+W+" complexas")}${rad("lgCt","m",t0,"🔀 Misturar simples e complexas, alternando")}${SIL?rad("lgCt","x",t0,"🎲 Embaralhar e misturar simples e complexas"):""}</div>
+ <div class="cfg-sec"><b>Quantas ${W}?</b></div>
+ <div class="cfg-pace"><label>Quantidade: <input type="number" id="lgQtd" min="1" max="${max[t0]}" step="1" inputmode="numeric" value="${q0}" aria-label="Quantidade de ${W}"> ${W}</label><div class="lg-chips">${[5,10,12,20,30].map(n=>`<button type="button" class="lg-chip" data-q="${n}">${n}</button>`).join("")}</div><span class="small muted" id="lgMaxTxt">Máximo: ${max[t0]} ${W}</span></div>
  <div class="cfg-sec"><b>Ordem</b></div>
- <div class="cfg-pace">${rad("lgCo","r",o0,"🎲 Sorteadas (cada treino é diferente)")}${rad("lgCo","o",o0,"🔢 Em sequência (as primeiras do banco)")}</div>
+ <div class="cfg-pace">${rad("lgCo","r",o0,"🎲 Sorteadas (cada treino é diferente)")}${rad("lgCo","o",o0,SIL?"🔢 Em sequência (continua de onde parou)":"🔢 Em sequência (as primeiras do banco)")}${SIL?`<span class="small muted">✔ Esta configuração fica salva e vale para todos os blocos, até você mudar aqui.</span>`:""}</div>
  <div class="cfg-actions"><button class="secondary" id="lgCCancel" type="button">Cancelar</button><button class="primary" id="lgCOk" type="button">Começar ▶</button></div></div>`;
  document.body.appendChild(ov);
  const qtd=ov.querySelector("#lgQtd"),mx=ov.querySelector("#lgMaxTxt");
  const tipo=()=>(ov.querySelector('input[name=lgCt]:checked')||{value:"s"}).value;
- const upd=()=>{const m=max[tipo()];qtd.max=m;mx.textContent="Máximo: "+m+" palavras";if(+qtd.value>m)qtd.value=m};
+ const upd=()=>{const m=max[tipo()];qtd.max=m;mx.textContent="Máximo: "+m+" "+W;if(+qtd.value>m)qtd.value=m;ov.querySelectorAll("input[name=lgCo]").forEach(r=>{r.disabled=tipo()==="x"})};
  ov.querySelectorAll('input[name=lgCt]').forEach(r=>r.onchange=upd);
  ov.querySelectorAll(".lg-chip").forEach(b=>b.onclick=()=>{qtd.value=Math.min(max[tipo()],+b.dataset.q)});
  const close=()=>ov.remove();
@@ -2448,11 +2470,12 @@ function lgCustomOpen(k){
  ov.querySelector("#lgCOk").onclick=()=>{
   const t=tipo(),o=(ov.querySelector('input[name=lgCo]:checked')||{value:"r"}).value;
   let q=Math.round(+qtd.value);if(!(q>=1))q=12;q=Math.min(q,max[t]);
-  d.custom={tipo:t,qtd:q,ordem:o};saveProfiles();
+  if(SIL){const cfg={tipo:t,qtd:q,ordem:o,oS:0,oC:0,bn:0};d.silCfg=cfg;const u=lgSilUnit(cfg);LGCUST[u.id]=u;saveProfiles();close();lgStart(k,u.id,0);return}
+   d.custom={tipo:t,qtd:q,ordem:o};saveProfiles();
   const id=k+"-custom";
   LGCUST[id]={id,t:"Treino personalizado",e:"✏️",items:[lgCustomWords(t,q,o==="r")],custom:true,sub:""};
   close();lgStart(k,id,0)};
- ov.querySelector("#lgCOk").focus();
+ upd();ov.querySelector("#lgCOk").focus();
 }
 
 function lgData(p){p.leitura=p.leitura||{};p.leitura.u=p.leitura.u||{};p.leitura.sessoes=p.leitura.sessoes||[];return p.leitura}
@@ -2460,7 +2483,7 @@ function lgUnits(k){
  const K=LG_KINDS[k];
  if(K.kind==="words"){
   const ws=lgBank(K.cat),out=[];
-  for(let i=0;i<ws.length;i+=12){const l=ws.slice(i,i+12);let j=0;while(l.length<12&&ws.length>=12)l.push(ws[j++%ws.length]);const n=i/12+1;out.push({id:k+"-"+n,t:"Lista "+n,e:K.cat==="simples"?"📘":"📗",items:[l],sub:l.slice(0,3).join(" • ")+"…"})}
+  for(let i=0;i<ws.length;i+=12){const l=ws.slice(i,i+12);let j=0;while(l.length<12&&ws.length>=12)l.push(ws[j++%ws.length]);const n=i/12+1;out.push({id:k+"-"+n,t:(K.sil?"Bloco ":"Lista ")+n,sil:!!K.sil,e:(K.cat==="simples"||K.cat==="silS")?"📘":"📗",items:[l],sub:l.slice(0,3).join(" • ")+"…"})}
   return out}
  const seen=new Set();
  return FL_TEXTS.filter(x=>x.n===K.lv&&!seen.has(x.id)&&seen.add(x.id)).map(x=>{
@@ -2476,13 +2499,13 @@ function lgMenuMarkup(p){
   const tot=ks.reduce((a,k)=>a+lgUnits(k).length,0),c=ks.reduce((a,k)=>a+lido(k),0);
   const unit=LG_KINDS[ks[0]].kind==="words"?"listas lidas":"textos lidos";
   return `<button class="category" data-lg="${key}" type="button"><strong>${G?G.t:LG_KINDS[key].t}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(c/Math.max(1,tot)*100)}%"></span></div><span class="small">${c} de ${tot} ${unit}</span></button>`};
- return `<div class="lg-title-row"><h2 style="margin:22px 0 0">⏱️ Treino de Fluência Leitora</h2><button class="secondary lg-guide-btn" id="lgGuideBtn" type="button">📋 Guia de orientação</button></div><div class="category-grid">${["p","f","tc"].map(card).join("")}</div>`;
+ return `<div class="lg-title-row"><h2 style="margin:22px 0 0">⏱️ Treino de Fluência Leitora</h2><button class="secondary lg-guide-btn" id="lgGuideBtn" type="button">📋 Guia de orientação</button></div><div class="category-grid">${["p","f","s","tc"].map(card).join("")}</div>`;
 }
 function lgGroup(g){
  const p=active();if(!p){renderClassDashboard();return}
  LG=null;LGK=g;const d=lgData(p),G=LG_GROUPS[g],pc=lgPaceInfo();
  const card=k=>{const U=lgUnits(k),c=U.filter(u=>d.u[u.id]&&d.u[u.id].n).length;return `<button class="ab-lvl fl-card" data-k="${k}" type="button"><strong>${G.names[k]}</strong><span class="ab-lvl-s">${c} de ${U.length} ${LG_KINDS[k].kind==="words"?"listas lidas":"textos lidos"}</span></button>`};
- const cust=G.custom?`<button class="ab-lvl fl-card lg-custom" data-custom="1" type="button"><strong>✏️ Personalizado</strong><span class="ab-lvl-s">Escolha o tipo e a quantidade • misture simples e complexas</span></button>`:"";
+ const cust=G.custom?`<button class="ab-lvl fl-card lg-custom" data-custom="1" type="button"><strong>✏️ Personalizado</strong><span class="ab-lvl-s">${G.kinds[0]==="ss"&&d.silCfg?"Configuração atual: "+lgSilCfgTxt(d.silCfg):G.kinds[0]==="ss"?"Escolha o tipo e a quantidade • simples, complexas ou embaralhadas":"Escolha o tipo e a quantidade • misture simples e complexas"}</span></button>`:"";
  abShell({title:"Treino de Fluência Leitora",abCase:true,lgPace:true,sub:G.t.replace(/^\S+\s/,""),stars:G.kinds.reduce((a,k)=>a+lgDoneCount(k),0),
   single:`<div class="ab-board fl-pick fl-one lg-group"><div class="fl-block"><div class="fl-block-t">${G.t}</div><div class="fl-block-s">${G.s} • ${pc.e} ${pc.n} (${lgSecTxt(pc.s)}) — mude no botão 🕒 da barra de baixo</div><div class="fl-texts">${G.kinds.map(card).join("")}${cust}</div></div></div>`,
   msg:"",bare:true,noSound:true,onBack:renderStudentMenu});
@@ -2528,7 +2551,7 @@ function lgMenu(k){
 function lgStart(k,id,i){
  const u=LGCUST[id]||lgUnits(k).find(x=>x.id===id);if(!u)return;i=i||0;
  const item=u.items[i],isList=Array.isArray(item);
- LG={kind:k,id,u,i,isList,words:isList?item.slice():String(item).split(/\s+/).filter(Boolean),idx:-1,state:"idle",el:0,timer:null,clk:null};
+ LG={sil:!!(u.sil||(LG_KINDS[k]&&LG_KINDS[k].sil)),kind:k,id,u,i,isList,words:isList?item.slice():String(item).split(/\s+/).filter(Boolean),idx:-1,state:"idle",el:0,timer:null,clk:null};
  lgRender();
 }
 function lgFmt(ms){const s=Math.round(ms/1000);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
@@ -2543,10 +2566,10 @@ function lgFit(){
 function lgRender(){
  LGK=null;const L=LG,total=L.u.items.length,pc=lgPaceInfo();
  const spans=L.isList?`<span class="lg-w idle" id="lgOne">Pronto? 👀</span>`:L.words.map((w,n)=>`<span class="lg-w" data-i="${n}">${esc(w)}</span>`).join("");
- const sub=`${L.u.e} ${esc(L.u.t)}${total>1?` • frase ${L.i+1} de ${total}`:""}${L.isList?` • ${L.words.length} palavras`:""}`;
+ const sub=`${L.u.e} ${esc(L.u.t)}${total>1?` • frase ${L.i+1} de ${total}`:""}${L.isList?` • ${L.words.length} ${L.sil?"sílabas":"palavras"}`:""}`;
  abShell({title:"Treino de Fluência Leitora",abCase:true,lgPace:true,sub,stars:lgDoneCount(L.kind),noSound:true,
-  single:`<div class="ab-board lg-board"><div class="lg-wrap"><div class="lg-text${L.isList?" lg-list lg-one":""}" id="lgText">${spans}</div><div class="lg-bar"><span id="lgFill"></span></div><div class="lg-ctrl"><button class="go-btn" id="lgPlay" type="button">▶ Começar</button><span class="lg-clock" id="lgClock">⏱ 0:00</span>${L.isList?`<span class="lg-clock" id="lgNum">Palavra 0 de ${L.words.length}</span>`:""}</div><div class="lg-count off" id="lgCount" aria-live="assertive"></div></div></div>`,
-  msg:L.isList?"Aperte ▶ Começar. As palavras aparecem uma de cada vez":"Aperte ▶ Começar e leia a palavra que está acesa",next:{label:"Próxima ▶",disabled:true},
+  single:`<div class="ab-board lg-board"><div class="lg-wrap"><div class="lg-text${L.isList?" lg-list lg-one":""}" id="lgText">${spans}</div><div class="lg-bar"><span id="lgFill"></span></div><div class="lg-ctrl"><button class="go-btn" id="lgPlay" type="button">▶ Começar</button><span class="lg-clock" id="lgClock">⏱ 0:00</span>${L.isList?`<span class="lg-clock" id="lgNum">${L.sil?"Sílaba":"Palavra"} 0 de ${L.words.length}</span>`:""}</div><div class="lg-count off" id="lgCount" aria-live="assertive"></div></div></div>`,
+  msg:L.isList?(L.sil?"Aperte ▶ Começar. As sílabas aparecem uma de cada vez":"Aperte ▶ Começar. As palavras aparecem uma de cada vez"):"Aperte ▶ Começar e leia a palavra que está acesa",next:{label:"Próxima ▶",disabled:true},
   onBack:()=>L.u.custom?lgBackTo(L.kind,true):lgMenu(L.kind),onRestart:()=>lgStart(L.kind,L.id,L.i)});
  L.tok=abTok;
  $("#lgPlay").onclick=lgToggle;
@@ -2559,7 +2582,8 @@ function lgRender(){
 function lgNextInfo(){
  const L=LG,total=L.u.items.length;
  if(L.i<total-1)return{label:"Próxima frase ▶",go:()=>lgStart(L.kind,L.id,L.i+1)};
- if(L.u.custom)return{label:"Escolher ▶",go:()=>lgBackTo(L.kind,true)};
+ if(L.u.custom&&L.u.sil)return{label:"Próximo bloco ▶",go:lgSilNext};
+  if(L.u.custom)return{label:"Escolher ▶",go:()=>lgBackTo(L.kind,true)};
  const U=lgUnits(L.kind),k=U.findIndex(x=>x.id===L.id),nx=U[k+1];
  return nx?{label:LG_KINDS[L.kind].kind==="words"?"Próxima lista ▶":"Próximo texto ▶",go:()=>lgStart(L.kind,nx.id,0)}:{label:"Escolher ▶",go:()=>lgMenu(L.kind)};
 }
@@ -2597,7 +2621,7 @@ function lgStep(){
   const o=$("#lgOne");
   if(o){o.textContent=L.words[L.idx];o.classList.remove("idle","pop");void o.offsetWidth;o.classList.add("cur","pop")}
   const f=$("#lgFill");if(f)f.style.width=Math.round((L.idx+1)/L.words.length*100)+"%";
-  const n=$("#lgNum");if(n)n.textContent="Palavra "+(L.idx+1)+" de "+L.words.length;
+  const n=$("#lgNum");if(n)n.textContent=(L.sil?"Sílaba ":"Palavra ")+(L.idx+1)+" de "+L.words.length;
   L.timer=setTimeout(lgStep,lgPaceInfo().s*1000);return;
  }
  const els=document.querySelectorAll("#lgText .lg-w");
@@ -2612,7 +2636,7 @@ function lgFinish(skipped){
  const L=LG;if(!L||L.state==="done")return;
  clearTimeout(L.timer);clearInterval(L.clk);L.state="done";
  const f=$("#lgFill");if(f)f.style.width="100%";
- if(L.isList){const t=$("#lgText");if(t){t.innerHTML='<span class="lg-w done">✅ Muito bem!</span>';lgFit()}const n=$("#lgNum");if(n)n.textContent=L.words.length+" de "+L.words.length+" palavras"}
+ if(L.isList){const t=$("#lgText");if(t){t.innerHTML='<span class="lg-w done">✅ Muito bem!</span>';lgFit()}const n=$("#lgNum");if(n)n.textContent=L.words.length+" de "+L.words.length+(L.sil?" sílabas":" palavras")}
  else document.querySelectorAll("#lgText .lg-w").forEach(e=>{e.classList.remove("cur");e.classList.add("done")});
  const b=$("#lgPlay");if(b){b.disabled=false;b.textContent="↻ Ler de novo";b.onclick=()=>lgStart(L.kind,L.id,L.i)}
  const p=active(),total=L.u.items.length,last=L.i>=total-1,now=new Date().toISOString();let lgN=0;
