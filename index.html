@@ -770,6 +770,49 @@ body.game-mode .app-footer p{margin:0}
 .ab-tile.used{opacity:.3;box-shadow:none;transform:translateY(3px)}
 .game.ab-cc .fn-slot{font-family:"Playwrite BR","Segoe Script",cursive;font-weight:600}
 .game.ab-cl .fn-slot{text-transform:lowercase}
+
+/* ===== Sílabas Simples e Complexas: tela de configuração e quadro de família ===== */
+.board.families.fam1{grid-template-rows:minmax(0,1fr);background:#fff}
+.board.families.fam1 .fam-row{padding:2.5cqh 2.5cqw;border:0}
+.board.families.fam1 .fam-chips{height:100%;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));grid-template-rows:repeat(var(--r,2),minmax(0,1fr));gap:min(2.4cqw,2.4cqh)}
+.board.families.fam1 .fchip{font-size:min(calc(46cqh / var(--r,2)),calc(80cqw / var(--cols,3) / (var(--len,2) * .62 + .5)))}
+.fc-sec{margin:20px 0 8px;font-size:1.1rem;color:#4658bd}
+.fc-seg{display:flex;gap:12px;flex-wrap:wrap}
+.fc-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}
+.fc-opt{flex:1 1 220px;min-height:56px;padding:12px 16px;border-radius:16px;border:2px solid #e1e6ff;background:linear-gradient(145deg,#fff,#f5f7ff);color:#1b2250;font-weight:800;font-size:1.02rem;text-align:left;cursor:pointer;box-shadow:0 5px 0 #e5e8fa;line-height:1.3}
+.fc-opt small{display:block;font-weight:600;color:#5b6280;margin-top:3px;font-size:.82rem}
+.fc-opt[aria-pressed="true"]{border-color:#4658bd;background:#eef1ff;box-shadow:0 5px 0 #c9d1fb}
+.fc-opt.comp[aria-pressed="true"]{border-color:#168260;background:#e9fbf2;box-shadow:0 5px 0 #bfe9d3}
+.fc-goal{margin:10px 2px 0}
+.fc-fams{display:flex;flex-wrap:wrap;gap:8px}
+.fc-chip{padding:8px 14px;border-radius:12px;border:2px solid #e1e6ff;background:#fff;font-weight:900;color:#1b2250;min-height:44px;min-width:48px;cursor:pointer;font-size:1rem}
+.fc-chip.sel{border-color:#4658bd;background:#eef1ff;box-shadow:0 3px 0 #c9d1fb}
+.fc-chip.done:after{content:" ✓";color:#178a56}
+.fc-sub{flex-basis:100%;margin:8px 0 0;font-size:.82rem;font-weight:800;color:#5b6280}
+.fc-note{background:#fff8e1;border:2px solid #ffe19a;border-radius:14px;padding:10px 14px;font-weight:600;color:#5b4a00;margin-top:12px;line-height:1.45}
+.fc-ref{margin-top:6px;min-height:40px}
+.fc-start{margin-top:20px;font-size:1.2rem;min-height:56px;padding:0 32px}
+@media(max-width:520px){.fc-opt{flex-basis:100%}}
+.ab-levels.fc-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(orientation:portrait){.ab-levels.fc-two{grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr))}}
+.board.families.fam1 .fchip.locked{opacity:.12;pointer-events:none}
+.board.fam-listen{background:#fff;display:flex;flex-direction:column;gap:2cqh;padding:2.5cqh 2.5cqw}
+.fl-top{flex:0 0 26%;display:flex;align-items:center;justify-content:center;gap:4cqw;min-height:0}
+.fl-ear{height:100%;aspect-ratio:1.5;max-width:60%;border:0;border-radius:22px;background:#e9f0ff;color:#1b2250;font-weight:900;font-size:min(10cqh,6cqw);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;box-shadow:0 5px 0 #b9c8f5;line-height:1}
+.fl-ear span{font-size:.45em}
+.fl-count{font-weight:900;font-size:min(7cqh,5cqw);color:#5b6280}
+.fl-opts{flex:1;min-height:0;display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));grid-template-rows:repeat(var(--r,2),minmax(0,1fr));gap:min(2.4cqw,2.4cqh)}
+.board.fam-listen .fchip{font-size:min(calc(30cqh / var(--r,2)),calc(80cqw / var(--cols,3) / (var(--len,2) * .62 + .5)))}
+.fchip.fl-o.right{background:#e6f9ee;color:#0f6b43}
+.fchip.fl-o.wrong{background:#ffe4e8;color:#9f1239;animation:shake .4s}
+.board.fam-words{grid-template-columns:repeat(var(--cols,2),minmax(0,1fr));grid-template-rows:repeat(var(--r,2),minmax(0,1fr))}
+.cell.fw{gap:.4cqh}
+.fw-t{display:flex;gap:.04em;font-weight:900;line-height:1;font-size:min(calc(28cqh / var(--r,2)),calc(78cqw / var(--cols,2) / (var(--len,4) * .62 + .3)))}
+.cell.fw.pseudo{background:#fffaf0}
+.fw-tag{font-size:min(calc(7cqh / var(--r,2)),2.6cqw);font-weight:800;color:#8a6a00}
+.ab-levels.fc-many{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(orientation:portrait){.ab-levels.fc-many{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-rows:max-content;overflow-y:auto;align-content:start}}
+.hud-btn.mini.on{background:#e9f0ff;box-shadow:0 4px 0 #9db4ff}
 </style>
 </head>
 <body>
@@ -1369,7 +1412,7 @@ function renderStudentMenu(){
  const p=active();if(!p){renderClassDashboard();return}
  stage="student-menu";syncTeacherHeader();const m=$("#appMain");
  m.innerHTML=`<section class="panel"><div class="topline stu-top"><div class="stu-hello"><h1>Olá, ${esc(p.name)}! 👋 O que vamos fazer agora?</h1><div class="stu-stars" id="stuStars" aria-live="polite"><span class="stu-star" aria-hidden="true">⭐</span><span>${starsLabel(totalStars(p))}</span></div></div><div class="stu-btns"><button class="secondary" id="changeStudent">← VOLTAR</button><button class="secondary" id="openCfgBtn" type="button">⚙️ CONFIGURAÇÕES</button></div></div>
- ${abMenuMarkup(p)}<h2 style="margin-top:22px">📚 Sílabas e palavras</h2><div class="category-grid">${["simples","complexas","simples_montar","complexas_montar"].map(c=>`<button class="category" data-cat="${c}"><strong>${catLabel(c)}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(progress(p,c)/Math.max(1,wordsFor(c).length)*100)}%"></span></div><span class="small">${progress(p,c)} de ${wordsFor(c).length} concluídas</span></button>`).join("")}</div>
+ ${abMenuMarkup(p)}<h2 style="margin-top:22px">📚 Sílabas e palavras</h2><div class="category-grid">${["simples","complexas","simples_montar","complexas_montar"].map(c=>`<button class="category" data-cat="${c}"><strong>${catLabel(c)}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(catProgress(p,c)/Math.max(1,catTotal(c))*100)}%"></span></div><span class="small">${catProgress(p,c)} de ${catTotal(c)} concluídas</span></button>`).join("")}</div>
  ${fnMenuMarkup(p)}${flMenuMarkup(p)}${lgMenuMarkup(p)}
  <div class="admin"><div class="row"><button class="primary" id="openReport" type="button">📊 Relatório do participante</button><button class="ghost" id="resetStudentProgress">Reiniciar progresso deste participante</button></div></div></section>`;
  $("#changeStudent").onclick=renderClassDashboard;countUpStars(totalStars(p));
@@ -1409,15 +1452,15 @@ function rpBlocks(p){
  /* Sílabas e palavras */
  const logs=p.activityLog||[];
  ["simples","complexas","simples_montar","complexas_montar"].forEach(cat=>{
-  const total=wordsFor(cat).length,done=((p.done||{})[cat]||[]).length;
+  const fm=isFamCat(cat),total=catTotal(cat),done=catProgress(p,cat);
   const runs=logs.filter(r=>r.category===cat).map(ensureRunStats);
-  const keys=cat.endsWith("_montar")?["read","build"]:["families","read","build","picture"];
+  const keys=cat.endsWith("_montar")?["read","build"]:fm?["families","read","build","picture"]:["families","read","build","picture"];
   const subs=keys.map(k=>{
    let att=0,err=0,ok=0,real=0;
    runs.forEach(r=>{const st=r.stages[k]||newStageStats();att+=st.attempts||0;err+=st.errors||0;ok+=st.correct||0;if(r.completed||(st.correct||0)>0)real++});
-   return {t:stageLabel(k),n:real,tot:runs.length,done:real,att,err,ok,stage:true}});
+   return {t:fm?famStageLabel(k):stageLabel(k),n:real,tot:runs.length,done:real,att,err,ok,stage:true}});
   const concl=runs.filter(r=>r.completed).length;
-  out.push({g:"📚 Sílabas e palavras",t:catLabel(cat),note:"cada palavra é uma atividade concluída",unit:"atividades",total,done,real:Math.max(concl,done),subs,syl:true});
+  out.push({g:"📚 Sílabas e palavras",t:catLabel(cat),note:fm?"cada família silábica é uma atividade concluída (4 etapas: ler, embaralhar, ouvir e escolher, palavras)":"cada palavra é uma atividade concluída",unit:"atividades",total,done,real:Math.max(concl,done),subs,syl:true});
  });
  /* Consciência fonológica */
   const fd=fnData(p);
@@ -1435,10 +1478,8 @@ function rpBlocks(p){
  const agg=(label,k,unit)=>{const items=lgItems(k);return {t:label,items,unit,n:items.reduce((s,i)=>s+i.n,0),tot:items.length,done:items.filter(i=>i.n>0).length}};
  const cn=d.cn!=null?d.cn:(d.sessoes||[]).filter(s=>/-custom$/.test(s.unidade)).length;
  out.push({g:"⏱️ Treino de Fluência Leitora",t:"📖 Palavras",subs:[agg("📘 Simples","ps","listas"),agg("📗 Complexas","pc","listas"),{t:"✏️ Personalizado",n:cn,noPct:true}]});
- const csn=(d.sessoes||[]).filter(s=>s.unidade==="ss-custom").length;
-  out.push({g:"⏱️ Treino de Fluência Leitora",t:"💬 Frases",subs:[agg("💬 Simples","fs","textos"),agg("💬 Complexas","fc","textos")]});
- out.push({g:"⏱️ Treino de Fluência Leitora",t:"🔡 Sílabas",subs:[agg("📘 Simples","ss","listas"),agg("📗 Complexas","sc","listas"),{t:"✏️ Personalizado",n:csn,noPct:true}]});
-  out.push({g:"⏱️ Treino de Fluência Leitora",t:"📄 Textos curtos",unit:"textos",items:lgItems("tc")});
+ out.push({g:"⏱️ Treino de Fluência Leitora",t:"💬 Frases",subs:[agg("💬 Simples","fs","textos"),agg("💬 Complexas","fc","textos")]});
+ out.push({g:"⏱️ Treino de Fluência Leitora",t:"📄 Textos curtos",unit:"textos",items:lgItems("tc")});
  /* totais de cada bloco */
  out.forEach(b=>{
   if(b.syl){b.pct=rpPct(b.done,b.total);return}
@@ -1482,7 +1523,270 @@ function renderReport(profileId){
  $("#backReport").onclick=renderStudentMenu;
  $("#printReport").onclick=()=>{const ds=[...document.querySelectorAll("#reportDetails details")],was=ds.map(x=>x.open);ds.forEach(x=>x.open=true);window.print();ds.forEach((x,i)=>x.open=was[i])};
 }
-function startCategory(cat){if(!active()){alert("Cadastre ou selecione um jogador primeiro.");return}category=cat;let ws=wordsFor(cat);if(!ws.length){alert("Não há palavras nesta categoria no banco atual.");return}let done=active().done[cat]||[];let next=ws.findIndex((w,i)=>!done.includes(w.w));if(next<0){renderCompleteCategory();return}currentIndex=next;startWord()}
+/* ===== Sílabas Simples e Complexas: famílias silábicas (método fônico) =====
+   Fonte única de dados: cada família aparece UMA vez em FAM_LIST. As famílias que antes se repetiam
+   (ex.: TA TE TI TO TU com e sem TÃO, ou CA CE CI CO CU dentro de "complexas") foram unificadas.
+   Cada família tem 2 etapas: Etapa 1 (ordem escolhida na configuração) e Etapa 2 (sílabas embaralhadas). */
+const FAM_GROUPS={
+ 1:{cat:"simples",name:"Grupo 1",title:"Consoantes com correspondências sonoras mais regulares",letters:"Vogais · M · L · F · N · S · J · V · Z",goal:"Associar fonemas e grafemas e combinar o som da consoante com cada vogal. Sons parecidos (F/V e S/Z) ficam distantes na sequência."},
+ 2:{cat:"simples",name:"Grupo 2",title:"Consoantes com sons breves",letters:"P · T · B · D",goal:"Desenvolver a percepção auditiva, identificar os fonemas e combinar os sons para ler sílabas e palavras. Sons parecidos (P/B e T/D) ficam intercalados."},
+ 3:{cat:"simples",name:"Grupo 3",title:"Consoantes com variações de pronúncia",letters:"C · G · R · X · H",goal:"Começar pelas correspondências mais previsíveis (CA, CO, CU e GA, GO, GU) e observar que algumas letras mudam de som conforme o contexto."},
+ 4:{cat:"complexas",name:"Grupo 4",title:"Relações ortográficas específicas",letters:"CE CI · GE GI · QUE QUI · GUE GUI",goal:"Ensinar de forma explícita as mudanças de som e as regras ortográficas dessas combinações."},
+ 5:{cat:"complexas",name:"Grupo 5A",title:"Ç e dígrafos",letters:"Ç · CH · NH · LH",goal:"Duas letras que representam um só som, e o Ç."},
+ 6:{cat:"complexas",name:"Grupo 5B",title:"Encontros consonantais",letters:"BL CL FL GL PL · BR CR DR FR GR PR TR VR",goal:"Duas consoantes seguidas antes da vogal, cada uma com seu som."},
+ 7:{cat:"complexas",name:"Grupo 5C",title:"Sílabas travadas (1)",letters:"AR AL AN AS AT · BAR CAR GAR MAR PAR SAR TAR CHAR",goal:"Sílabas que terminam em consoante: vogal + consoante e consoante + vogal + R."},
+ 8:{cat:"complexas",name:"Grupo 5D",title:"Sílabas travadas (2)",letters:"BAL NAL · DAN PAN TAM · MAS PAS RAZ · PLAN PRAN FRAN",goal:"Outras sílabas terminadas em consoante e sílabas com encontro consonantal."}
+};
+const FAM_LIST=(()=>{
+ const L=[];
+ const F=(id,g,label,syl,extra)=>L.push(Object.assign({id,g,label,syl},extra||{}));
+ const V5=c=>["A","E","I","O","U"].map(v=>c+v);
+ const V5a=c=>V5(c).concat([c+"ÃO"]);
+ /* Grupo 1 */
+ F(  "VOG",1,"Vogais",["A","E","I","O","U","ÃO"],{note:"Vogais: ponto de partida para formar todas as outras sílabas."});
+ ["M","L","F","N","S","J","V","Z"].forEach(c=>F(c,1,c,V5a(c)));
+ /* Grupo 2 */
+ ["P","T","B","D"].forEach(c=>F(c,2,c,V5a(c)));
+ /* Grupo 3 */
+ F("C",3,"C",["CA","CO","CU","CÃO"],{ref:"CE_CI",note:"CA, CO e CU têm o som de K. CE e CI têm outro som e ficam no Grupo 4."});
+ F("G",3,"G",["GA","GO","GU","GÃO"],{ref:"GE_GI",note:"GA, GO e GU têm o som forte do G. GE e GI têm outro som e ficam no Grupo 4."});
+ F("R",3,"R",V5a("R"),{note:"O R tem som forte no começo da palavra (RATO) e som fraco entre vogais (CARA). Leia o som, não o nome da letra."});
+ F("X",3,"X",V5a("X"),{note:"O X tem sons diferentes conforme a palavra: XÍCARA, EXAME, TÁXI, PRÓXIMO."});
+ F("H",3,"H",V5("H"),{note:"O H no início da palavra não tem som: HA, HE, HI, HO, HU se leem A, E, I, O, U."});
+ /* Grupo 4 */
+ F("CE_CI",4,"CE · CI",["CE","CI"],{ref:"C",note:"O C antes de E ou I tem som de S (CERA, CINEMA). CA, CO e CU estão no Grupo 3."});
+ F("GE_GI",4,"GE · GI",["GE","GI"],{ref:"G",note:"O G antes de E ou I tem o mesmo som do J (GELO, GIRAFA). GA, GO e GU estão no Grupo 3."});
+ F("QU",4,"QUE · QUI",["QUE","QUI","QUA","QUO","QUEI"],{note:"Em QUE e QUI o U não é pronunciado (QUEIJO, QUILO)."});
+ F("GU",4,"GUE · GUI",["GUE","GUI","GUA","GUO"],{note:"Em GUE e GUI o U não é pronunciado (GUITARRA, GUERRA)."});
+ /* Grupo 5 */
+ F("CEDILHA",5,"Ç",["ÇA","ÇO","ÇU","ÇÃO"],{sec:"Ç e dígrafos",note:"O Ç tem som de S e nunca começa palavra."});
+ ["CH","NH","LH"].forEach(c=>F(c,5,c,V5a(c),{sec:"Ç e dígrafos",note:"Duas letras, um só som."}));
+ ["BL","CL","FL","GL","PL"].forEach(c=>F(c,6,c,V5(c).concat(c==="FL"?["FLOR"]:[]),{sec:"Encontros consonantais com L"}));
+ ["BR","CR","DR","FR","GR","PR","TR","VR"].forEach(c=>F(c,6,c,V5(c).concat(c==="TR"?["TREM"]:[]),{sec:"Encontros consonantais com R"}));
+ const C5=s=>["A","E","I","O","U"].map(v=>s.slice(0,-2)+v+s.slice(-1));
+ ["AR","AL","AN","AS","AT"].forEach(s=>F(s,7,s,C5(s),{sec:"Sílabas travadas: vogal + consoante"}));
+ ["BAR","CAR","GAR","MAR","PAR","SAR","TAR","CHAR"].forEach(s=>F(s,7,s,C5(s),{sec:"Sílabas travadas: consoante + vogal + R"}));
+ ["BAL","NAL","DAN","PAN","TAM","MAS","PAS","RAZ"].forEach(s=>F(s,8,s,C5(s),{sec:"Sílabas travadas: consoante + vogal + consoante"}));
+ ["PLAN","PRAN","FRAN"].forEach(s=>F(s,8,s,C5(s),{sec:"Sílabas travadas com encontro consonantal"}));
+ return L;
+})();
+const FAM_BY_ID=Object.fromEntries(FAM_LIST.map(f=>[f.id,f]));
+function famOf(id){return FAM_BY_ID[id]}
+function isFamCat(c){return c==="simples"||c==="complexas"}
+function famCatList(cat){return FAM_LIST.filter(f=>FAM_GROUPS[f.g].cat===cat)}
+function famGroupList(g){return FAM_LIST.filter(f=>f.g===+g)}
+function famGroupsOf(cat){return Object.keys(FAM_GROUPS).map(Number).filter(g=>FAM_GROUPS[g].cat===cat)}
+function famDoneSet(p,cat){const ok=new Set(famCatList(cat).map(f=>f.id));return new Set(((p&&p.done&&p.done[cat])||[]).filter(x=>ok.has(x)))}
+function famProgress(p,cat){return famDoneSet(p,cat).size}
+function catProgress(p,c){return isFamCat(c)?famProgress(p,c):progress(p,c)}
+function catTotal(c){return isFamCat(c)?famCatList(c).length:wordsFor(c).length}
+function famStageLabel(k){return ({families:"1. Leia as sílabas",read:"2. Sílabas embaralhadas",build:"3. Ouça e escolha",picture:"4. Leia as palavras"})[k]||k}
+function famCfgGet(p){const c=(p&&p.famCfg)||{};return {order:c.order==="e"?"e":"t",g:c.g||{}}}
+let fam=null;
+function famPlural(n,a,b){return n===1?a:b}
+/* ---- Escolha do grupo (mesmo formato das telas de níveis dos outros jogos) ---- */
+function renderFamConfig(cat){
+ const p=active();if(!p){alert("Cadastre ou selecione um participante primeiro.");return}
+ category=cat;const ds=famDoneSet(p,cat),groups=famGroupsOf(cat);
+ const icons=cat==="simples"?["🌱","🌿","🌳"]:["🌿","🍀","🌳","🌲","🌴"];
+ const cards=groups.map((g,i)=>{const G=FAM_GROUPS[g],gl=famGroupList(g),gd=gl.filter(f=>ds.has(f.id)).length;
+  return `<button class="ab-lvl" data-g="${g}" type="button" title="${esc(G.goal)}"><strong>${icons[i]||"🌳"} ${esc(G.name)}</strong><span class="ab-lvl-d">${esc(G.letters)}</span><span class="ab-lvl-s">${esc(G.title)}</span><span class="small">${gd} de ${gl.length} famílias concluídas</span></button>`}).join("");
+ const ord=()=>famCfgGet(p).order;
+ const msg=()=>`${cat==="simples"?"📘":"📗"} Escolha um grupo para jogar · ordem ${ord()==="e"?"embaralhada":"tradicional"}`;
+ abShell({title:cat==="simples"?"Sílabas Simples":"Sílabas Complexas",sub:cat==="simples"?"📘 Famílias silábicas":"📗 Famílias silábicas",noSound:true,single:`<div class="ab-board ab-levels fc-lv${groups.length===2?" fc-two":groups.length>3?" fc-many":""}">${cards}</div>`,msg:msg(),onBack:renderStudentMenu});
+ /* botão de embaralhar, embaixo, como nos outros jogos */
+ const hr=document.querySelector(".bottom .hud-right"),fs=$("#fsBtn");
+ const sb=document.createElement("button");sb.type="button";sb.id="fcShuf";sb.className="hud-btn mini";sb.textContent="🔀";
+ const sync=()=>{const on=ord()==="e";sb.classList.toggle("on",on);sb.setAttribute("aria-pressed",on);sb.title=on?"Ordem embaralhada (toque para voltar à tradicional)":"Ordem tradicional (toque para embaralhar)";sb.setAttribute("aria-label",sb.title);abMsg(msg())};
+ hr.insertBefore(sb,fs);sync();
+ sb.onclick=e=>{e.stopPropagation();const sv=famCfgGet(p);p.famCfg={order:sv.order==="e"?"t":"e",g:sv.g};saveProfiles();sync()};
+ document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{const g=+b.dataset.g,gl=famGroupList(g),first=(gl.find(f=>!ds.has(f.id))||gl[0]).id;famStart({cat,g,order:ord(),start:first})});
+}
+/* ---- Rodada ----
+   Etapa 1: leitura das sílabas, uma de cada vez (aparece a próxima quando a anterior é tocada), ordem escolhida.
+   Etapa 2: as mesmas sílabas embaralhadas.
+   Etapa 3: ouça e escolha (única etapa com acertos e erros reais).
+   Etapa 4: leitura de palavras e palavras inventadas formadas com a família (fusão das sílabas).
+   Tocar numa sílaba ou palavra toca o som dela. */
+function famSpeak(t){if(!soundOn||!t)return;try{if(!window.speechSynthesis)return;if(!abVoice)abVoice=abPickVoice();const u=new SpeechSynthesisUtterance(String(t).toLowerCase());u.lang="pt-BR";if(abVoice)u.voice=abVoice;u.rate=.8;u.pitch=1.05;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+/* palavras reais de duas sílabas que não podem ser apresentadas como "inventadas" */
+const FAM_REAIS=["PAPO","PIPA","PUPA","POPA","DEDO","DADO","DUDA","LULA","LILA","LOLA","VIVO","VIVA","NINA","COCA","CACO","CUCA","MEMO","MIMO","MIMA","BOBA","BOBO","BEBA","BIBA","TATU","TETO","TITA","TOTO","FIFA","FOFO","GAGO","GUGU","RARO","SOSO","SESI","LELE","DIDI","NANA","NANO","NUNO","MOMO","PEPE","JUJU","BEBE"];
+function famBuildWords(f){
+ const set=new Set(f.syl);
+ const real=allWords.filter(w=>w.s.some(x=>set.has(x))).map((w,i)=>({w,i})).sort((a,b)=>a.w.s.length-b.w.s.length||a.i-b.i).slice(0,4).map(x=>({t:x.w.w,s:x.w.s,pseudo:false}));
+ const out=[...real];
+ const base=f.syl.filter(x=>!/Ã/.test(x)&&x.length<=3);
+ if(!["VOG","H"].includes(f.id)&&!(f.sec||"").startsWith("Sílabas travadas")&&base.length>=2){
+  const pairs=[];base.forEach(a=>base.forEach(b=>{if(a!==b)pairs.push([a,b])}));
+  const known=new Set(allWords.map(w=>w.w.normalize("NFC").toUpperCase()).concat(FAM_REAIS));
+  shuffle(pairs).filter(p=>!known.has(p.join(""))).slice(0,2).forEach(p=>out.push({t:p.join(""),s:p,pseudo:true}));
+ }
+ return out;
+}
+function famCur(){return famOf(fam.list[fam.idx])}
+function famNSteps(){return fam.words.length?4:3}
+const FAM_KEYS=["","families","read","build","picture"];
+function famStart(cfg){
+ const p=active();if(!p)return;
+ const list=famGroupList(cfg.g);if(!list.length)return;
+ fam={cat:cfg.cat,g:+cfg.g,order:cfg.order==="e"?"e":"t",list:list.map(f=>f.id),idx:Math.max(0,list.findIndex(f=>f.id===cfg.start)),step:1,view:[],shuf:false,done:{},ok:false,words:[],wview:[],l3:null};
+ category=cfg.cat;
+ const sv=famCfgGet(p);p.famCfg={order:fam.order,g:Object.assign({},sv.g,{[cfg.cat]:fam.g})};saveProfiles();
+ famBegin();
+}
+/* Etapas 1 e 2: Etapa 1 segue a configuração; Etapa 2 é sempre embaralhada. Nunca duplica nem remove sílabas. */
+function famSetView(){const f=famCur();fam.shuf=fam.step===2||fam.order==="e";fam.view=fam.shuf?shuffleDiff(f.syl):[...f.syl]}
+function famL3Init(){const f=famCur();fam.l3={order:shuffle([...f.syl]),opts:shuffleDiff(f.syl),i:0}}
+function famPrepStep(){if(fam.step<=2)famSetView();else if(fam.step===3)famL3Init();else fam.wview=shuffle([...fam.words])}
+function famBegin(){
+ clearTimeout(autoTimer);const p=active(),f=famCur();
+ fam.step=1;fam.done={1:false,2:false,3:false,4:false};fam.ok=false;lockInput=false;
+ fam.words=famBuildWords(f);famPrepStep();
+ p.activityLog=p.activityLog||[];
+ currentRun=ensureRunStats({id:makeId(),category:fam.cat,word:f.id,started:new Date().toISOString(),updated:new Date().toISOString(),completed:false,stages:{families:newStageStats(),read:newStageStats(),build:newStageStats(),picture:newStageStats()}});
+ p.activityLog.push(currentRun);saveProfiles();
+ currentIndex=fam.idx;stage="fam1";renderFamActivity();
+}
+function famGoStep(n){clearTimeout(autoTimer);fam.step=n;fam.ok=false;famPrepStep();stage="fam"+n;lockInput=false;renderFamStage()}
+function famGoIdx(i){fam.idx=i;famBegin()}
+function renderFamActivity(){
+ document.body.classList.add("game-mode");
+ $("#appMain").innerHTML=`<section class="game${caseClass()}" id="game">
+ <div class="hud">
+  <button class="hud-btn" id="menuBtn" type="button" aria-label="Menu">☰</button>
+  <div class="hud-title"><strong id="famTitle"></strong><span class="hud-sub"><span id="stageName"></span></span></div>
+  <div class="hud-menu hidden" id="hudMenu"><button type="button" data-go="config">📚 Escolher outro grupo</button><button type="button" data-go="student">👤 Menu do participante</button><button type="button" data-go="classes">🏫 Grupos e participantes</button><button type="button" data-go="cfg">⚙️ Configurações do jogo</button><button type="button" data-go="home">⌂ Menu inicial</button><button type="button" data-go="profile">👤 Meu perfil</button><button type="button" data-go="logout">🚪 Sair da conta</button></div>
+ </div>
+ <div class="stage-body stage-families" id="stageBody"></div>
+ <div class="bottom"><button class="round-btn" id="previousStage" type="button" aria-label="Voltar">◀</button><div class="bottom-text"><div class="feedback" id="feedback" aria-live="polite"></div></div><button class="round-btn" id="restartStage" type="button" aria-label="Reiniciar etapa">↻</button><button class="go-btn" id="nextStage" type="button">Já li ▶</button><div class="hud-right">${rewardMarkup()}<button class="hud-btn mini" id="shuffleFamBtn" type="button" aria-label="Embaralhar de novo" title="Embaralhar de novo">🔀</button><button class="hud-btn mini" id="caseBtn" type="button" aria-label="Tipo de letra: maiúscula, minúscula, cursiva" title="Tipo de letra"></button><button class="hud-btn" id="soundBtn" type="button" aria-label="Som" title="Som: ligar ou desligar">${soundOn?"🔊":"🔇"}</button><button class="hud-btn" id="fsBtn" type="button" aria-label="Tela cheia">⛶</button></div></div>
+ </section>`;
+ const menu=$("#hudMenu");
+ $("#menuBtn").onclick=e=>{e.stopPropagation();menu.classList.toggle("hidden")};
+ $("#game").onclick=e=>{if(!menu.contains(e.target))menu.classList.add("hidden")};
+ menu.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==="config")renderFamConfig(fam.cat);else if(g==="student")renderStudentMenu();else if(g==="classes")renderClassDashboard();else if(g==="cfg"){menu.classList.add("hidden");openCfg()}else if(g==="home")renderHome();else if(g==="profile")renderProfile();else if(g==="logout"){if(confirm("Deseja sair da conta do responsável?"))logoutTeacher("Você saiu da conta. Entre novamente para acessar seus participantes.")}});
+ const syncCase=()=>{const g=$("#game"),cb=$("#caseBtn");g.classList.remove("lc","cur");if(caseMode==="l")g.classList.add("lc");if(caseMode==="c")g.classList.add("cur");cb.textContent=CASE_LABEL[caseMode];cb.classList.toggle("cs",caseMode==="c");cb.classList.toggle("on",caseMode!=="u");const n={u:"minúsculas",l:"cursiva",c:"maiúsculas"}[caseMode];cb.title="Mudar para "+n};
+ $("#caseBtn").onclick=e=>{e.stopPropagation();caseMode=caseMode==="u"?"l":caseMode==="l"?"c":"u";try{localStorage.setItem('jl_case',caseMode)}catch(_){}syncCase()};
+ syncCase();
+ $("#soundBtn").onclick=e=>{soundOn=!soundOn;e.currentTarget.textContent=soundOn?"🔊":"🔇";if(!soundOn){try{speechSynthesis.cancel()}catch(_){}}};
+ $("#fsBtn").onclick=toggleFullscreen;
+ /* nova organização embaralhada, a pedido do professor */
+ $("#shuffleFamBtn").onclick=()=>{if(fam.ok)return;clearTimeout(autoTimer);if(fam.step<=2){fam.view=shuffleDiff(famCur().syl);fam.shuf=true}else famPrepStep();fam.done[fam.step]=false;lockInput=false;renderFamStage()};
+ $("#previousStage").onclick=()=>{noAutoOnce=true;clearTimeout(autoTimer);
+  if(fam.ok){fam.ok=false;famGoStep(famNSteps())}
+  else if(fam.step>1)famGoStep(fam.step-1)
+  else renderFamConfig(fam.cat);
+  noAutoOnce=false};
+ $("#restartStage").onclick=()=>{if(fam.ok)return;clearTimeout(autoTimer);fam.done[fam.step]=false;lockInput=false;famPrepStep();renderFamStage()};
+ $("#nextStage").onclick=()=>{
+  if(fam.ok)famAdvance();
+  else if(fam.done[fam.step]){if(fam.step<famNSteps())famGoStep(fam.step+1);else famFinish()}};
+ renderFamStage();
+}
+function famGrid(n){const cols=n<=2?n:n===4?2:3;return {cols,rws:Math.ceil(n/cols)}}
+function renderFamStage(){
+ const body=$("#stageBody");if(!fam||!body)return;
+ const f=famCur(),n=fam.list.length,step=fam.step,ns=famNSteps(),next=$("#nextStage"),restart=$("#restartStage"),sfb=$("#shuffleFamBtn");
+ const ft=$("#famTitle");if(ft)ft.textContent=`Família ${f.label} · ${fam.idx+1} de ${n}`;
+ const sn=$("#stageName");
+ body.className="stage-body stage-families";
+ if(fam.ok){
+  if(sn)sn.textContent="Família concluída!";
+  const len=f.syl.join("").length+f.syl.length*.5;
+  body.innerHTML=`<div class="board win" style="--len:${len}"><div class="win-emoji">🎉</div><div class="win-word">${f.syl.map((sy,i)=>`<span style="color:${PALETTE[i%PALETTE.length]};margin:0 .12em">${esc(sy)}</span>`).join("")}</div><div class="win-msg">Família ${esc(f.label)} concluída!</div></div>`;
+  setFb(fam.idx+1<n?"🎉 Muito bem! Aperte Próxima família.":"🎉 Muito bem! Você terminou o grupo.");
+  next.textContent=fam.idx+1<n?"Próxima família ▶":"Finalizar ▶";next.disabled=false;next.classList.remove("hidden");
+  restart.classList.add("hidden");sfb.classList.add("hidden");return;
+ }
+ restart.classList.remove("hidden");sfb.classList.remove("hidden");
+ const lbl=["","Leia as sílabas ("+(fam.shuf?"embaralhadas":"ordem tradicional")+")","Sílabas embaralhadas","Ouça e escolha","Leia as palavras"][step];
+ if(sn)sn.textContent=`Etapa ${step} de ${ns} · ${lbl}`;
+ const key=FAM_KEYS[step],stat=()=>currentRun&&currentRun.stages[key];
+ const save=()=>{if(currentRun){currentRun.updated=new Date().toISOString();saveProfiles()}};
+ const doneMsg=step<ns?`🎉 Etapa ${step} pronta! Aperte Etapa ${step+1}.`:"🎉 Muito bem! Aperte Concluir.";
+ const finishStep=()=>{fam.done[step]=true;next.disabled=false;setFb(doneMsg)};
+ next.textContent=step<ns?`Etapa ${step+1} ▶`:"Concluir ▶";next.classList.remove("hidden");
+ const alreadyDone=!!fam.done[step];
+ if(step<=2){
+  const {cols,rws}=famGrid(fam.view.length);
+  const lockOn=step===1&&!alreadyDone&&!CFG.skip;
+  body.innerHTML=`<div class="board families fam1" style="--rows:${rws};--r:${rws};--cols:${cols}"><div class="fam-row"><div class="fam-chips">${fam.view.map((sy,i)=>`<button type="button" class="fchip${lockOn&&i>0?" locked":""}" ${lockOn&&i>0?"disabled":""} style="--len:${sy.length}" aria-pressed="false">${esc(sy)}</button>`).join("")}</div></div></div>`;
+  const els=[...body.querySelectorAll(".fchip")];
+  const markAll=()=>els.forEach(b=>{b.classList.remove("locked");b.disabled=false;b.classList.add("marked");b.setAttribute("aria-pressed","true")});
+  els.forEach(b=>b.onclick=()=>{
+   if(stage!=="fam"+step||b.classList.contains("marked")||b.disabled)return;
+   b.classList.add("marked");b.setAttribute("aria-pressed","true");famSpeak(b.textContent);
+   if(stat()){stat().attempts++;stat().correct++;save()}
+   const lk=els.find(x=>x.classList.contains("locked"));if(lk){lk.classList.remove("locked");lk.disabled=false}
+   const dn=els.filter(x=>x.classList.contains("marked")).length;
+   if(dn===els.length){finishStep();celebrateStars();playSuccess();autoNext()}
+   else setFb(`Muito bem! ${dn} de ${els.length}.`)});
+  if(alreadyDone){markAll();next.disabled=false;setFb(doneMsg)}
+  else{next.disabled=true;setFb(step===1?(f.note?"💡 "+f.note:"Toque na sílaba, ouça e leia"):"Leia e toque nas sílabas embaralhadas")}
+  if(CFG.skip&&!alreadyDone){markAll();finishStep();autoNext()}
+ }else if(step===3){
+  const L=fam.l3,total=L.order.length,{cols,rws}=famGrid(L.opts.length);
+  body.innerHTML=`<div class="board fam-listen" style="--rows:${rws};--r:${rws};--cols:${cols}"><div class="fl-top"><button type="button" class="fl-ear" id="famEar" aria-label="Ouvir de novo">🔊<span>Ouvir</span></button><div class="fl-count" id="flCount"></div></div><div class="fl-opts">${L.opts.map(sy=>`<button type="button" class="fchip fl-o" data-s="${esc(sy)}" style="--len:${sy.length}">${esc(sy)}</button>`).join("")}</div></div>`;
+  const cnt=()=>{const c=$("#flCount");if(c)c.textContent=alreadyDone||fam.done[3]?`${total} de ${total}`:`${Math.min(L.i+1,total)} de ${total}`};
+  cnt();
+  const say=()=>famSpeak(L.order[L.i]);
+  $("#famEar").onclick=()=>{if(fam.done[3])return;if(!soundOn){soundOn=true;const sb=$("#soundBtn");if(sb)sb.textContent="🔊"}say()};
+  const opts=[...body.querySelectorAll(".fl-o")];
+  opts.forEach(b=>b.onclick=()=>{
+   if(lockInput||stage!=="fam3"||fam.done[3])return;
+   const target=L.order[L.i],st=stat();if(st)st.attempts++;
+   if(b.dataset.s===target){
+    if(st){st.correct++;save()}
+    lockInput=true;b.classList.add("right");L.i++;
+    if(L.i>=total){fam.done[3]=true;lockInput=false;opts.forEach(o=>{o.classList.remove("right");o.classList.add("marked")});cnt();finishStep();celebrateStars();playSuccess();autoNext()}
+    else{setFb(`✅ Isso mesmo! ${L.i} de ${total}.`);setTimeout(()=>{b.classList.remove("right");lockInput=false;if(stage!=="fam3")return;cnt();say()},900)}
+   }else{
+    if(st){st.errors++;save()}
+    b.classList.add("wrong");setFb("Quase! Escute de novo e tente outra sílaba.");say();
+    setTimeout(()=>b.classList.remove("wrong"),650)}
+  });
+  if(alreadyDone){opts.forEach(o=>o.classList.add("marked"));next.disabled=false;setFb(doneMsg)}
+  else{next.disabled=true;
+   if(CFG.skip){fam.done[3]=true;opts.forEach(o=>o.classList.add("marked"));cnt();finishStep();autoNext()}
+   else{setFb(soundOn?"🔊 Escute e toque na sílaba que você ouviu":"🔇 Toque em 🔊 Ouvir (ou o professor fala a sílaba) e escolha");if(soundOn)setTimeout(()=>{if(stage==="fam3"&&!fam.done[3])say()},400)}}
+ }else{
+  const W=fam.wview,{cols,rws}=famGrid(W.length>4?6:W.length);
+  body.innerHTML=`<div class="board fam-words" style="--rows:${rws};--r:${rws};--cols:${cols}">${W.map(w=>`<button type="button" class="cell fw${w.pseudo?" pseudo":""}" style="--len:${w.t.length}" aria-pressed="false"><span class="fw-t">${w.s.map((sy,i)=>`<span style="color:${PALETTE[i%PALETTE.length]}">${esc(sy)}</span>`).join("")}</span>${w.pseudo?'<span class="fw-tag">✨ inventada</span>':""}<span class="chk">✓</span></button>`).join("")}</div>`;
+  const els=[...body.querySelectorAll(".fw")];
+  els.forEach((b,i)=>b.onclick=()=>{
+   if(stage!=="fam4"||b.classList.contains("marked"))return;
+   b.classList.add("marked");b.setAttribute("aria-pressed","true");famSpeak(W[i].t);
+   if(stat()){stat().attempts++;stat().correct++;save()}
+   const dn=els.filter(x=>x.classList.contains("marked")).length;
+   if(dn===els.length){finishStep();celebrateStars();playSuccess();autoNext()}
+   else setFb(`Muito bem! ${dn} de ${els.length}.`)});
+  const markAll=()=>els.forEach(b=>{b.classList.add("marked");b.setAttribute("aria-pressed","true")});
+  if(alreadyDone){markAll();next.disabled=false;setFb(doneMsg)}
+  else{next.disabled=true;setFb(W.some(w=>w.pseudo)?"Leia cada palavra. As com ✨ são inventadas: junte os sons!":"Leia cada palavra juntando as sílabas");
+   if(CFG.skip){markAll();finishStep();autoNext()}}
+ }
+}
+function famFinish(){
+ const p=active(),f=famCur();if(!p)return;
+ if(currentRun){currentRun.completed=true;currentRun.finished=new Date().toISOString();currentRun.updated=currentRun.finished}
+ p.done[fam.cat]=p.done[fam.cat]||[];if(!p.done[fam.cat].includes(f.id))p.done[fam.cat].push(f.id);
+ p.last={category:fam.cat,word:f.id,at:new Date().toISOString()};saveProfiles();
+ const rb=$("#rewardBar");if(rb)rb.outerHTML=rewardMarkup();
+ fam.ok=true;stage="famok";celebrateStars();playSuccess();renderFamStage();autoNext();
+}
+function famAdvance(){if(fam.idx+1<fam.list.length){famGoIdx(fam.idx+1)}else famComplete()}
+function famComplete(){
+ commitStageClock();clearTimeout(autoTimer);document.body.classList.remove("game-mode");if(typeof flStop==="function")flStop();
+ stage="complete";const p=active(),G=FAM_GROUPS[fam.g],cat=fam.cat;
+ const groups=famGroupsOf(cat),nextG=groups[groups.indexOf(fam.g)+1];
+ $("#appMain").innerHTML=`<section class="panel" style="text-align:center"><div style="font-size:4rem">🎉</div><h1>Parabéns, ${esc(p.name)}!</h1><p>Você terminou o <b>${esc(G.name)}</b> — ${esc(G.title)}.</p><div class="progress"><span style="width:${Math.round(famProgress(p,cat)/famTotal(cat)*100)}%"></span></div><p class="muted">${famProgress(p,cat)} de ${famTotal(cat)} famílias ${cat==="simples"?"simples":"complexas"} concluídas.</p><div class="row" style="justify-content:center"><button class="primary" id="famAgain">↻ Repetir este grupo</button>${nextG?`<button class="primary" id="famNextG">Ir para o ${esc(FAM_GROUPS[nextG].name)} ▶</button>`:""}<button class="secondary" id="famCfgBtn">Escolher outro grupo</button><button class="secondary" id="menu">Voltar ao menu</button></div></section>`;
+ const cfg={cat,g:fam.g,order:fam.order,start:fam.list[0]};
+ $("#famAgain").onclick=()=>famStart(cfg);
+ if(nextG)$("#famNextG").onclick=()=>famStart({cat,g:nextG,order:fam.order,start:famGroupList(nextG)[0].id});
+ $("#famCfgBtn").onclick=()=>renderFamConfig(cat);
+ $("#menu").onclick=renderStudentMenu;
+}
+function famTotal(cat){return famCatList(cat).length}
+function startCategory(cat){if(!active()){alert("Cadastre ou selecione um jogador primeiro.");return}if(isFamCat(cat)){renderFamConfig(cat);return}category=cat;let ws=wordsFor(cat);if(!ws.length){alert("Não há palavras nesta categoria no banco atual.");return}let done=active().done[cat]||[];let next=ws.findIndex((w,i)=>!done.includes(w.w));if(next<0){renderCompleteCategory();return}currentIndex=next;startWord()}
 function startWord(){clearTimeout(autoTimer);const ws=wordsFor(category);if(currentIndex>=ws.length){renderCompleteCategory();return}let w=ws[currentIndex];chosen=[];shuffled=[];readShuffled=distinct(w.s).map((x,i)=>({s:x,i}));lockInput=false;figureChoices=[];buildShuffled=[];famShuffled=null;famMode=0;famBase=null;stageDone={};stage=isMontar()?"read":"families";const p=active();p.activityLog=p.activityLog||[];currentRun=ensureRunStats({id:makeId(),category,word:w.w,started:new Date().toISOString(),updated:new Date().toISOString(),completed:false,stages:{families:newStageStats(),read:newStageStats(),build:newStageStats(),picture:newStageStats()}});p.activityLog.push(currentRun);saveProfiles();renderActivity()}
 function shuffleTokens(arr){const items=arr.map((x,i)=>({s:x,i}));if(items.length<2)return items;let out,t=0;do{out=shuffle([...items]);t++}while(out.map(x=>x.s).join("|")===arr.join("|")&&t<30);return out}
 function shuffleDiff(l){if(l.length<2)return [...l];let o,t=0;do{o=shuffle([...l]);t++}while(o.join()===l.join()&&t<30);return o}
@@ -1531,6 +1835,7 @@ function openCfg(){
   setCfg({auto:au.checked,skip:ov.querySelector("#cfgSkip").checked,letter:(ov.querySelector('input[name=cfgL]:checked')||{}).value,delay:d?+d.value:4});
   close();clearTimeout(autoTimer);abApplyCase();
   if(["families","read","build","picture"].includes(stage)&&$("#stageBody")){renderStage()}
+  else if(/^fam[1-4]$/.test(stage)&&$("#stageBody")&&typeof fam!=="undefined"&&fam){renderFamStage()}
   else if(stage==="alpha-game"){if($("#lgText")&&typeof LG!=="undefined"&&LG)lgStart(LG.kind,LG.id,LG.i);else if(typeof FL!=="undefined"&&FL&&!FL.finished&&$("#flText"))flStart(FL.text.id);else if(typeof AB!=="undefined"&&AB&&AB.queue&&AB.i<AB.queue.length&&$("#abLeft"))abRound()}
  };
  ov.querySelector("#cfgOk").focus();
@@ -1625,7 +1930,7 @@ function caseClass(){return caseMode==='l'?' lc':caseMode==='c'?' cur':''}
 const CASE_LABEL={u:'ABC',l:'abc',c:'Abc'};
 function famRows(w){const seen=[];return (famShuffled||w.families||[]).filter(f=>{const k=f.join();if(seen.includes(k))return false;seen.push(k);return true}).map(f=>{const hit=distinct(w.s).filter(x=>f.includes(x));return {list:f,hit,color:hit.length?sylColor(w,hit[0]):"#b8bfd6"}})}
 /* Estrelas: 1 por BLOCO concluído, só na primeira conclusão. Repetir não soma de novo; só zerando o progresso do participante.
-   - Sílabas e palavras: 1 por grupo de 10 palavras concluídas (na ordem do jogo)
+   - Sílabas e palavras: 1 por grupo de 10 palavras concluídas (na ordem do jogo); em Sílabas Simples/Complexas, 1 por grupo de 4 famílias concluídas (na ordem pedagógica)
    - Alfabeto: 1 por nível de Caça-Letras e de Qual letra começa?, e 1 por modo e grupo de Sons das letras
    - Treino de Leitura Livre e Treino de Fluência Leitora: 1 por texto ou lista lida (o Personalizado é treino livre e não rende estrela) */
 function sgLedger(A){
@@ -1638,6 +1943,7 @@ function sgAward(A,jogo,nivel,n){if(!A.sg)A.sg=sgLedger(A);const k=jogo+"|"+nive
 function totalStars(p){
  if(!p)return 0;let n=0;const d=p.done||{};
  ["simples","complexas","simples_montar","complexas_montar"].forEach(cat=>{
+  if(isFamCat(cat)){const fl=famCatList(cat),fd=famDoneSet(p,cat);for(let i=0;i<fl.length;i+=4){if(fl.slice(i,i+4).every(f=>fd.has(f.id)))n++}return}
   const ws=wordsFor(cat),dn=new Set(d[cat]||[]);
   for(let i=0;i<ws.length;i+=10){if(ws.slice(i,i+10).every(w=>dn.has(w.w)))n++}});
  const A=p.alpha;
@@ -2355,12 +2661,7 @@ function flMenuMarkup(p){
 const LG_PACE={i:{n:"Iniciante",e:"🐢",s:3},m:{n:"Intermediário",e:"🐇",s:2},a:{n:"Avançado",e:"🚀",s:1},p:{n:"Personalizado",e:"✏️",s:2}};
 function lgPaceInfo(){const b=LG_PACE[CFG.pace]||LG_PACE.i;return{n:b.n,e:b.e,s:CFG.pace==="p"?CFG.secs:b.s}}
 function lgSecTxt(x){return String(x).replace(".",",")+(x===1?" segundo":" segundos")+" por palavra"}
-/* Bancos de sílabas do treino de fluência. Simples = consoante + vogal. Complexas = dígrafos, encontros consonantais, sílabas travadas, ç, c/g suaves, nasais */
-const SIL_S="BA BE BI BO BU CA CO CU DA DE DI DO DU FA FE FI FO FU GA GO GU JA JE JI JO JU LA LE LI LO LU MA ME MI MO MU NA NE NI NO NU PA PE PI PO PU RA RE RI RO RU SA SE SI SO SU TA TE TI TO TU VA VE VI VO VU ZA ZE ZI ZO ZU".split(" ");
-const SIL_C="CE CI GE GI QUE QUI GUE GUI ÇA ÇO ÇU CHA CHE CHI CHO CHU LHA LHE LHI LHO LHU NHA NHE NHI NHO NHU BRA BRE BRI BRO BRU CRA CRE CRI CRO CRU DRA DRE DRI DRO DRU FRA FRE FRI FRO FRU GRA GRE GRI GRO GRU PRA PRE PRI PRO PRU TRA TRE TRI TRO TRU BLA BLE BLI BLO BLU CLA CLE CLI CLO CLU FLA FLE FLI FLO FLU GLA GLE GLI GLO GLU PLA PLE PLI PLO PLU AR ER IR OR UR AL EL IL OL UL AS ES IS OS US AN EN IN ON UN BAR CAL DOR FAL GAS LAN MAR NOS PER SOL TEM VEZ ÃO ÃE ÕE RRA RRE RRI RRO RRU SSA SSE SSI SSO SSU".split(" ");
 const LG_KINDS={
- ss:{t:"🔡 Sílabas simples",s:"Blocos de 12 sílabas (consoante + vogal)",kind:"words",cat:"silS",sil:true},
- sc:{t:"🔡 Sílabas complexas",s:"Blocos de 12 sílabas (dígrafos, encontros, travadas)",kind:"words",cat:"silC",sil:true},
  ps:{t:"📘 Palavras simples",s:"Listas de 12 palavras, como a cartela do protocolo",kind:"words",cat:"simples"},
  pc:{t:"📗 Palavras complexas",s:"Listas de 12 palavras, como a cartela do protocolo",kind:"words",cat:"complexas"},
  fs:{t:"💬 Frases simples",s:"Uma frase de cada vez",kind:"sent",lv:1},
@@ -2370,12 +2671,11 @@ const LG_KINDS={
 /* Grupos do menu inicial: Palavras (Simples, Complexas, Personalizado), Frases (Simples, Complexas) e Textos curtos */
 const LG_GROUPS={
  p:{t:"📖 Palavras",s:"Escolha o tipo de palavras",kinds:["ps","pc"],names:{ps:"📘 Simples",pc:"📗 Complexas"},custom:true},
- f:{t:"💬 Frases",s:"Uma frase de cada vez",kinds:["fs","fc"],names:{fs:"💬 Simples",fc:"💬 Complexas"}},
- s:{t:"🔡 Sílabas",s:"Escolha o tipo de sílabas",kinds:["ss","sc"],names:{ss:"📘 Simples",sc:"📗 Complexas"},custom:true}
+ f:{t:"💬 Frases",s:"Uma frase de cada vez",kinds:["fs","fc"],names:{fs:"💬 Simples",fc:"💬 Complexas"}}
 };
 function lgGroupOf(k){return Object.keys(LG_GROUPS).find(g=>LG_GROUPS[g].kinds.includes(k))||null}
 function lgOpen(key){LG_GROUPS[key]?lgGroup(key):lgMenu(key)}
-function lgBackTo(k,custom){const g=custom?(lgGroupOf(k)||"p"):lgGroupOf(k);g?lgGroup(g):renderStudentMenu()}
+function lgBackTo(k,custom){const g=custom?"p":lgGroupOf(k);g?lgGroup(g):renderStudentMenu()}
 let LG=null,LGK=null;const LGCUST={};
 function lgNormSecs(v){const x=Math.round(parseFloat(String(v).replace(",","."))*10)/10;return x>=0.3&&x<=30?x:2}
 function lgPaceBtnTxt(){return "🕒 "+String(lgPaceInfo().s).replace(".",",")+" s"}
@@ -2410,7 +2710,6 @@ function lgPaceOpen(){
 const LG_EXTRA={simples:["LAGO","MULA","RODA","VIDA","PATA","GATA","CAFÉ","JUDÔ","NOVO","TELA","LOJA","SALAME","PALITO","PIJAMA","PERIGO","GELADO","VELUDO","MORENO","FIGURA","DOMINÓ","TIJOLO","BEBIDA","TELEFONE","PIRULITO","CAPIVARA","LIMONADA","CARAMELO","FUMAÇA","MINUTO","MADURO","SEGURO","PILOTO","BOTINA","BELEZA","SEMANA","LAMINA","PEPITA","CABELUDO","CARETA"],
  complexas:["FRIO","BICHO","TERRA","MASSA","CREME","PRAIA","PRIMO","LETRA","CLIMA","GLOBO","GARFO","CAMPO","CAIXA","LEITE","JOELHO","COLHER","GUERRA","QUENTE","PESSOA","BRINCO","BRANCO","ABRAÇO","LADRÃO","GRANDE","TRILHO","PATRÃO","CLASSE","FLAUTA","PASTEL","JARDIM","PORTÃO","FEIJÃO","CHINELO","CHUPETA","FACHADA","BILHETE","FILHOTE","TELHADO","ESPELHO","CAMINHO","CARINHO","COZINHA","TAMANHO","AQUÁRIO","BARRIGA","CORRIDA","CRIANÇA","ESTRADA","PLANETA","SOLDADO","VESTIDO","MONTANHA","PERGUNTA","VASSOURA","PLÁSTICO","CHOCOLATE","CHURRASCO","PASSARINHO","FLORESTA","CASTELO","GIRASSOL","TRABALHO","PRESENTE","ELEFANTE","GRAMADO","ABRIGO","VIOLÃO","SANDÁLIA","BRINQUEDO","BIGODE","ZEBRA","CRAVO"]};
 function lgBank(cat){
- if(cat==="silS")return SIL_S.slice();if(cat==="silC")return SIL_C.slice();
  const seen=new Set(),out=[];
  wordsFor(cat).map(x=>x.w).concat(LG_EXTRA[cat]||[]).forEach(w=>{const k=w.normalize("NFC").toUpperCase();if(!seen.has(k)){seen.add(k);out.push(w)}});
  return out;
@@ -2427,40 +2726,27 @@ function lgCustomWords(t,q,rand){
  }
  return out;
 }
-/* Sílabas personalizado: a configuração escolhida fica salva no participante e é mantida em todos os blocos seguintes, até o jogador mudá-la manualmente */
-function lgSilWords(cfg,adv){
- const q=cfg.qtd,rand=cfg.ordem==="r"||cfg.tipo==="x";
- const take=(a,n,key)=>{const o=cfg[key]||0,r=rand?shuffle(a.slice()):a.slice(o).concat(a.slice(0,o));if(adv&&!rand)cfg[key]=(o+n)%a.length;return r.slice(0,Math.min(n,a.length))};
- if(cfg.tipo==="s")return take(SIL_S,q,"oS");
- if(cfg.tipo==="c")return take(SIL_C,q,"oC");
- const a=take(SIL_S,Math.ceil(q/2),"oS"),b=take(SIL_C,Math.floor(q/2),"oC");
- if(cfg.tipo==="x")return shuffle(a.concat(b));
- const out=[];for(let i=0;i<Math.max(a.length,b.length);i++){if(i<a.length)out.push(a[i]);if(i<b.length)out.push(b[i])}return out}
-function lgSilUnit(cfg){cfg.bn=(cfg.bn||0)+1;return{id:"ss-custom",t:"Treino personalizado • bloco "+cfg.bn,e:"✏️",items:[lgSilWords(cfg,true)],custom:true,sil:true,sub:""}}
-function lgSilNext(){const p=active();if(!p)return;const d=lgData(p);if(!d.silCfg){lgGroup("s");return}
- const u=lgSilUnit(d.silCfg);LGCUST[u.id]=u;saveProfiles();lgStart("ss",u.id,0)}
-function lgSilCfgTxt(c){if(!c)return"";return c.qtd+" sílabas • "+({s:"só simples",c:"só complexas",m:"simples e complexas alternadas",x:"simples e complexas embaralhadas"})[c.tipo]+(c.tipo==="x"?"":c.ordem==="o"?" • em sequência":" • sorteadas")}
 function lgCustomOpen(k){
  if(document.getElementById("lgCustOv"))return;
  const p=active();if(!p)return;
- const SIL=!!(LG_KINDS[k]&&LG_KINDS[k].sil),W=SIL?"sílabas":"palavras",d=lgData(p),sv=(SIL?d.silCfg:d.custom)||{};
- const nS=lgBank(SIL?"silS":"simples").length,nC=lgBank(SIL?"silC":"complexas").length,max={s:nS,c:nC,m:nS+nC,x:nS+nC};
- const t0=(SIL?["s","c","m","x"]:["s","c","m"]).includes(sv.tipo)?sv.tipo:"s";
+ const d=lgData(p),sv=d.custom||{};
+ const nS=lgBank("simples").length,nC=lgBank("complexas").length,max={s:nS,c:nC,m:nS+nC};
+ const t0=["s","c","m"].includes(sv.tipo)?sv.tipo:"s";
  const q0=Math.min(max[t0],Math.max(1,parseInt(sv.qtd)||12)),o0=sv.ordem==="o"?"o":"r";
  const rad=(n,v,cur,txt)=>`<label><input type="radio" name="${n}" value="${v}" ${cur===v?"checked":""}>${txt}</label>`;
  const ov=document.createElement("div");ov.className="cfg-ov";ov.id="lgCustOv";
- ov.innerHTML=`<div class="cfg-box" role="dialog" aria-modal="true" aria-labelledby="lgCT"><h2 id="lgCT">✏️ Personalizar treino</h2><p class="muted small" style="margin:0 0 8px">Monte o treino de ${W}. ${SIL?"As sílabas":"Elas"} aparecem uma de cada vez, no tempo do botão 🕒 da barra de baixo.</p>
- <div class="cfg-sec"><b>Quais ${W}?</b></div>
- <div class="cfg-pace">${rad("lgCt","s",t0,"📘 Só "+W+" simples")}${rad("lgCt","c",t0,"📗 Só "+W+" complexas")}${rad("lgCt","m",t0,"🔀 Misturar simples e complexas, alternando")}${SIL?rad("lgCt","x",t0,"🎲 Embaralhar e misturar simples e complexas"):""}</div>
- <div class="cfg-sec"><b>Quantas ${W}?</b></div>
- <div class="cfg-pace"><label>Quantidade: <input type="number" id="lgQtd" min="1" max="${max[t0]}" step="1" inputmode="numeric" value="${q0}" aria-label="Quantidade de ${W}"> ${W}</label><div class="lg-chips">${[5,10,12,20,30].map(n=>`<button type="button" class="lg-chip" data-q="${n}">${n}</button>`).join("")}</div><span class="small muted" id="lgMaxTxt">Máximo: ${max[t0]} ${W}</span></div>
+ ov.innerHTML=`<div class="cfg-box" role="dialog" aria-modal="true" aria-labelledby="lgCT"><h2 id="lgCT">✏️ Personalizar treino</h2><p class="muted small" style="margin:0 0 8px">Monte o treino de palavras. Elas aparecem uma de cada vez, no tempo do botão 🕒 da barra de baixo.</p>
+ <div class="cfg-sec"><b>Quais palavras?</b></div>
+ <div class="cfg-pace">${rad("lgCt","s",t0,"📘 Só palavras simples")}${rad("lgCt","c",t0,"📗 Só palavras complexas")}${rad("lgCt","m",t0,"🔀 Misturar simples e complexas, alternando")}</div>
+ <div class="cfg-sec"><b>Quantas palavras?</b></div>
+ <div class="cfg-pace"><label>Quantidade: <input type="number" id="lgQtd" min="1" max="${max[t0]}" step="1" inputmode="numeric" value="${q0}" aria-label="Quantidade de palavras"> palavras</label><div class="lg-chips">${[5,10,12,20,30].map(n=>`<button type="button" class="lg-chip" data-q="${n}">${n}</button>`).join("")}</div><span class="small muted" id="lgMaxTxt">Máximo: ${max[t0]} palavras</span></div>
  <div class="cfg-sec"><b>Ordem</b></div>
- <div class="cfg-pace">${rad("lgCo","r",o0,"🎲 Sorteadas (cada treino é diferente)")}${rad("lgCo","o",o0,SIL?"🔢 Em sequência (continua de onde parou)":"🔢 Em sequência (as primeiras do banco)")}${SIL?`<span class="small muted">✔ Esta configuração fica salva e vale para todos os blocos, até você mudar aqui.</span>`:""}</div>
+ <div class="cfg-pace">${rad("lgCo","r",o0,"🎲 Sorteadas (cada treino é diferente)")}${rad("lgCo","o",o0,"🔢 Em sequência (as primeiras do banco)")}</div>
  <div class="cfg-actions"><button class="secondary" id="lgCCancel" type="button">Cancelar</button><button class="primary" id="lgCOk" type="button">Começar ▶</button></div></div>`;
  document.body.appendChild(ov);
  const qtd=ov.querySelector("#lgQtd"),mx=ov.querySelector("#lgMaxTxt");
  const tipo=()=>(ov.querySelector('input[name=lgCt]:checked')||{value:"s"}).value;
- const upd=()=>{const m=max[tipo()];qtd.max=m;mx.textContent="Máximo: "+m+" "+W;if(+qtd.value>m)qtd.value=m;ov.querySelectorAll("input[name=lgCo]").forEach(r=>{r.disabled=tipo()==="x"})};
+ const upd=()=>{const m=max[tipo()];qtd.max=m;mx.textContent="Máximo: "+m+" palavras";if(+qtd.value>m)qtd.value=m};
  ov.querySelectorAll('input[name=lgCt]').forEach(r=>r.onchange=upd);
  ov.querySelectorAll(".lg-chip").forEach(b=>b.onclick=()=>{qtd.value=Math.min(max[tipo()],+b.dataset.q)});
  const close=()=>ov.remove();
@@ -2470,12 +2756,11 @@ function lgCustomOpen(k){
  ov.querySelector("#lgCOk").onclick=()=>{
   const t=tipo(),o=(ov.querySelector('input[name=lgCo]:checked')||{value:"r"}).value;
   let q=Math.round(+qtd.value);if(!(q>=1))q=12;q=Math.min(q,max[t]);
-  if(SIL){const cfg={tipo:t,qtd:q,ordem:o,oS:0,oC:0,bn:0};d.silCfg=cfg;const u=lgSilUnit(cfg);LGCUST[u.id]=u;saveProfiles();close();lgStart(k,u.id,0);return}
-   d.custom={tipo:t,qtd:q,ordem:o};saveProfiles();
+  d.custom={tipo:t,qtd:q,ordem:o};saveProfiles();
   const id=k+"-custom";
   LGCUST[id]={id,t:"Treino personalizado",e:"✏️",items:[lgCustomWords(t,q,o==="r")],custom:true,sub:""};
   close();lgStart(k,id,0)};
- upd();ov.querySelector("#lgCOk").focus();
+ ov.querySelector("#lgCOk").focus();
 }
 
 function lgData(p){p.leitura=p.leitura||{};p.leitura.u=p.leitura.u||{};p.leitura.sessoes=p.leitura.sessoes||[];return p.leitura}
@@ -2483,7 +2768,7 @@ function lgUnits(k){
  const K=LG_KINDS[k];
  if(K.kind==="words"){
   const ws=lgBank(K.cat),out=[];
-  for(let i=0;i<ws.length;i+=12){const l=ws.slice(i,i+12);let j=0;while(l.length<12&&ws.length>=12)l.push(ws[j++%ws.length]);const n=i/12+1;out.push({id:k+"-"+n,t:(K.sil?"Bloco ":"Lista ")+n,sil:!!K.sil,e:(K.cat==="simples"||K.cat==="silS")?"📘":"📗",items:[l],sub:l.slice(0,3).join(" • ")+"…"})}
+  for(let i=0;i<ws.length;i+=12){const l=ws.slice(i,i+12);let j=0;while(l.length<12&&ws.length>=12)l.push(ws[j++%ws.length]);const n=i/12+1;out.push({id:k+"-"+n,t:"Lista "+n,e:K.cat==="simples"?"📘":"📗",items:[l],sub:l.slice(0,3).join(" • ")+"…"})}
   return out}
  const seen=new Set();
  return FL_TEXTS.filter(x=>x.n===K.lv&&!seen.has(x.id)&&seen.add(x.id)).map(x=>{
@@ -2499,13 +2784,13 @@ function lgMenuMarkup(p){
   const tot=ks.reduce((a,k)=>a+lgUnits(k).length,0),c=ks.reduce((a,k)=>a+lido(k),0);
   const unit=LG_KINDS[ks[0]].kind==="words"?"listas lidas":"textos lidos";
   return `<button class="category" data-lg="${key}" type="button"><strong>${G?G.t:LG_KINDS[key].t}</strong><div class="progress" style="margin:12px 0 6px"><span style="width:${Math.round(c/Math.max(1,tot)*100)}%"></span></div><span class="small">${c} de ${tot} ${unit}</span></button>`};
- return `<div class="lg-title-row"><h2 style="margin:22px 0 0">⏱️ Treino de Fluência Leitora</h2><button class="secondary lg-guide-btn" id="lgGuideBtn" type="button">📋 Guia de orientação</button></div><div class="category-grid">${["p","f","s","tc"].map(card).join("")}</div>`;
+ return `<div class="lg-title-row"><h2 style="margin:22px 0 0">⏱️ Treino de Fluência Leitora</h2><button class="secondary lg-guide-btn" id="lgGuideBtn" type="button">📋 Guia de orientação</button></div><div class="category-grid">${["p","f","tc"].map(card).join("")}</div>`;
 }
 function lgGroup(g){
  const p=active();if(!p){renderClassDashboard();return}
  LG=null;LGK=g;const d=lgData(p),G=LG_GROUPS[g],pc=lgPaceInfo();
  const card=k=>{const U=lgUnits(k),c=U.filter(u=>d.u[u.id]&&d.u[u.id].n).length;return `<button class="ab-lvl fl-card" data-k="${k}" type="button"><strong>${G.names[k]}</strong><span class="ab-lvl-s">${c} de ${U.length} ${LG_KINDS[k].kind==="words"?"listas lidas":"textos lidos"}</span></button>`};
- const cust=G.custom?`<button class="ab-lvl fl-card lg-custom" data-custom="1" type="button"><strong>✏️ Personalizado</strong><span class="ab-lvl-s">${G.kinds[0]==="ss"&&d.silCfg?"Configuração atual: "+lgSilCfgTxt(d.silCfg):G.kinds[0]==="ss"?"Escolha o tipo e a quantidade • simples, complexas ou embaralhadas":"Escolha o tipo e a quantidade • misture simples e complexas"}</span></button>`:"";
+ const cust=G.custom?`<button class="ab-lvl fl-card lg-custom" data-custom="1" type="button"><strong>✏️ Personalizado</strong><span class="ab-lvl-s">Escolha o tipo e a quantidade • misture simples e complexas</span></button>`:"";
  abShell({title:"Treino de Fluência Leitora",abCase:true,lgPace:true,sub:G.t.replace(/^\S+\s/,""),stars:G.kinds.reduce((a,k)=>a+lgDoneCount(k),0),
   single:`<div class="ab-board fl-pick fl-one lg-group"><div class="fl-block"><div class="fl-block-t">${G.t}</div><div class="fl-block-s">${G.s} • ${pc.e} ${pc.n} (${lgSecTxt(pc.s)}) — mude no botão 🕒 da barra de baixo</div><div class="fl-texts">${G.kinds.map(card).join("")}${cust}</div></div></div>`,
   msg:"",bare:true,noSound:true,onBack:renderStudentMenu});
@@ -2551,7 +2836,7 @@ function lgMenu(k){
 function lgStart(k,id,i){
  const u=LGCUST[id]||lgUnits(k).find(x=>x.id===id);if(!u)return;i=i||0;
  const item=u.items[i],isList=Array.isArray(item);
- LG={sil:!!(u.sil||(LG_KINDS[k]&&LG_KINDS[k].sil)),kind:k,id,u,i,isList,words:isList?item.slice():String(item).split(/\s+/).filter(Boolean),idx:-1,state:"idle",el:0,timer:null,clk:null};
+ LG={kind:k,id,u,i,isList,words:isList?item.slice():String(item).split(/\s+/).filter(Boolean),idx:-1,state:"idle",el:0,timer:null,clk:null};
  lgRender();
 }
 function lgFmt(ms){const s=Math.round(ms/1000);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
@@ -2566,10 +2851,10 @@ function lgFit(){
 function lgRender(){
  LGK=null;const L=LG,total=L.u.items.length,pc=lgPaceInfo();
  const spans=L.isList?`<span class="lg-w idle" id="lgOne">Pronto? 👀</span>`:L.words.map((w,n)=>`<span class="lg-w" data-i="${n}">${esc(w)}</span>`).join("");
- const sub=`${L.u.e} ${esc(L.u.t)}${total>1?` • frase ${L.i+1} de ${total}`:""}${L.isList?` • ${L.words.length} ${L.sil?"sílabas":"palavras"}`:""}`;
+ const sub=`${L.u.e} ${esc(L.u.t)}${total>1?` • frase ${L.i+1} de ${total}`:""}${L.isList?` • ${L.words.length} palavras`:""}`;
  abShell({title:"Treino de Fluência Leitora",abCase:true,lgPace:true,sub,stars:lgDoneCount(L.kind),noSound:true,
-  single:`<div class="ab-board lg-board"><div class="lg-wrap"><div class="lg-text${L.isList?" lg-list lg-one":""}" id="lgText">${spans}</div><div class="lg-bar"><span id="lgFill"></span></div><div class="lg-ctrl"><button class="go-btn" id="lgPlay" type="button">▶ Começar</button><span class="lg-clock" id="lgClock">⏱ 0:00</span>${L.isList?`<span class="lg-clock" id="lgNum">${L.sil?"Sílaba":"Palavra"} 0 de ${L.words.length}</span>`:""}</div><div class="lg-count off" id="lgCount" aria-live="assertive"></div></div></div>`,
-  msg:L.isList?(L.sil?"Aperte ▶ Começar. As sílabas aparecem uma de cada vez":"Aperte ▶ Começar. As palavras aparecem uma de cada vez"):"Aperte ▶ Começar e leia a palavra que está acesa",next:{label:"Próxima ▶",disabled:true},
+  single:`<div class="ab-board lg-board"><div class="lg-wrap"><div class="lg-text${L.isList?" lg-list lg-one":""}" id="lgText">${spans}</div><div class="lg-bar"><span id="lgFill"></span></div><div class="lg-ctrl"><button class="go-btn" id="lgPlay" type="button">▶ Começar</button><span class="lg-clock" id="lgClock">⏱ 0:00</span>${L.isList?`<span class="lg-clock" id="lgNum">Palavra 0 de ${L.words.length}</span>`:""}</div><div class="lg-count off" id="lgCount" aria-live="assertive"></div></div></div>`,
+  msg:L.isList?"Aperte ▶ Começar. As palavras aparecem uma de cada vez":"Aperte ▶ Começar e leia a palavra que está acesa",next:{label:"Próxima ▶",disabled:true},
   onBack:()=>L.u.custom?lgBackTo(L.kind,true):lgMenu(L.kind),onRestart:()=>lgStart(L.kind,L.id,L.i)});
  L.tok=abTok;
  $("#lgPlay").onclick=lgToggle;
@@ -2582,8 +2867,7 @@ function lgRender(){
 function lgNextInfo(){
  const L=LG,total=L.u.items.length;
  if(L.i<total-1)return{label:"Próxima frase ▶",go:()=>lgStart(L.kind,L.id,L.i+1)};
- if(L.u.custom&&L.u.sil)return{label:"Próximo bloco ▶",go:lgSilNext};
-  if(L.u.custom)return{label:"Escolher ▶",go:()=>lgBackTo(L.kind,true)};
+ if(L.u.custom)return{label:"Escolher ▶",go:()=>lgBackTo(L.kind,true)};
  const U=lgUnits(L.kind),k=U.findIndex(x=>x.id===L.id),nx=U[k+1];
  return nx?{label:LG_KINDS[L.kind].kind==="words"?"Próxima lista ▶":"Próximo texto ▶",go:()=>lgStart(L.kind,nx.id,0)}:{label:"Escolher ▶",go:()=>lgMenu(L.kind)};
 }
@@ -2621,7 +2905,7 @@ function lgStep(){
   const o=$("#lgOne");
   if(o){o.textContent=L.words[L.idx];o.classList.remove("idle","pop");void o.offsetWidth;o.classList.add("cur","pop")}
   const f=$("#lgFill");if(f)f.style.width=Math.round((L.idx+1)/L.words.length*100)+"%";
-  const n=$("#lgNum");if(n)n.textContent=(L.sil?"Sílaba ":"Palavra ")+(L.idx+1)+" de "+L.words.length;
+  const n=$("#lgNum");if(n)n.textContent="Palavra "+(L.idx+1)+" de "+L.words.length;
   L.timer=setTimeout(lgStep,lgPaceInfo().s*1000);return;
  }
  const els=document.querySelectorAll("#lgText .lg-w");
@@ -2636,7 +2920,7 @@ function lgFinish(skipped){
  const L=LG;if(!L||L.state==="done")return;
  clearTimeout(L.timer);clearInterval(L.clk);L.state="done";
  const f=$("#lgFill");if(f)f.style.width="100%";
- if(L.isList){const t=$("#lgText");if(t){t.innerHTML='<span class="lg-w done">✅ Muito bem!</span>';lgFit()}const n=$("#lgNum");if(n)n.textContent=L.words.length+" de "+L.words.length+(L.sil?" sílabas":" palavras")}
+ if(L.isList){const t=$("#lgText");if(t){t.innerHTML='<span class="lg-w done">✅ Muito bem!</span>';lgFit()}const n=$("#lgNum");if(n)n.textContent=L.words.length+" de "+L.words.length+" palavras"}
  else document.querySelectorAll("#lgText .lg-w").forEach(e=>{e.classList.remove("cur");e.classList.add("done")});
  const b=$("#lgPlay");if(b){b.disabled=false;b.textContent="↻ Ler de novo";b.onclick=()=>lgStart(L.kind,L.id,L.i)}
  const p=active(),total=L.u.items.length,last=L.i>=total-1,now=new Date().toISOString();let lgN=0;
